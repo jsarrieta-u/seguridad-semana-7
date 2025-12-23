@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automatización del Build Seguro</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        .fade-in-up { animation: fadeInUp 0.6s ease-out forwards; }
+        .feature-card { transition: all 0.3s ease; cursor: pointer; }
+        .feature-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.15); }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-amber-50 to-yellow-100 p-8 min-h-screen">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-12 fade-in-up" style="animation-delay: 0.1s;">
+            <div class="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-amber-600 to-yellow-700 rounded-2xl mb-4 shadow-xl">
+                <span class="material-symbols-outlined text-white text-5xl">settings_suggest</span>
+            </div>
+            <h1 class="text-5xl font-black text-gray-900 mb-4">
+                <span class="text-amber-600">Automatización</span> del Build
+            </h1>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">Aseguramiento del entorno de compilación mediante hardening y controles automáticos</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <div class="feature-card bg-white rounded-2xl p-8 shadow-xl fade-in-up" style="animation-delay: 0.2s;">
+                <div class="bg-amber-100 w-16 h-16 rounded-xl flex items-center justify-center mb-4">
+                    <span class="material-symbols-outlined text-amber-600 text-4xl">deployed_code</span>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-900 mb-3">Builds Efímeros</h3>
+                <p class="text-gray-600 mb-4">Contenedores que se crean y destruyen con cada ejecución para evitar persistencia de malware</p>
+                <div class="bg-amber-50 rounded-lg p-3 border-l-4 border-amber-500">
+                    <p class="text-sm text-gray-700"><span class="font-bold">Tecnología:</span> Docker, Kubernetes</p>
+                </div>
+            </div>
+
+            <div class="feature-card bg-white rounded-2xl p-8 shadow-xl fade-in-up" style="animation-delay: 0.3s;">
+                <div class="bg-yellow-100 w-16 h-16 rounded-xl flex items-center justify-center mb-4">
+                    <span class="material-symbols-outlined text-yellow-600 text-4xl">shield_lock</span>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-900 mb-3">Mínimo Privilegio</h3>
+                <p class="text-gray-600 mb-4">Acceso solo a recursos estrictamente necesarios para compilar el proyecto actual</p>
+                <div class="bg-yellow-50 rounded-lg p-3 border-l-4 border-yellow-500">
+                    <p class="text-sm text-gray-700"><span class="font-bold">Principio:</span> Least Privilege Access</p>
+                </div>
+            </div>
+
+            <div class="feature-card bg-white rounded-2xl p-8 shadow-xl fade-in-up" style="animation-delay: 0.4s;">
+                <div class="bg-orange-100 w-16 h-16 rounded-xl flex items-center justify-center mb-4">
+                    <span class="material-symbols-outlined text-orange-600 text-4xl">lock_open</span>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-900 mb-3">Sin Secretos en Código</h3>
+                <p class="text-gray-600 mb-4">Credenciales inyectadas dinámicamente desde gestores de secretos, nunca en texto plano</p>
+                <div class="bg-orange-50 rounded-lg p-3 border-l-4 border-orange-500">
+                    <p class="text-sm text-gray-700"><span class="font-bold">Herramienta:</span> HashiCorp Vault, AWS Secrets</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-gradient-to-r from-amber-600 to-yellow-600 rounded-2xl p-8 shadow-xl text-white fade-in-up" style="animation-delay: 0.5s;">
+            <h2 class="text-3xl font-bold mb-6 text-center">Beneficios de la Automatización</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-xl p-6">
+                    <div class="flex items-start gap-3">
+                        <span class="material-symbols-outlined text-3xl">speed</span>
+                        <div>
+                            <h3 class="font-bold text-lg mb-2">Velocidad y Consistencia</h3>
+                            <p class="text-sm opacity-90">Builds predecibles y repetibles sin intervención manual</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-xl p-6">
+                    <div class="flex items-start gap-3">
+                        <span class="material-symbols-outlined text-3xl">security</span>
+                        <div>
+                            <h3 class="font-bold text-lg mb-2">Seguridad Integrada</h3>
+                            <p class="text-sm opacity-90">Controles automáticos en cada paso del pipeline</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

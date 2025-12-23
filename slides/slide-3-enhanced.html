@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html class="light" lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Tabla de Contenido - SDLC Security</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#003366",
+              "primary-light": "#0066CC",
+              "accent-gold": "#D4AF37",
+              "background-light": "#f5f7f8",
+              "background-dark": "#0f1923",
+            },
+            fontFamily: {
+              "display": ["Inter", "sans-serif"]
+            },
+          },
+        },
+      }
+    </script>
+    <style>
+        .sidebar-pattern {
+            background-image: repeating-linear-gradient(45deg, rgba(212, 175, 55, 0.1) 0px, rgba(212, 175, 55, 0.1) 1px, transparent 1px, transparent 20px);
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(212, 175, 55, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(212, 175, 55, 0.6); }
+        }
+        
+        @keyframes progress-fill {
+            from { width: 0%; }
+            to { width: var(--progress); }
+        }
+        
+        .chapter-item {
+            animation: fadeInUp 0.6s ease-out forwards;
+            opacity: 0;
+        }
+        
+        .chapter-item:nth-child(1) { animation-delay: 0.1s; }
+        .chapter-item:nth-child(2) { animation-delay: 0.2s; }
+        .chapter-item:nth-child(3) { animation-delay: 0.3s; }
+        .chapter-item:nth-child(4) { animation-delay: 0.4s; }
+        .chapter-item:nth-child(5) { animation-delay: 0.5s; }
+        .chapter-item:nth-child(6) { animation-delay: 0.6s; }
+        .chapter-item:nth-child(7) { animation-delay: 0.7s; }
+        
+        .icon-circle {
+            animation: pulse-glow 3s ease-in-out infinite;
+        }
+        
+        .chapter-description {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .chapter-item:hover .chapter-description {
+            max-height: 150px;
+            opacity: 1;
+            margin-top: 0.75rem;
+        }
+        
+        .progress-bar {
+            animation: progress-fill 1.5s ease-out forwards;
+            animation-delay: 0.8s;
+        }
+        
+        .stat-card {
+            transition: all 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(0,51,102,0.1);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 font-display">
+    <div class="relative flex min-h-screen w-full flex-col lg:flex-row overflow-hidden bg-white shadow-2xl max-w-[1920px] mx-auto">
+        <!-- Left Sidebar -->
+        <aside class="relative flex w-full lg:w-[320px] shrink-0 flex-col items-center justify-center bg-gradient-to-br from-primary via-primary to-primary-light py-12 lg:py-0 overflow-hidden">
+            <div class="sidebar-pattern absolute inset-0 h-full w-full pointer-events-none"></div>
+            
+            <!-- Icon Circle with Animation -->
+            <div class="relative z-10 icon-circle flex h-[220px] w-[220px] items-center justify-center rounded-full bg-accent-gold/15 border-2 border-accent-gold/30 backdrop-blur-sm shadow-2xl">
+                <span class="material-symbols-outlined text-accent-gold drop-shadow-lg" style="font-size: 90px; font-variation-settings: 'FILL' 1;">menu_book</span>
+            </div>
+            
+            <!-- Progress Indicator -->
+            <div class="relative z-10 mt-8 w-48">
+                <div class="flex items-center justify-between text-accent-gold/80 text-xs font-semibold mb-2">
+                    <span>Progreso</span>
+                    <span>0%</span>
+                </div>
+                <div class="h-2 bg-white/10 rounded-full overflow-hidden">
+                    <div class="progress-bar h-full bg-accent-gold rounded-full" style="--progress: 0%;"></div>
+                </div>
+            </div>
+            
+            <div class="absolute bottom-8 text-accent-gold/70 text-xs font-bold tracking-[0.2em] uppercase hidden lg:block">
+                SDLC Security Guide
+            </div>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="flex flex-1 flex-col bg-gradient-to-br from-white to-slate-50 px-8 py-12 lg:px-24 lg:py-16 overflow-y-auto">
+            <div class="max-w-[1000px] mx-auto w-full">
+                <!-- Header -->
+                <header class="mb-12">
+                    <div class="flex items-center gap-3 text-primary/60 text-sm font-semibold mb-4">
+                        <span class="material-symbols-outlined text-lg">auto_stories</span>
+                        <span>GUÍA COMPLETA</span>
+                    </div>
+                    <h1 class="text-primary text-[40px] lg:text-[56px] font-black leading-tight tracking-tight">
+                        Tabla de Contenido
+                    </h1>
+                    <div class="h-1.5 w-24 bg-gradient-to-r from-accent-gold to-accent-gold/50 mt-5 rounded-full"></div>
+                    <p class="mt-6 text-slate-600 text-lg leading-relaxed max-w-2xl">
+                        Guía completa del Ciclo de Vida de Desarrollo de Software Seguro. Explore cada fase del proceso con enfoque en seguridad integrada.
+                    </p>
+                    
+                    <!-- Stats Cards -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
+                        <div class="stat-card flex items-center gap-4 bg-white border border-slate-200 rounded-xl p-4 shadow-sm">
+                            <div class="flex items-center justify-center w-12 h-12 bg-primary/10 rounded-lg">
+                                <span class="material-symbols-outlined text-primary text-2xl">description</span>
+                            </div>
+                            <div>
+                                <div class="text-2xl font-bold text-primary">22</div>
+                                <div class="text-sm text-slate-600">Slides Totales</div>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card flex items-center gap-4 bg-white border border-slate-200 rounded-xl p-4 shadow-sm">
+                            <div class="flex items-center justify-center w-12 h-12 bg-accent-gold/10 rounded-lg">
+                                <span class="material-symbols-outlined text-accent-gold text-2xl">category</span>
+                            </div>
+                            <div>
+                                <div class="text-2xl font-bold text-primary">7</div>
+                                <div class="text-sm text-slate-600">Capítulos</div>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card flex items-center gap-4 bg-white border border-slate-200 rounded-xl p-4 shadow-sm">
+                            <div class="flex items-center justify-center w-12 h-12 bg-blue-50 rounded-lg">
+                                <span class="material-symbols-outlined text-blue-600 text-2xl">schedule</span>
+                            </div>
+                            <div>
+                                <div class="text-2xl font-bold text-primary">~45</div>
+                                <div class="text-sm text-slate-600">Minutos</div>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+                
+                <!-- Table of Contents -->
+                <nav class="space-y-4">
+                    <!-- Chapter 1 -->
+                    <div class="chapter-item group bg-white border-2 border-slate-200 hover:border-primary rounded-2xl p-6 cursor-pointer transition-all duration-300 hover:shadow-xl">
+                        <div class="flex items-start gap-5">
+                            <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-accent-gold to-yellow-600 text-white shadow-lg group-hover:scale-110 transition-transform duration-300">
+                                <span class="text-lg font-black">1</span>
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="text-xl font-bold text-primary group-hover:text-primary-light transition-colors">
+                                    Introducción al SDLC
+                                </h3>
+                                <div class="flex items-center gap-2 mt-2 text-sm text-slate-500">
+                                    <span class="material-symbols-outlined text-base">article</span>
+                                    <span>Slides 4-5</span>
+                                    <span class="mx-1">•</span>
+                                    <span>Fundamentos y contexto</span>
+                                </div>
+                                <div class="chapter-description text-slate-600 text-sm leading-relaxed">
+                                    <p>Conceptos fundamentales del ciclo de vida del desarrollo de software, importancia de la seguridad desde el diseño y estadísticas de vulnerabilidades comunes.</p>
+                                </div>
+                            </div>
+                            <span class="material-symbols-outlined text-slate-300 group-hover:text-primary transition-colors">chevron_right</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Chapter 2 -->
+                    <div class="chapter-item group bg-white border-2 border-slate-200 hover:border-primary rounded-2xl p-6 cursor-pointer transition-all duration-300 hover:shadow-xl">
+                        <div class="flex items-start gap-5">
+                            <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 text-white shadow-lg group-hover:scale-110 transition-transform duration-300">
+                                <span class="text-lg font-black">2</span>
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="text-xl font-bold text-primary group-hover:text-primary-light transition-colors">
+                                    Planificación y Análisis
+                                </h3>
+                                <div class="flex items-center gap-2 mt-2 text-sm text-slate-500">
+                                    <span class="material-symbols-outlined text-base">timeline</span>
+                                    <span>Slides 6-7</span>
+                                    <span class="mx-1">•</span>
+                                    <span>Modelos y frameworks</span>
+                                </div>
+                                <div class="chapter-description text-slate-600 text-sm leading-relaxed">
+                                    <p>Framework BSIMM, niveles de madurez en seguridad, análisis de riesgos y definición de requisitos de seguridad en la fase inicial.</p>
+                                </div>
+                            </div>
+                            <span class="material-symbols-outlined text-slate-300 group-hover:text-primary transition-colors">chevron_right</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Chapter 3 -->
+                    <div class="chapter-item group bg-white border-2 border-slate-200 hover:border-primary rounded-2xl p-6 cursor-pointer transition-all duration-300 hover:shadow-xl">
+                        <div class="flex items-start gap-5">
+                            <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-purple-500 to-purple-700 text-white shadow-lg group-hover:scale-110 transition-transform duration-300">
+                                <span class="text-lg font-black">3</span>
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="text-xl font-bold text-primary group-hover:text-primary-light transition-colors">
+                                    Diseño de Arquitectura Segura
+                                </h3>
+                                <div class="flex items-center gap-2 mt-2 text-sm text-slate-500">
+                                    <span class="material-symbols-outlined text-base">architecture</span>
+                                    <span>Slides 8-10</span>
+                                    <span class="mx-1">•</span>
+                                    <span>Patrones y prácticas</span>
+                                </div>
+                                <div class="chapter-description text-slate-600 text-sm leading-relaxed">
+                                    <p>Principios de diseño seguro, patrones de arquitectura, modelado de amenazas y mejores prácticas para construir sistemas resilientes.</p>
+                                </div>
+                            </div>
+                            <span class="material-symbols-outlined text-slate-300 group-hover:text-primary transition-colors">chevron_right</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Chapter 4 -->
+                    <div class="chapter-item group bg-white border-2 border-slate-200 hover:border-primary rounded-2xl p-6 cursor-pointer transition-all duration-300 hover:shadow-xl">
+                        <div class="flex items-start gap-5">
+                            <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-green-500 to-green-700 text-white shadow-lg group-hover:scale-110 transition-transform duration-300">
+                                <span class="text-lg font-black">4</span>
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="text-xl font-bold text-primary group-hover:text-primary-light transition-colors">
+                                    Desarrollo Seguro (Coding)
+                                </h3>
+                                <div class="flex items-center gap-2 mt-2 text-sm text-slate-500">
+                                    <span class="material-symbols-outlined text-base">code</span>
+                                    <span>Slides 11-13</span>
+                                    <span class="mx-1">•</span>
+                                    <span>Prácticas de codificación</span>
+                                </div>
+                                <div class="chapter-description text-slate-600 text-sm leading-relaxed">
+                                    <p>SCA (Software Composition Analysis), gestión de dependencias, herramientas de análisis y mejores prácticas para código seguro.</p>
+                                </div>
+                            </div>
+                            <span class="material-symbols-outlined text-slate-300 group-hover:text-primary transition-colors">chevron_right</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Chapter 5 -->
+                    <div class="chapter-item group bg-white border-2 border-slate-200 hover:border-primary rounded-2xl p-6 cursor-pointer transition-all duration-300 hover:shadow-xl">
+                        <div class="flex items-start gap-5">
+                            <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-red-500 to-red-700 text-white shadow-lg group-hover:scale-110 transition-transform duration-300">
+                                <span class="text-lg font-black">5</span>
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="text-xl font-bold text-primary group-hover:text-primary-light transition-colors">
+                                    Pruebas de Seguridad
+                                </h3>
+                                <div class="flex items-center gap-2 mt-2 text-sm text-slate-500">
+                                    <span class="material-symbols-outlined text-base">bug_report</span>
+                                    <span>Slides 14-19</span>
+                                    <span class="mx-1">•</span>
+                                    <span>Testing y validación</span>
+                                </div>
+                                <div class="chapter-description text-slate-600 text-sm leading-relaxed">
+                                    <p>SAST, DAST, IAST, pruebas de penetración y casos prácticos de detección de vulnerabilidades como SQL Injection.</p>
+                                </div>
+                            </div>
+                            <span class="material-symbols-outlined text-slate-300 group-hover:text-primary transition-colors">chevron_right</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Chapter 6 -->
+                    <div class="chapter-item group bg-white border-2 border-slate-200 hover:border-primary rounded-2xl p-6 cursor-pointer transition-all duration-300 hover:shadow-xl">
+                        <div class="flex items-start gap-5">
+                            <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-orange-500 to-orange-700 text-white shadow-lg group-hover:scale-110 transition-transform duration-300">
+                                <span class="text-lg font-black">6</span>
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="text-xl font-bold text-primary group-hover:text-primary-light transition-colors">
+                                    Despliegue y Mantenimiento
+                                </h3>
+                                <div class="flex items-center gap-2 mt-2 text-sm text-slate-500">
+                                    <span class="material-symbols-outlined text-base">cloud_upload</span>
+                                    <span>Slides 20-21</span>
+                                    <span class="mx-1">•</span>
+                                    <span>DevSecOps</span>
+                                </div>
+                                <div class="chapter-description text-slate-600 text-sm leading-relaxed">
+                                    <p>Integración continua segura, monitoreo en producción, gestión de parches y respuesta a incidentes de seguridad.</p>
+                                </div>
+                            </div>
+                            <span class="material-symbols-outlined text-slate-300 group-hover:text-primary transition-colors">chevron_right</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Chapter 7 -->
+                    <div class="chapter-item group bg-white border-2 border-slate-200 hover:border-primary rounded-2xl p-6 cursor-pointer transition-all duration-300 hover:shadow-xl">
+                        <div class="flex items-start gap-5">
+                            <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-teal-500 to-teal-700 text-white shadow-lg group-hover:scale-110 transition-transform duration-300">
+                                <span class="text-lg font-black">7</span>
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="text-xl font-bold text-primary group-hover:text-primary-light transition-colors">
+                                    Referencias y Recursos
+                                </h3>
+                                <div class="flex items-center gap-2 mt-2 text-sm text-slate-500">
+                                    <span class="material-symbols-outlined text-base">link</span>
+                                    <span>Slide 22</span>
+                                    <span class="mx-1">•</span>
+                                    <span>Material adicional</span>
+                                </div>
+                                <div class="chapter-description text-slate-600 text-sm leading-relaxed">
+                                    <p>Enlaces a frameworks, herramientas, documentación oficial y recursos complementarios para profundizar en seguridad de software.</p>
+                                </div>
+                            </div>
+                            <span class="material-symbols-outlined text-slate-300 group-hover:text-primary transition-colors">chevron_right</span>
+                        </div>
+                    </div>
+                </nav>
+                
+                <!-- Call to Action -->
+                <div class="mt-12 bg-gradient-to-r from-primary to-primary-light text-white rounded-2xl p-8 shadow-xl">
+                    <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                        <div>
+                            <h3 class="text-2xl font-bold mb-2">¿Listo para comenzar?</h3>
+                            <p class="text-white/90">Inicia tu recorrido por el SDLC Seguro</p>
+                        </div>
+                        <button class="flex items-center gap-2 px-8 py-4 bg-white text-primary font-bold rounded-xl hover:bg-accent-gold hover:text-white transition-all shadow-lg hover:scale-105">
+                            <span>Empezar Ahora</span>
+                            <span class="material-symbols-outlined">arrow_forward</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

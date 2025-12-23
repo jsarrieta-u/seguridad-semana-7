@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proceso de Compilación Seguro</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes flowAnimation {
+            0%, 100% {
+                opacity: 0.3;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .step-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+
+        .step-card:hover {
+            transform: translateY(-5px) scale(1.02);
+        }
+
+        .step-card.active {
+            transform: translateY(-8px) scale(1.05);
+            z-index: 10;
+        }
+
+        .flow-arrow {
+            animation: flowAnimation 2s ease-in-out infinite;
+        }
+
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .breadcrumb-item {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            color: #64748b;
+            font-size: 0.875rem;
+        }
+
+        .step-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+        }
+
+        .step-card.active .step-details {
+            max-height: 300px;
+        }
+
+        .security-badge {
+            animation: pulse 2s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-cyan-50 to-teal-100 p-8 min-h-screen">
+    
+    <div class="max-w-7xl mx-auto">
+        
+        <!-- Breadcrumb -->
+        <nav class="breadcrumb fade-in-up" style="animation-delay: 0.1s;">
+            <span class="breadcrumb-item">
+                <span class="material-symbols-outlined text-sm">home</span>
+                Inicio
+            </span>
+            <span class="text-slate-300">/</span>
+            <span class="breadcrumb-item">
+                <span class="material-symbols-outlined text-sm">menu_book</span>
+                Capítulo 4
+            </span>
+            <span class="text-slate-300">/</span>
+            <span class="breadcrumb-item font-semibold text-cyan-600">
+                Build Seguro
+            </span>
+        </nav>
+
+        <!-- Header -->
+        <div class="text-center mb-12 fade-in-up" style="animation-delay: 0.2s;">
+            <div class="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-cyan-600 to-teal-700 rounded-2xl mb-4 shadow-xl">
+                <span class="material-symbols-outlined text-white text-5xl">settings_suggest</span>
+            </div>
+            <h1 class="text-5xl font-black text-gray-900 mb-4">
+                Proceso de <span class="text-cyan-600">Compilación Seguro</span>
+            </h1>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                Transformando código fuente en artefactos ejecutables con seguridad integrada
+            </p>
+        </div>
+
+        <!-- Key Principles -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+            <div class="bg-white rounded-2xl p-6 shadow-xl fade-in-up" style="animation-delay: 0.3s;">
+                <div class="flex items-center gap-3 mb-3">
+                    <span class="material-symbols-outlined text-cyan-600 text-3xl">verified_user</span>
+                    <h3 class="font-bold text-gray-900">Integridad</h3>
+                </div>
+                <p class="text-sm text-gray-600">
+                    Sin vulnerabilidades introducidas durante el <span class="font-bold text-cyan-600">proceso de build</span>
+                </p>
+            </div>
+
+            <div class="bg-white rounded-2xl p-6 shadow-xl fade-in-up" style="animation-delay: 0.4s;">
+                <div class="flex items-center gap-3 mb-3">
+                    <span class="material-symbols-outlined text-teal-600 text-3xl">history_edu</span>
+                    <h3 class="font-bold text-gray-900">Trazabilidad</h3>
+                </div>
+                <p class="text-sm text-gray-600">
+                    Cada binario vinculado al <span class="font-bold text-teal-600">commit exacto</span> y autor responsable
+                </p>
+            </div>
+
+            <div class="bg-white rounded-2xl p-6 shadow-xl fade-in-up" style="animation-delay: 0.5s;">
+                <div class="flex items-center gap-3 mb-3">
+                    <span class="material-symbols-outlined text-cyan-700 text-3xl">security</span>
+                    <h3 class="font-bold text-gray-900">Automatización</h3>
+                </div>
+                <p class="text-sm text-gray-600">
+                    Controles de seguridad <span class="font-bold text-cyan-700">automáticos</span> en cada paso
+                </p>
+            </div>
+        </div>
+
+        <!-- Main Title -->
+        <div class="text-center mb-8 fade-in-up" style="animation-delay: 0.6s;">
+            <h2 class="text-4xl font-black text-gray-900 mb-3">Pipeline de Build Seguro</h2>
+            <p class="text-lg text-gray-600">Haz clic en cada etapa para explorar sus controles de seguridad</p>
+        </div>
+
+        <!-- Build Pipeline Flow -->
+        <div class="bg-white rounded-2xl p-8 shadow-2xl mb-8 fade-in-up" style="animation-delay: 0.7s;">
+            <div class="flex flex-col lg:flex-row items-center justify-between gap-6">
+                
+                <!-- Step 1: Source Control -->
+                <div class="step-card flex-1 bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-6 border-2 border-blue-300 shadow-lg" 
+                     id="step-1"
+                     onclick="toggleStep(1)">
+                    <div class="flex flex-col items-center gap-4">
+                        <div class="w-20 h-20 bg-blue-600 rounded-full flex items-center justify-center shadow-xl">
+                            <span class="material-symbols-outlined text-white text-4xl">terminal</span>
+                        </div>
+                        <div class="text-center">
+                            <h3 class="text-xl font-bold text-gray-900 mb-1">1. Source Control</h3>
+                            <p class="text-sm text-gray-600">Git / GitHub</p>
+                        </div>
+                        
+                        <div class="step-details w-full">
+                            <div class="bg-white rounded-lg p-4 mt-3 space-y-2">
+                                <div class="flex items-start gap-2">
+                                    <span class="material-symbols-outlined text-blue-600 text-sm mt-0.5">check_circle</span>
+                                    <p class="text-xs text-gray-700">Firma de commits (GPG)</p>
+                                </div>
+                                <div class="flex items-start gap-2">
+                                    <span class="material-symbols-outlined text-blue-600 text-sm mt-0.5">check_circle</span>
+                                    <p class="text-xs text-gray-700">Branch protection rules</p>
+                                </div>
+                                <div class="flex items-start gap-2">
+                                    <span class="material-symbols-outlined text-blue-600 text-sm mt-0.5">check_circle</span>
+                                    <p class="text-xs text-gray-700">Code review obligatorio</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Arrow -->
+                <div class="flex items-center justify-center">
+                    <span class="material-symbols-outlined text-cyan-600 text-4xl flow-arrow hidden lg:block">arrow_forward</span>
+                    <span class="material-symbols-outlined text-cyan-600 text-4xl flow-arrow lg:hidden">arrow_downward</span>
+                </div>
+
+                <!-- Step 2: CI/CD Server -->
+                <div class="step-card flex-1 bg-gradient-to-br from-cyan-50 to-cyan-100 rounded-2xl p-6 border-2 border-cyan-300 shadow-lg" 
+                     id="step-2"
+                     onclick="toggleStep(2)">
+                    <div class="flex flex-col items-center gap-4">
+                        <div class="w-20 h-20 bg-cyan-600 rounded-full flex items-center justify-center shadow-xl">
+                            <span class="material-symbols-outlined text-white text-4xl">manufacturing</span>
+                        </div>
+                        <div class="text-center">
+                            <h3 class="text-xl font-bold text-gray-900 mb-1">2. Build Server</h3>
+                            <p class="text-sm text-gray-600">Jenkins / GitHub Actions</p>
+                        </div>
+                        
+                        <div class="step-details w-full">
+                            <div class="bg-white rounded-lg p-4 mt-3 space-y-2">
+                                <div class="flex items-start gap-2">
+                                    <span class="material-symbols-outlined text-cyan-600 text-sm mt-0.5">check_circle</span>
+                                    <p class="text-xs text-gray-700">SAST (análisis estático)</p>
+                                </div>
+                                <div class="flex items-start gap-2">
+                                    <span class="material-symbols-outlined text-cyan-600 text-sm mt-0.5">check_circle</span>
+                                    <p class="text-xs text-gray-700">SCA (dependencias)</p>
+                                </div>
+                                <div class="flex items-start gap-2">
+                                    <span class="material-symbols-outlined text-cyan-600 text-sm mt-0.5">check_circle</span>
+                                    <p class="text-xs text-gray-700">Entornos efímeros</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Arrow -->
+                <div class="flex items-center justify-center">
+                    <span class="material-symbols-outlined text-cyan-600 text-4xl flow-arrow hidden lg:block">arrow_forward</span>
+                    <span class="material-symbols-outlined text-cyan-600 text-4xl flow-arrow lg:hidden">arrow_downward</span>
+                </div>
+
+                <!-- Step 3: Artifact Repository -->
+                <div class="step-card flex-1 bg-gradient-to-br from-teal-50 to-teal-100 rounded-2xl p-6 border-2 border-teal-300 shadow-lg" 
+                     id="step-3"
+                     onclick="toggleStep(3)">
+                    <div class="flex flex-col items-center gap-4">
+                        <div class="w-20 h-20 bg-teal-600 rounded-full flex items-center justify-center shadow-xl">
+                            <span class="material-symbols-outlined text-white text-4xl">inventory_2</span>
+                        </div>
+                        <div class="text-center">
+                            <h3 class="text-xl font-bold text-gray-900 mb-1">3. Artifact Store</h3>
+                            <p class="text-sm text-gray-600">Nexus / Artifactory</p>
+                        </div>
+                        
+                        <div class="step-details w-full">
+                            <div class="bg-white rounded-lg p-4 mt-3 space-y-2">
+                                <div class="flex items-start gap-2">
+                                    <span class="material-symbols-outlined text-teal-600 text-sm mt-0.5">check_circle</span>
+                                    <p class="text-xs text-gray-700">Firma digital de artefactos</p>
+                                </div>
+                                <div class="flex items-start gap-2">
+                                    <span class="material-symbols-outlined text-teal-600 text-sm mt-0.5">check_circle</span>
+                                    <p class="text-xs text-gray-700">Inmutabilidad garantizada</p>
+                                </div>
+                                <div class="flex items-start gap-2">
+                                    <span class="material-symbols-outlined text-teal-600 text-sm mt-0.5">check_circle</span>
+                                    <p class="text-xs text-gray-700">Metadatos de seguridad</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Critical Elements -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+            
+            <!-- Element 1 -->
+            <div class="bg-white rounded-2xl p-6 shadow-xl fade-in-up" style="animation-delay: 0.8s;">
+                <div class="flex items-start gap-4 mb-4">
+                    <div class="bg-cyan-100 p-3 rounded-xl">
+                        <span class="material-symbols-outlined text-cyan-600 text-3xl">history_edu</span>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Trazabilidad del Código</h3>
+                        <p class="text-sm text-gray-600">
+                            Capacidad de vincular cada binario generado con el <span class="font-bold text-cyan-600">commit exacto</span> y el autor responsable.
+                        </p>
+                    </div>
+                </div>
+                <div class="bg-cyan-50 rounded-lg p-3 border-l-4 border-cyan-500">
+                    <p class="text-xs text-gray-700">
+                        <span class="font-bold">Herramienta:</span> Git SHA + Build metadata
+                    </p>
+                </div>
+            </div>
+
+            <!-- Element 2 -->
+            <div class="bg-white rounded-2xl p-6 shadow-xl fade-in-up" style="animation-delay: 0.9s;">
+                <div class="flex items-start gap-4 mb-4">
+                    <div class="bg-teal-100 p-3 rounded-xl">
+                        <span class="material-symbols-outlined text-teal-600 text-3xl">timer_off</span>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Entornos Efímeros</h3>
+                        <p class="text-sm text-gray-600">
+                            Servidores de compilación que se <span class="font-bold text-teal-600">destruyen después de cada uso</span> para evitar persistencia de malware.
+                        </p>
+                    </div>
+                </div>
+                <div class="bg-teal-50 rounded-lg p-3 border-l-4 border-teal-500">
+                    <p class="text-xs text-gray-700">
+                        <span class="font-bold">Tecnología:</span> Contenedores Docker
+                    </p>
+                </div>
+            </div>
+
+            <!-- Element 3 -->
+            <div class="bg-white rounded-2xl p-6 shadow-xl fade-in-up" style="animation-delay: 1s;">
+                <div class="flex items-start gap-4 mb-4">
+                    <div class="bg-blue-100 p-3 rounded-xl">
+                        <span class="material-symbols-outlined text-blue-600 text-3xl">fingerprint</span>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Inmutabilidad de Artefactos</h3>
+                        <p class="text-sm text-gray-600">
+                            Una vez generado y firmado, el binario <span class="font-bold text-blue-600">no puede ser modificado</span> sin invalidar su firma.
+                        </p>
+                    </div>
+                </div>
+                <div class="bg-blue-50 rounded-lg p-3 border-l-4 border-blue-500">
+                    <p class="text-xs text-gray-700">
+                        <span class="font-bold">Método:</span> Firma digital GPG/Sigstore
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Security Checks -->
+        <div class="bg-gradient-to-r from-cyan-600 to-teal-600 rounded-2xl p-8 shadow-xl text-white fade-in-up" style="animation-delay: 1.1s;">
+            <h2 class="text-3xl font-bold mb-6 text-center">Controles de Seguridad Automatizados</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-xl p-6 text-center">
+                    <div class="security-badge inline-flex items-center justify-center w-16 h-16 bg-white bg-opacity-20 rounded-full mb-4">
+                        <span class="material-symbols-outlined text-4xl">bug_report</span>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">SAST</h3>
+                    <p class="text-sm opacity-90">Análisis estático del código fuente</p>
+                </div>
+
+                <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-xl p-6 text-center">
+                    <div class="security-badge inline-flex items-center justify-center w-16 h-16 bg-white bg-opacity-20 rounded-full mb-4">
+                        <span class="material-symbols-outlined text-4xl">package_2</span>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">SCA</h3>
+                    <p class="text-sm opacity-90">Análisis de dependencias vulnerables</p>
+                </div>
+
+                <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-xl p-6 text-center">
+                    <div class="security-badge inline-flex items-center justify-center w-16 h-16 bg-white bg-opacity-20 rounded-full mb-4">
+                        <span class="material-symbols-outlined text-4xl">shield_lock</span>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Secrets Scan</h3>
+                    <p class="text-sm opacity-90">Detección de credenciales hardcodeadas</p>
+                </div>
+
+                <div class="bg-white bg-opacity-10 backdrop-blur-sm rounded-xl p-6 text-center">
+                    <div class="security-badge inline-flex items-center justify-center w-16 h-16 bg-white bg-opacity-20 rounded-full mb-4">
+                        <span class="material-symbols-outlined text-4xl">policy</span>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Policy Check</h3>
+                    <p class="text-sm opacity-90">Validación de compliance</p>
+                </div>
+            </div>
+
+            <div class="mt-8 bg-white bg-opacity-10 backdrop-blur-sm rounded-xl p-4 text-center">
+                <p class="text-lg">
+                    <span class="font-bold">⚡ Resultado:</span> Build fallido automáticamente si se detectan vulnerabilidades críticas
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        let activeStep = null;
+
+        function toggleStep(stepId) {
+            const step = document.getElementById(`step-${stepId}`);
+            
+            // Remove active from all steps
+            document.querySelectorAll('.step-card').forEach(card => {
+                if (card.id !== `step-${stepId}`) {
+                    card.classList.remove('active');
+                }
+            });
+
+            // Toggle current step
+            if (activeStep === stepId) {
+                step.classList.remove('active');
+                activeStep = null;
+            } else {
+                step.classList.add('active');
+                activeStep = stepId;
+            }
+        }
+    </script>
+
+</body>
+</html>
