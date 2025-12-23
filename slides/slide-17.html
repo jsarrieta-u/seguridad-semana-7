@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caso de Estudio: E-Commerce ShopSafe</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes slideInLeft { from { opacity: 0; transform: translateX(-30px); } to { opacity: 1; transform: translateX(0); } }
+        .fade-in-up { animation: fadeInUp 0.6s ease-out forwards; }
+        .slide-in-left { animation: slideInLeft 0.6s ease-out forwards; }
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .breadcrumb-item {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            color: #64748b;
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-red-50 to-orange-100 p-8 min-h-screen">
+    <div class="max-w-7xl mx-auto">
+        <!-- Breadcrumb -->
+        <nav class="breadcrumb fade-in-up" style="animation-delay: 0.1s;">
+            <span class="breadcrumb-item">
+                <span class="material-symbols-outlined text-sm">home</span>
+                Inicio
+            </span>
+            <span class="text-slate-300">/</span>
+            <span class="breadcrumb-item">
+                <span class="material-symbols-outlined text-sm">menu_book</span>
+                Capítulo 6
+            </span>
+            <span class="text-slate-300">/</span>
+            <span class="breadcrumb-item font-semibold text-red-600">
+                Caso de Estudio
+            </span>
+        </nav>
+        <div class="text-center mb-12 fade-in-up" style="animation-delay: 0.1s;">
+            <div class="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-red-500 to-orange-600 rounded-2xl mb-4 shadow-xl">
+                <span class="material-symbols-outlined text-white text-5xl">store</span>
+            </div>
+            <h1 class="text-5xl font-black text-gray-900 mb-4">
+                Caso de Estudio: <span class="text-red-600">ShopSafe</span>
+            </h1>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">E-Commerce con vulnerabilidades críticas</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+            <div class="bg-white rounded-2xl p-8 shadow-xl slide-in-left" style="animation-delay: 0.2s;">
+                <div class="flex items-center gap-3 mb-6 border-b-2 border-blue-500 pb-4">
+                    <span class="material-symbols-outlined text-blue-600 text-4xl">business</span>
+                    <h2 class="text-3xl font-bold text-gray-900">Contexto</h2>
+                </div>
+                <div class="space-y-4 text-gray-700 text-lg leading-relaxed">
+                    <p>
+                        <span class="font-bold text-red-600">ShopSafe</span> es un minorista en línea en rápido crecimiento 
+                        que necesitaba implementar nuevas características rápidamente para mantenerse competitivo.
+                    </p>
+                    <p>
+                        La presión de la junta directiva exigía una expansión del 
+                        <span class="font-bold text-blue-600">200% en la capacidad de transacciones</span> 
+                        antes del cierre del año fiscal.
+                    </p>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl p-8 shadow-xl slide-in-left" style="animation-delay: 0.3s;">
+                <div class="flex items-center gap-3 mb-6 border-b-2 border-orange-500 pb-4">
+                    <span class="material-symbols-outlined text-orange-600 text-4xl">warning</span>
+                    <h2 class="text-3xl font-bold text-gray-900">Escenario</h2>
+                </div>
+                <div class="space-y-4 text-gray-700 text-lg leading-relaxed">
+                    <p>
+                        Debido a la urgencia de lanzar antes del <span class="font-bold italic">Black Friday</span>, 
+                        el equipo recibió instrucciones de priorizar 
+                        <span class="font-semibold text-orange-600">funcionalidad sobre seguridad</span>.
+                    </p>
+                    <p>
+                        Se saltaron las <span class="font-semibold">revisiones de código manuales</span> y 
+                        se pospusieron las pruebas de penetración para una fase "post-lanzamiento" 
+                        <span class="font-bold text-red-600">que nunca llegó</span>.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-2xl p-8 shadow-xl fade-in-up mb-8" style="animation-delay: 0.4s;">
+            <div class="flex items-center gap-3 mb-6 border-b-2 border-red-500 pb-4">
+                <span class="material-symbols-outlined text-red-600 text-4xl">bug_report</span>
+                <h2 class="text-3xl font-bold text-gray-900">Vulnerabilidades Introducidas</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-gradient-to-br from-red-50 to-red-100 rounded-xl p-6 border-l-4 border-red-500">
+                    <div class="flex items-center justify-center w-12 h-12 bg-red-500 rounded-xl mb-4">
+                        <span class="text-white text-2xl font-bold">1</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Librerías Desactualizadas</h3>
+                    <p class="text-gray-700">
+                        Uso de una versión vulnerable de <code class="bg-red-200 px-2 py-1 rounded text-sm font-mono">Log4j 2.14.1</code> 
+                        para el sistema de logging central.
+                    </p>
+                    <div class="mt-4 bg-red-200 rounded-lg p-3">
+                        <p class="text-xs font-bold text-red-900">CVE-2021-44228 (CVSS: 10.0)</p>
+                    </div>
+                </div>
+
+                <div class="bg-gradient-to-br from-orange-50 to-orange-100 rounded-xl p-6 border-l-4 border-orange-500">
+                    <div class="flex items-center justify-center w-12 h-12 bg-orange-500 rounded-xl mb-4">
+                        <span class="text-white text-2xl font-bold">2</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Inyección SQL</h3>
+                    <p class="text-gray-700">
+                        Concatenación directa de strings en el formulario de búsqueda y login de administración.
+                    </p>
+                    <div class="mt-4 bg-orange-200 rounded-lg p-3">
+                        <p class="text-xs font-bold text-orange-900">OWASP Top 10 #1: Injection</p>
+                    </div>
+                </div>
+
+                <div class="bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-xl p-6 border-l-4 border-yellow-500">
+                    <div class="flex items-center justify-center w-12 h-12 bg-yellow-500 rounded-xl mb-4">
+                        <span class="text-white text-2xl font-bold">3</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Fugas de Información</h3>
+                    <p class="text-gray-700">
+                        Exposición de datos sensibles de clientes y tarjetas de crédito en logs de texto plano.
+                    </p>
+                    <div class="mt-4 bg-yellow-200 rounded-lg p-3">
+                        <p class="text-xs font-bold text-yellow-900">GDPR/PCI-DSS Violation</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-gradient-to-r from-red-500 to-orange-600 rounded-2xl p-8 shadow-xl text-white text-center fade-in-up" style="animation-delay: 0.5s;">
+            <h3 class="text-3xl font-bold mb-3 flex items-center justify-center gap-3">
+                <span class="material-symbols-outlined text-5xl">schedule</span>
+                Línea del Tiempo
+            </h3>
+            <div class="flex flex-wrap justify-center items-center gap-4 mt-6 text-lg">
+                <div class="bg-white/20 backdrop-blur-sm px-5 py-3 rounded-xl font-semibold">Julio: Inicio desarrollo</div>
+                <span class="text-3xl">→</span>
+                <div class="bg-white/20 backdrop-blur-sm px-5 py-3 rounded-xl font-semibold">Sept: Saltar seguridad</div>
+                <span class="text-3xl">→</span>
+                <div class="bg-white/20 backdrop-blur-sm px-5 py-3 rounded-xl font-semibold">Nov: Lanzamiento</div>
+                <span class="text-3xl">→</span>
+                <div class="bg-red-900/60 backdrop-blur-sm px-5 py-3 rounded-xl font-bold">Dic: Brecha de datos</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

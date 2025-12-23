@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html class="light" lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Introducción - SDLC Security Booklet</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#003366",
+                        "secondary": "#00A4CC",
+                        "accent": "#FF9F1C",
+                        "success": "#22c55e",
+                        "danger": "#ef4444",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#0f1923",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        @keyframes scaleUp {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        
+        @keyframes rotatePulse {
+            0%, 100% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) scale(1.1); }
+        }
+        
+        .animate-fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        
+        .animate-slide-in-left {
+            animation: slideInLeft 0.8s ease-out forwards;
+            opacity: 0;
+        }
+        
+        .animate-slide-in-right {
+            animation: slideInRight 0.8s ease-out forwards;
+            opacity: 0;
+        }
+        
+        .animate-scale-up {
+            animation: scaleUp 0.6s ease-out forwards;
+            opacity: 0;
+        }
+        
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+        .delay-400 { animation-delay: 0.4s; }
+        .delay-500 { animation-delay: 0.5s; }
+        .delay-600 { animation-delay: 0.6s; }
+        
+        .decorative-icon {
+            animation: rotatePulse 20s ease-in-out infinite;
+        }
+        
+        .stat-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 51, 102, 0.15);
+        }
+        
+        .info-card {
+            transition: all 0.3s ease;
+        }
+        
+        .info-card:hover {
+            border-color: #00A4CC;
+            box-shadow: 0 10px 30px rgba(0, 164, 204, 0.1);
+        }
+        
+        .pulse-ring {
+            animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        
+        @keyframes pulse-ring {
+            0%, 100% {
+                opacity: 0.5;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0;
+                transform: scale(1.5);
+            }
+        }
+        
+        .timeline-dot::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 20px;
+            background: currentColor;
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+    </style>
+</head>
+<body class="font-display antialiased text-slate-900 bg-gradient-to-br from-background-light to-slate-100">
+    <div class="relative flex min-h-screen w-full overflow-hidden">
+        <!-- Left Corporate Bar -->
+        <div class="shrink-0 w-[10px] bg-gradient-to-b from-primary via-secondary to-primary h-auto min-h-screen shadow-lg"></div>
+        
+        <!-- Main Content Area -->
+        <div class="flex-1 flex flex-col relative px-6 py-10 md:px-16 md:py-16 lg:px-24">
+            <!-- Background Decorative Element -->
+            <div class="decorative-icon absolute top-10 right-10 z-0 opacity-5 pointer-events-none">
+                <span class="material-symbols-outlined text-accent" style="font-size: 400px; font-variation-settings: 'FILL' 0;">
+                    shield
+                </span>
+            </div>
+            
+            <main class="relative z-10 flex flex-col max-w-7xl mx-auto w-full">
+                <!-- Breadcrumb -->
+                <div class="animate-fade-in-up delay-100 flex items-center gap-2 text-sm text-slate-500 mb-6">
+                    <span class="material-symbols-outlined text-base">home</span>
+                    <span>Inicio</span>
+                    <span>/</span>
+                    <span>Capítulo 1</span>
+                    <span>/</span>
+                    <span class="text-primary font-semibold">Introducción al SDLC</span>
+                </div>
+                
+                <!-- Main Header -->
+                <header class="mb-12 animate-fade-in-up delay-200">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="flex items-center justify-center w-12 h-12 bg-primary/10 rounded-xl">
+                            <span class="material-symbols-outlined text-primary text-2xl">auto_stories</span>
+                        </div>
+                        <span class="text-secondary text-sm font-bold uppercase tracking-wider">Capítulo 1</span>
+                    </div>
+                    <h1 class="text-primary text-5xl md:text-6xl font-black tracking-tight leading-tight mb-4">
+                        Introducción al SDLC Seguro
+                    </h1>
+                    <div class="h-1.5 w-32 bg-gradient-to-r from-accent to-accent/50 rounded-full"></div>
+                </header>
+                
+                <!-- Hero Content Block -->
+                <section class="mb-12 animate-slide-in-left delay-300">
+                    <div class="bg-white border-l-4 border-accent rounded-xl shadow-xl p-8 md:p-10">
+                        <p class="text-slate-800 text-xl md:text-2xl font-medium leading-relaxed text-justify mb-4">
+                            Este folleto digital tiene como objetivo <span class="text-primary font-bold">guiar a los desarrolladores y gestores de proyectos</span> a través de las mejores prácticas de seguridad en el Ciclo de Vida de Desarrollo de Software (SDLC), asegurando aplicaciones <span class="text-accent font-bold">robustas y confiables</span> desde el diseño hasta el despliegue.
+                        </p>
+                        <p class="text-slate-700 text-lg leading-relaxed text-justify mb-4">
+                            A lo largo de este documento, exploraremos desde los marcos de trabajo (BSIMM/SAMM) hasta la implementación técnica de controles en el proceso de construcción y gestión de dependencias, finalizando con un caso de estudio práctico y conclusiones clave.
+                        </p>
+                        <div class="flex flex-wrap gap-3 mt-6">
+                            <span class="px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-semibold">Seguridad Integrada</span>
+                            <span class="px-4 py-2 bg-secondary/10 text-secondary rounded-full text-sm font-semibold">Mejores Prácticas</span>
+                            <span class="px-4 py-2 bg-accent/10 text-accent rounded-full text-sm font-semibold">Desarrollo Robusto</span>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Statistics Cards -->
+                <section class="mb-12">
+                    <h2 class="text-2xl font-bold text-slate-800 mb-6 flex items-center gap-2 animate-fade-in-up delay-400">
+                        <span class="material-symbols-outlined text-accent">bar_chart</span>
+                        Estadísticas Clave
+                    </h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <!-- Stat 1 -->
+                        <div class="stat-card animate-scale-up delay-400 bg-gradient-to-br from-danger/10 to-danger/5 border-2 border-danger/20 rounded-2xl p-6 relative overflow-hidden">
+                            <div class="absolute top-0 right-0 w-32 h-32 bg-danger/10 rounded-full -mr-16 -mt-16"></div>
+                            <div class="relative">
+                                <div class="flex items-center gap-3 mb-3">
+                                    <div class="flex items-center justify-center w-12 h-12 bg-danger/20 rounded-xl">
+                                        <span class="material-symbols-outlined text-danger text-2xl">error</span>
+                                    </div>
+                                    <span class="text-sm font-bold text-danger uppercase tracking-wider">Vulnerabilidades</span>
+                                </div>
+                                <div class="text-4xl font-black text-danger mb-2">58%</div>
+                                <p class="text-slate-700 text-sm leading-snug">
+                                    De las vulnerabilidades se introducen durante la <strong>fase de codificación</strong>
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <!-- Stat 2 -->
+                        <div class="stat-card animate-scale-up delay-500 bg-gradient-to-br from-accent/10 to-accent/5 border-2 border-accent/20 rounded-2xl p-6 relative overflow-hidden">
+                            <div class="absolute top-0 right-0 w-32 h-32 bg-accent/10 rounded-full -mr-16 -mt-16"></div>
+                            <div class="relative">
+                                <div class="flex items-center gap-3 mb-3">
+                                    <div class="flex items-center justify-center w-12 h-12 bg-accent/20 rounded-xl">
+                                        <span class="material-symbols-outlined text-accent text-2xl">attach_money</span>
+                                    </div>
+                                    <span class="text-sm font-bold text-accent uppercase tracking-wider">Costos</span>
+                                </div>
+                                <div class="text-4xl font-black text-accent mb-2">100x</div>
+                                <p class="text-slate-700 text-sm leading-snug">
+                                    Más costoso corregir vulnerabilidades en <strong>producción</strong> que en diseño
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <!-- Stat 3 -->
+                        <div class="stat-card animate-scale-up delay-600 bg-gradient-to-br from-success/10 to-success/5 border-2 border-success/20 rounded-2xl p-6 relative overflow-hidden">
+                            <div class="absolute top-0 right-0 w-32 h-32 bg-success/10 rounded-full -mr-16 -mt-16"></div>
+                            <div class="relative">
+                                <div class="flex items-center gap-3 mb-3">
+                                    <div class="flex items-center justify-center w-12 h-12 bg-success/20 rounded-xl">
+                                        <span class="material-symbols-outlined text-success text-2xl">trending_up</span>
+                                    </div>
+                                    <span class="text-sm font-bold text-success uppercase tracking-wider">Reducción</span>
+                                </div>
+                                <div class="text-4xl font-black text-success mb-2">70%</div>
+                                <p class="text-slate-700 text-sm leading-snug">
+                                    Reducción de vulnerabilidades con <strong>seguridad temprana</strong> integrada
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Info Cards Grid -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+                    <!-- Audiencia Card -->
+                    <article class="info-card animate-slide-in-left delay-400 bg-white border-2 border-slate-200 rounded-2xl p-8 shadow-lg">
+                        <div class="flex items-start gap-4 mb-4">
+                            <div class="relative">
+                                <div class="flex items-center justify-center w-14 h-14 bg-gradient-to-br from-secondary to-secondary/70 rounded-2xl shadow-lg">
+                                    <span class="material-symbols-outlined text-white text-3xl" style="font-variation-settings: 'FILL' 1;">groups</span>
+                                </div>
+                                <div class="timeline-dot absolute -top-1 -right-1 w-4 h-4 bg-secondary rounded-full"></div>
+                            </div>
+                            <div>
+                                <h2 class="text-secondary text-2xl font-bold mb-2">
+                                    Audiencia Objetivo
+                                </h2>
+                                <div class="h-1 w-16 bg-secondary/30 rounded-full"></div>
+                            </div>
+                        </div>
+                        <p class="text-slate-700 text-lg leading-relaxed text-justify mb-4">
+                            Dirigido a <strong class="text-primary">ingenieros de software, arquitectos de sistemas, líderes de equipos de desarrollo</strong> y estudiantes de ingeniería que buscan fortalecer sus competencias en seguridad informática aplicada al desarrollo.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-xs font-medium">Desarrolladores</span>
+                            <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-xs font-medium">Arquitectos</span>
+                            <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-xs font-medium">Team Leads</span>
+                            <span class="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-xs font-medium">Estudiantes</span>
+                        </div>
+                    </article>
+                    
+                    <!-- Importancia Card -->
+                    <article class="info-card animate-slide-in-right delay-500 bg-white border-2 border-slate-200 rounded-2xl p-8 shadow-lg">
+                        <div class="flex items-start gap-4 mb-4">
+                            <div class="relative">
+                                <div class="flex items-center justify-center w-14 h-14 bg-gradient-to-br from-primary to-primary/70 rounded-2xl shadow-lg">
+                                    <span class="material-symbols-outlined text-white text-3xl" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+                                </div>
+                                <div class="timeline-dot absolute -top-1 -right-1 w-4 h-4 bg-primary rounded-full"></div>
+                            </div>
+                            <div>
+                                <h2 class="text-primary text-2xl font-bold mb-2">
+                                    Importancia Crítica
+                                </h2>
+                                <div class="h-1 w-16 bg-primary/30 rounded-full"></div>
+                            </div>
+                        </div>
+                        <p class="text-slate-700 text-lg leading-relaxed text-justify">
+                            La integración temprana de la seguridad <strong class="text-primary">reduce costos y vulnerabilidades</strong>. La seguridad no es una característica opcional, <span class="px-2 py-1 bg-accent/20 text-accent font-bold rounded">es un requisito fundamental</span> para la confianza del usuario y la continuidad del negocio.
+                        </p>
+                        <div class="mt-4 p-4 bg-accent/5 border-l-4 border-accent rounded-lg">
+                            <p class="text-sm text-slate-600 italic">
+                                "La seguridad integrada desde el inicio previene el 70% de las vulnerabilidades críticas"
+                            </p>
+                        </div>
+                    </article>
+                </div>
+                
+                <!-- Call to Action -->
+                <div class="animate-fade-in-up delay-600 bg-gradient-to-r from-primary via-secondary to-primary text-white rounded-2xl p-8 shadow-2xl">
+                    <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                        <div class="flex items-center gap-4">
+                            <div class="flex items-center justify-center w-16 h-16 bg-white/20 rounded-xl backdrop-blur-sm">
+                                <span class="material-symbols-outlined text-4xl">rocket_launch</span>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold mb-1">¿Listo para profundizar?</h3>
+                                <p class="text-white/90">Descubre cómo las vulnerabilidades impactan tu software</p>
+                            </div>
+                        </div>
+                        <div onclick="window.parent.postMessage({action: 'nextSlide'}, '*')" class="flex items-center gap-2 px-8 py-4 bg-white text-primary font-bold rounded-xl hover:bg-accent hover:text-white transition-all shadow-lg hover:scale-105 cursor-pointer">
+                            <span>Siguiente: El Problema</span>
+                            <span class="material-symbols-outlined">arrow_forward</span>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+</body>
+</html>

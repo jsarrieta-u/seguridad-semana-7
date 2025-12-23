@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAST vs DAST - Comparativa</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        .fade-in-up { animation: fadeInUp 0.6s ease-out forwards; }
+        .comparison-row { transition: all 0.3s ease; }
+        .comparison-row:hover { background-color: rgba(99, 102, 241, 0.05); transform: translateX(5px); }
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .breadcrumb-item {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            color: #64748b;
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-indigo-50 to-purple-100 p-8 min-h-screen">
+    <div class="max-w-7xl mx-auto">
+        <!-- Breadcrumb -->
+        <nav class="breadcrumb fade-in-up" style="animation-delay: 0.1s;">
+            <span class="breadcrumb-item">
+                <span class="material-symbols-outlined text-sm">home</span>
+                Inicio
+            </span>
+            <span class="text-slate-300">/</span>
+            <span class="breadcrumb-item">
+                <span class="material-symbols-outlined text-sm">menu_book</span>
+                Capítulo 5
+            </span>
+            <span class="text-slate-300">/</span>
+            <span class="breadcrumb-item font-semibold text-indigo-600">
+                Pruebas de Seguridad
+            </span>
+        </nav>
+        <div class="text-center mb-12 fade-in-up" style="animation-delay: 0.1s;">
+            <div class="inline-flex items-center justify-center gap-4 mb-4">
+                <div class="w-16 h-16 bg-gradient-to-br from-amber-500 to-yellow-600 rounded-xl flex items-center justify-center shadow-lg">
+                    <span class="material-symbols-outlined text-white text-4xl">code</span>
+                </div>
+                <span class="text-5xl font-black text-indigo-600">VS</span>
+                <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-xl flex items-center justify-center shadow-lg">
+                    <span class="material-symbols-outlined text-white text-4xl">bug_report</span>
+                </div>
+            </div>
+            <h1 class="text-5xl font-black text-gray-900 mb-4">
+                <span class="text-amber-600">SAST</span> vs <span class="text-blue-600">DAST</span>
+            </h1>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">Comparativa técnica de análisis estático y dinámico</p>
+        </div>
+
+        <div class="bg-white rounded-2xl shadow-2xl overflow-hidden fade-in-up" style="animation-delay: 0.2s;">
+            <table class="w-full">
+                <thead>
+                    <tr class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white">
+                        <th class="px-8 py-5 text-left text-lg font-bold">Característica</th>
+                        <th class="px-8 py-5 text-left text-lg font-bold">
+                            <div class="flex items-center gap-2">
+                                <span class="material-symbols-outlined">code</span>
+                                SAST (Estático)
+                            </div>
+                        </th>
+                        <th class="px-8 py-5 text-left text-lg font-bold">
+                            <div class="flex items-center gap-2">
+                                <span class="material-symbols-outlined">bug_report</span>
+                                DAST (Dinámico)
+                            </div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-200">
+                    <tr class="comparison-row">
+                        <td class="px-8 py-5 font-bold text-indigo-700">
+                            <div class="flex items-center gap-2">
+                                <span class="material-symbols-outlined text-2xl">schedule</span>
+                                Momento
+                            </div>
+                        </td>
+                        <td class="px-8 py-5 text-gray-800">Fase de <span class="font-semibold text-amber-600">Desarrollo</span> (Codificación)</td>
+                        <td class="px-8 py-5 text-gray-800">Fase de <span class="font-semibold text-blue-600">Testing/Producción</span></td>
+                    </tr>
+
+                    <tr class="comparison-row bg-gray-50">
+                        <td class="px-8 py-5 font-bold text-indigo-700">
+                            <div class="flex items-center gap-2">
+                                <span class="material-symbols-outlined text-2xl">visibility</span>
+                                Visibilidad
+                            </div>
+                        </td>
+                        <td class="px-8 py-5 text-gray-800">
+                            <div class="inline-flex items-center gap-2 bg-amber-100 px-3 py-1 rounded-lg">
+                                <span class="material-symbols-outlined text-amber-600">folder_open</span>
+                                <span class="font-semibold">Caja Blanca</span>
+                            </div>
+                            <p class="text-sm text-gray-600 mt-1">Acceso al código fuente</p>
+                        </td>
+                        <td class="px-8 py-5 text-gray-800">
+                            <div class="inline-flex items-center gap-2 bg-blue-100 px-3 py-1 rounded-lg">
+                                <span class="material-symbols-outlined text-blue-600">lock</span>
+                                <span class="font-semibold">Caja Negra</span>
+                            </div>
+                            <p class="text-sm text-gray-600 mt-1">Sin acceso al código</p>
+                        </td>
+                    </tr>
+
+                    <tr class="comparison-row">
+                        <td class="px-8 py-5 font-bold text-indigo-700">
+                            <div class="flex items-center gap-2">
+                                <span class="material-symbols-outlined text-2xl">attach_money</span>
+                                Costo de Arreglo
+                            </div>
+                        </td>
+                        <td class="px-8 py-5 text-gray-800">
+                            <div class="flex items-center gap-2 text-green-600 font-bold text-lg">
+                                <span class="material-symbols-outlined text-3xl">trending_down</span>
+                                BAJO
+                            </div>
+                            <p class="text-sm text-gray-600">Detección temprana = menor costo</p>
+                        </td>
+                        <td class="px-8 py-5 text-gray-800">
+                            <div class="flex items-center gap-2 text-red-600 font-bold text-lg">
+                                <span class="material-symbols-outlined text-3xl">trending_up</span>
+                                ALTO
+                            </div>
+                            <p class="text-sm text-gray-600">Detección tardía = mayor costo</p>
+                        </td>
+                    </tr>
+
+                    <tr class="comparison-row bg-gray-50">
+                        <td class="px-8 py-5 font-bold text-indigo-700">
+                            <div class="flex items-center gap-2">
+                                <span class="material-symbols-outlined text-2xl">error</span>
+                                Falsos Positivos
+                            </div>
+                        </td>
+                        <td class="px-8 py-5 text-gray-800">
+                            <div class="flex items-center gap-2">
+                                <span class="w-3 h-3 bg-orange-500 rounded-full"></span>
+                                <span class="font-semibold text-orange-600">ALTO</span>
+                            </div>
+                            <p class="text-sm text-gray-600">Requiere validación manual</p>
+                        </td>
+                        <td class="px-8 py-5 text-gray-800">
+                            <div class="flex items-center gap-2">
+                                <span class="w-3 h-3 bg-green-500 rounded-full"></span>
+                                <span class="font-semibold text-green-600">BAJO</span>
+                            </div>
+                            <p class="text-sm text-gray-600">Simula ataques reales</p>
+                        </td>
+                    </tr>
+
+                    <tr class="comparison-row">
+                        <td class="px-8 py-5 font-bold text-indigo-700">
+                            <div class="flex items-center gap-2">
+                                <span class="material-symbols-outlined text-2xl">dashboard</span>
+                                Cobertura
+                            </div>
+                        </td>
+                        <td class="px-8 py-5 text-gray-800">
+                            Específico del <span class="font-semibold">lenguaje/tecnología</span>
+                        </td>
+                        <td class="px-8 py-5 text-gray-800">
+                            <span class="font-semibold text-blue-600">Independiente</span> de la tecnología
+                        </td>
+                    </tr>
+
+                    <tr class="comparison-row bg-gray-50">
+                        <td class="px-8 py-5 font-bold text-indigo-700">
+                            <div class="flex items-center gap-2">
+                                <span class="material-symbols-outlined text-2xl">location_on</span>
+                                Ubicación Error
+                            </div>
+                        </td>
+                        <td class="px-8 py-5 text-gray-800">
+                            <div class="flex items-center gap-2 text-green-600">
+                                <span class="material-symbols-outlined">check_circle</span>
+                                <span class="font-semibold">Línea exacta</span>
+                            </div>
+                        </td>
+                        <td class="px-8 py-5 text-gray-800">
+                            <div class="flex items-center gap-2 text-orange-600">
+                                <span class="material-symbols-outlined">cancel</span>
+                                <span class="font-semibold">Endpoint/URL</span>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr class="comparison-row">
+                        <td class="px-8 py-5 font-bold text-indigo-700">
+                            <div class="flex items-center gap-2">
+                                <span class="material-symbols-outlined text-2xl">construction</span>
+                                Herramientas
+                            </div>
+                        </td>
+                        <td class="px-8 py-5">
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-amber-100 text-amber-800 px-3 py-1 rounded-lg text-sm font-medium">SonarQube</span>
+                                <span class="bg-amber-100 text-amber-800 px-3 py-1 rounded-lg text-sm font-medium">Checkmarx</span>
+                                <span class="bg-amber-100 text-amber-800 px-3 py-1 rounded-lg text-sm font-medium">Fortify</span>
+                            </div>
+                        </td>
+                        <td class="px-8 py-5">
+                            <div class="flex flex-wrap gap-2">
+                                <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-lg text-sm font-medium">OWASP ZAP</span>
+                                <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-lg text-sm font-medium">Burp Suite</span>
+                                <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-lg text-sm font-medium">Acunetix</span>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="mt-8 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl p-8 shadow-xl text-white text-center fade-in-up" style="animation-delay: 0.3s;">
+            <h3 class="text-3xl font-bold mb-4 flex items-center justify-center gap-3">
+                <span class="material-symbols-outlined text-5xl">lightbulb</span>
+                Recomendación
+            </h3>
+            <p class="text-xl opacity-95 leading-relaxed">
+                ¡Combina <span class="font-bold text-yellow-300">SAST</span> y 
+                <span class="font-bold text-cyan-300">DAST</span> para cobertura completa!
+            </p>
+            <p class="text-lg opacity-80 mt-2">SAST detecta temprano → DAST valida en producción</p>
+        </div>
+    </div>
+</body>
+</html>

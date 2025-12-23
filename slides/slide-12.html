@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Software Composition Analysis (SCA)</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+        @keyframes emerge { 0% { transform: translateY(100%); opacity: 0; } 100% { transform: translateY(0); opacity: 1; } }
+        .fade-in-up { animation: fadeInUp 0.6s ease-out forwards; }
+        .float-anim { animation: float 3s ease-in-out infinite; }
+        .animate-float { animation: float 6s ease-in-out infinite; }
+        .animate-emerge { animation: emerge 1.5s ease-out forwards; }
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .breadcrumb-item {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            color: #64748b;
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-cyan-100 p-8 min-h-screen">
+    <div class="max-w-7xl mx-auto">
+        <!-- Breadcrumb -->
+        <nav class="breadcrumb fade-in-up" style="animation-delay: 0.1s;">
+            <span class="breadcrumb-item">
+                <span class="material-symbols-outlined text-sm">home</span>
+                Inicio
+            </span>
+            <span class="text-slate-300">/</span>
+            <span class="breadcrumb-item">
+                <span class="material-symbols-outlined text-sm">menu_book</span>
+                Capítulo 4
+            </span>
+            <span class="text-slate-300">/</span>
+            <span class="breadcrumb-item font-semibold text-blue-600">
+                Calidad y Dependencias
+            </span>
+        </nav>
+        <div class="text-center mb-12 fade-in-up" style="animation-delay: 0.1s;">
+            <div class="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-blue-600 to-cyan-700 rounded-2xl mb-4 shadow-xl">
+                <span class="material-symbols-outlined text-white text-5xl">package_2</span>
+            </div>
+            <h1 class="text-5xl font-black text-gray-900 mb-4">
+                Software Composition <span class="text-blue-600">Analysis</span>
+            </h1>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">Metáfora del iceberg: El 80-90% de tu código son dependencias de terceros</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-8">
+            <div class="bg-white rounded-2xl p-8 shadow-xl fade-in-up overflow-hidden relative" style="animation-delay: 0.2s;">
+                <!-- Background Elements -->
+                <div class="absolute inset-0 z-0 pointer-events-none">
+                    <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-blue-500/5 rounded-full blur-[50px]"></div>
+                    <div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-cyan-500/5 rounded-full blur-[50px]"></div>
+                </div>
+                
+                <div class="relative h-96 w-full flex items-center justify-center">
+                    <!-- Labels floating -->
+                    <div class="absolute top-[10%] left-[5%] z-20 animate-float" style="animation-delay: 1s;">
+                        <div class="absolute right-4 top-full w-[1px] h-12 bg-slate-400/50 transform rotate-[-20deg] origin-top"></div>
+                        <div class="bg-white text-slate-900 px-5 py-3 rounded-lg shadow-xl font-bold text-base flex flex-col border-2 border-blue-500">
+                            <div class="flex items-center gap-2 text-blue-600 mb-1">
+                                <span class="material-symbols-outlined text-lg">code</span>
+                                Tu Código
+                            </div>
+                            <span class="text-2xl font-black">10-20%</span>
+                            <span class="text-xs text-slate-600 font-normal">Código Propio</span>
+                        </div>
+                    </div>
+                    
+                    <div class="absolute bottom-[15%] right-[5%] z-20 animate-float" style="animation-delay: 2s;">
+                        <div class="absolute left-4 bottom-full w-[1px] h-16 bg-slate-400/30 transform rotate-[15deg] origin-bottom mb-2"></div>
+                        <div class="bg-white text-slate-900 px-5 py-3 rounded-lg shadow-xl font-bold text-base flex flex-col border-2 border-cyan-500">
+                            <div class="flex items-center gap-2 text-cyan-600 mb-1">
+                                <span class="material-symbols-outlined text-lg">layers</span>
+                                Dependencias
+                            </div>
+                            <span class="text-2xl font-black">80-90%</span>
+                            <span class="text-xs text-slate-600 font-normal">Código Open Source</span>
+                        </div>
+                    </div>
+
+                    <!-- Water Line Visual -->
+                    <div class="absolute top-1/3 w-[150%] left-[-25%] h-[2px] bg-cyan-500 z-10 shadow-[0_0_15px_rgba(6,182,212,0.5)]"></div>
+                    <div class="absolute top-1/3 w-full h-full bg-gradient-to-b from-cyan-500/10 to-transparent z-0 backdrop-blur-[1px]"></div>
+
+                    <!-- The Iceberg Illustration (SVG) -->
+                    <div class="w-full h-full relative flex items-center justify-center animate-emerge">
+                        <svg class="h-full drop-shadow-2xl" viewBox="0 0 400 600" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet">
+                            <defs>
+                                <linearGradient gradientUnits="userSpaceOnUse" id="iceTipGradient" x1="200" x2="200" y1="50" y2="200">
+                                    <stop offset="0%" stop-color="#ffffff"></stop>
+                                    <stop offset="100%" stop-color="#f8fafc"></stop>
+                                </linearGradient>
+                                <linearGradient gradientUnits="userSpaceOnUse" id="iceBaseGradient" x1="200" x2="200" y1="200" y2="600">
+                                    <stop offset="0%" stop-color="#f1f5f9"></stop>
+                                    <stop offset="100%" stop-color="#e2e8f0"></stop>
+                                </linearGradient>
+                                <filter height="140%" id="glow" width="140%" x="-20%" y="-20%">
+                                    <feGaussianBlur result="blur" stdDeviation="5"></feGaussianBlur>
+                                    <feComposite in="SourceGraphic" in2="blur" operator="over"></feComposite>
+                                </filter>
+                            </defs>
+                            <!-- Submerged Base -->
+                            <path d="M110 200 L60 450 Q180 580 250 550 L340 480 L310 200 Z" fill="url(#iceBaseGradient)" fill-opacity="1" stroke="#3b82f6" stroke-width="3"></path>
+                            <!-- Visible Tip -->
+                            <path d="M150 200 L180 80 L200 50 L240 90 L260 200 Z" fill="url(#iceTipGradient)" stroke="#3b82f6" stroke-width="3"></path>
+                            <!-- Detail lines -->
+                            <path d="M180 80 L200 120 L240 90" fill="none" stroke="#93c5fd" stroke-width="1.5"></path>
+                            <!-- Water Surface Line -->
+                            <rect fill="#06b6d4" fill-opacity="0.3" filter="url(#glow)" height="4" width="400" x="0" y="198"></rect>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <div class="space-y-6 fade-in-up" style="animation-delay: 0.3s;">
+                <div class="bg-white rounded-2xl p-6 shadow-xl border-l-4 border-red-500">
+                    <div class="flex items-start gap-4">
+                        <span class="material-symbols-outlined text-red-500 text-4xl">warning</span>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">El Riesgo Oculto</h3>
+                            <p class="text-gray-700">Solo escribes el 10-20% del código; el resto son <span class="font-bold text-red-600">librerías de terceros</span> que heredan sus propios riesgos de seguridad</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-2xl p-6 shadow-xl border-l-4 border-blue-500">
+                    <div class="flex items-start gap-4">
+                        <span class="material-symbols-outlined text-blue-500 text-4xl">hub</span>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900 mb-2">Vulnerabilidades Transitivas</h3>
+                            <p class="text-gray-700">Una dependencia segura puede usar otra insegura. Estas <span class="font-bold text-blue-600">cadenas son difíciles</span> de rastrear manualmente sin herramientas</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl p-6 shadow-xl text-white">
+                    <div class="flex items-start gap-4">
+                        <span class="material-symbols-outlined text-4xl">verified_user</span>
+                        <div>
+                            <h3 class="text-xl font-bold mb-2">Solución: SCA Automático</h3>
+                            <p>Herramientas que escanean <code class="bg-white bg-opacity-20 px-2 py-1 rounded text-sm">package.json</code>, <code class="bg-white bg-opacity-20 px-2 py-1 rounded text-sm">pom.xml</code> para bloquear componentes vulnerables</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 fade-in-up" style="animation-delay: 0.4s;">
+            <div class="bg-white rounded-2xl p-6 shadow-xl text-center">
+                <div class="text-5xl font-black text-blue-600 mb-2">80%</div>
+                <p class="text-gray-700 font-semibold">Código de terceros en apps modernas</p>
+            </div>
+            <div class="bg-white rounded-2xl p-6 shadow-xl text-center">
+                <div class="text-5xl font-black text-cyan-600 mb-2">CVE</div>
+                <p class="text-gray-700 font-semibold">Base de datos de vulnerabilidades conocidas</p>
+            </div>
+            <div class="bg-white rounded-2xl p-6 shadow-xl text-center">
+                <div class="text-5xl font-black text-teal-600 mb-2">SCA</div>
+                <p class="text-gray-700 font-semibold">Análisis automático de componentes</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

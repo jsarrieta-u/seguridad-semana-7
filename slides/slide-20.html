@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paso 3: Remediación - Before & After</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes slideIn { from { opacity: 0; transform: translateX(-20px); } to { opacity: 1; transform: translateX(0); } }
+        .fade-in-up { animation: fadeInUp 0.6s ease-out forwards; }
+        .slide-in { animation: slideIn 0.6s ease-out forwards; }
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .breadcrumb-item {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            color: #64748b;
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-teal-50 to-cyan-100 p-8 min-h-screen">
+    <div class="max-w-7xl mx-auto">
+        <!-- Breadcrumb -->
+        <nav class="breadcrumb fade-in-up" style="animation-delay: 0.1s;">
+            <span class="breadcrumb-item">
+                <span class="material-symbols-outlined text-sm">home</span>
+                Inicio
+            </span>
+            <span class="text-slate-300">/</span>
+            <span class="breadcrumb-item">
+                <span class="material-symbols-outlined text-sm">menu_book</span>
+                Capítulo 6
+            </span>
+            <span class="text-slate-300">/</span>
+            <span class="breadcrumb-item font-semibold text-teal-600">
+                Caso de Estudio
+            </span>
+        </nav>
+        <div class="text-center mb-8 fade-in-up" style="animation-delay: 0.1s;">
+            <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-teal-500 to-cyan-600 rounded-xl mb-4 shadow-xl">
+                <span class="material-symbols-outlined text-white text-4xl">sync</span>
+            </div>
+            <h1 class="text-4xl font-black text-gray-900 mb-2">
+                Paso 3: <span class="text-teal-600">Remediación</span>
+            </h1>
+            <p class="text-lg text-gray-600">Corrección de vulnerabilidades detectadas</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+            <div class="bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl shadow-2xl overflow-hidden slide-in" style="animation-delay: 0.2s;">
+                <div class="bg-red-900/30 px-6 py-4 border-b border-red-800/50 flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <span class="material-symbols-outlined text-red-400 text-2xl">dangerous</span>
+                        <span class="text-white font-bold">UserController.java</span>
+                    </div>
+                    <span class="bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase">Antes</span>
+                </div>
+
+                <div class="p-6 font-mono text-sm space-y-2 text-gray-200">
+                    <div class="flex gap-4 text-gray-400">
+                        <span class="select-none w-8 text-right">10</span>
+                        <span>// Update Log4j dependency</span>
+                    </div>
+                    <div class="flex gap-4 bg-red-900/40 -mx-6 px-6 py-2 border-l-4 border-red-500">
+                        <span class="text-gray-400 select-none w-8 text-right">11</span>
+                        <span>&lt;groupId&gt;<span class="text-green-300">org.apache.logging.log4j</span>&lt;/groupId&gt;</span>
+                    </div>
+                    <div class="flex gap-4 bg-red-900/40 -mx-6 px-6 py-2 border-l-4 border-red-500">
+                        <span class="text-gray-400 select-none w-8 text-right">12</span>
+                        <span>&lt;artifactId&gt;<span class="text-green-300">log4j-core</span>&lt;/artifactId&gt;</span>
+                    </div>
+                    <div class="flex gap-4 bg-red-900/40 -mx-6 px-6 py-2 border-l-4 border-red-500">
+                        <span class="text-gray-400 select-none w-8 text-right">13</span>
+                        <span>&lt;version&gt;<span class="text-red-300 font-bold">2.14.1</span>&lt;/version&gt;</span>
+                    </div>
+                    <div class="h-4"></div>
+                    <div class="flex gap-4 text-gray-400">
+                        <span class="select-none w-8 text-right">14</span>
+                        <span>// SQL Query vulnerable</span>
+                    </div>
+                    <div class="flex gap-4">
+                        <span class="text-gray-400 select-none w-8 text-right">15</span>
+                        <span><span class="text-purple-300">public String</span> <span class="text-blue-300">getUser</span>(<span class="text-yellow-300">String</span> id) {</span>
+                    </div>
+                    <div class="flex gap-4 bg-red-900/40 -mx-6 px-6 py-2 border-l-4 border-red-500">
+                        <span class="text-gray-400 select-none w-8 text-right">16</span>
+                        <span class="pl-4"><span class="text-yellow-300">String</span> query = <span class="text-green-300">"SELECT * FROM users WHERE id='"</span></span>
+                    </div>
+                    <div class="flex gap-4 bg-red-900/40 -mx-6 px-6 py-2 border-l-4 border-red-500">
+                        <span class="text-gray-400 select-none w-8 text-right">17</span>
+                        <span class="pl-4 pl-12">+ id + <span class="text-green-300">"'"</span>;</span>
+                    </div>
+                    <div class="flex gap-4">
+                        <span class="text-gray-400 select-none w-8 text-right">18</span>
+                        <span>}</span>
+                    </div>
+                </div>
+
+                <div class="bg-red-900/30 border-t border-red-800 px-6 py-4">
+                    <div class="flex items-center gap-2 text-red-300 text-sm mb-2">
+                        <span class="material-symbols-outlined">error</span>
+                        <span class="font-bold">2 Vulnerabilidades Críticas</span>
+                    </div>
+                    <div class="flex gap-4">
+                        <span class="bg-red-800 text-red-200 px-2 py-1 rounded text-xs">CVE-2021-44228</span>
+                        <span class="bg-red-800 text-red-200 px-2 py-1 rounded text-xs">SQL Injection</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-gradient-to-br from-emerald-900 to-green-800 rounded-2xl shadow-2xl overflow-hidden slide-in" style="animation-delay: 0.3s;">
+                <div class="bg-green-900/30 px-6 py-4 border-b border-green-700/50 flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <span class="material-symbols-outlined text-green-400 text-2xl">verified</span>
+                        <span class="text-white font-bold">UserController.java</span>
+                    </div>
+                    <span class="bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase">Después</span>
+                </div>
+
+                <div class="p-6 font-mono text-sm space-y-2 text-gray-200">
+                    <div class="flex gap-4 text-gray-400">
+                        <span class="select-none w-8 text-right">10</span>
+                        <span>// Updated to secure version</span>
+                    </div>
+                    <div class="flex gap-4 bg-green-900/40 -mx-6 px-6 py-2 border-l-4 border-green-500">
+                        <span class="text-gray-400 select-none w-8 text-right">11</span>
+                        <span>&lt;groupId&gt;<span class="text-green-300">org.apache.logging.log4j</span>&lt;/groupId&gt;</span>
+                    </div>
+                    <div class="flex gap-4 bg-green-900/40 -mx-6 px-6 py-2 border-l-4 border-green-500">
+                        <span class="text-gray-400 select-none w-8 text-right">12</span>
+                        <span>&lt;artifactId&gt;<span class="text-green-300">log4j-core</span>&lt;/artifactId&gt;</span>
+                    </div>
+                    <div class="flex gap-4 bg-green-900/40 -mx-6 px-6 py-2 border-l-4 border-green-500">
+                        <span class="text-gray-400 select-none w-8 text-right">13</span>
+                        <span>&lt;version&gt;<span class="text-green-300 font-bold">2.17.1</span>&lt;/version&gt;</span>
+                    </div>
+                    <div class="h-4"></div>
+                    <div class="flex gap-4 text-gray-400">
+                        <span class="select-none w-8 text-right">14</span>
+                        <span>// Using PreparedStatement</span>
+                    </div>
+                    <div class="flex gap-4">
+                        <span class="text-gray-400 select-none w-8 text-right">15</span>
+                        <span><span class="text-purple-300">public String</span> <span class="text-blue-300">getUser</span>(<span class="text-yellow-300">String</span> id) {</span>
+                    </div>
+                    <div class="flex gap-4 bg-green-900/40 -mx-6 px-6 py-2 border-l-4 border-green-500">
+                        <span class="text-gray-400 select-none w-8 text-right">16</span>
+                        <span class="pl-4"><span class="text-yellow-300">String</span> q = <span class="text-green-300">"SELECT * FROM users WHERE id=?"</span>;</span>
+                    </div>
+                    <div class="flex gap-4 bg-green-900/40 -mx-6 px-6 py-2 border-l-4 border-green-500">
+                        <span class="text-gray-400 select-none w-8 text-right">17</span>
+                        <span class="pl-4"><span class="text-yellow-300">PreparedStatement</span> ps = conn.<span class="text-blue-300">prepareStatement</span>(q);</span>
+                    </div>
+                    <div class="flex gap-4 bg-green-900/40 -mx-6 px-6 py-2 border-l-4 border-green-500">
+                        <span class="text-gray-400 select-none w-8 text-right">18</span>
+                        <span class="pl-4">ps.<span class="text-blue-300">setString</span>(<span class="text-orange-300">1</span>, id);</span>
+                    </div>
+                    <div class="flex gap-4">
+                        <span class="text-gray-400 select-none w-8 text-right">19</span>
+                        <span>}</span>
+                    </div>
+                </div>
+
+                <div class="bg-green-900/40 border-t border-green-800 px-6 py-4">
+                    <div class="flex items-center gap-2 text-green-200 text-sm mb-2">
+                        <span class="material-symbols-outlined">check_circle</span>
+                        <span class="font-bold">Todas las vulnerabilidades corregidas</span>
+                    </div>
+                    <div class="flex gap-4">
+                        <span class="bg-green-800 text-green-200 px-2 py-1 rounded text-xs">✓ Log4j actualizado</span>
+                        <span class="bg-green-800 text-green-200 px-2 py-1 rounded text-xs">✓ SQL protegido</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-gradient-to-r from-teal-500 to-cyan-600 rounded-2xl p-8 shadow-xl text-white fade-in-up" style="animation-delay: 0.4s;">
+            <h3 class="text-3xl font-bold mb-6 flex items-center justify-center gap-3">
+                <span class="material-symbols-outlined text-5xl">checklist</span>
+                Cambios Aplicados
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                <div class="bg-white/20 backdrop-blur-sm rounded-xl p-5">
+                    <span class="material-symbols-outlined text-5xl mb-3">upgrade</span>
+                    <h4 class="font-bold text-lg mb-2">Log4j Actualizado</h4>
+                    <p class="text-sm opacity-90">De 2.14.1 → 2.17.1</p>
+                </div>
+                <div class="bg-white/20 backdrop-blur-sm rounded-xl p-5">
+                    <span class="material-symbols-outlined text-5xl mb-3">shield</span>
+                    <h4 class="font-bold text-lg mb-2">PreparedStatement</h4>
+                    <p class="text-sm opacity-90">Consultas parametrizadas</p>
+                </div>
+                <div class="bg-white/20 backdrop-blur-sm rounded-xl p-5">
+                    <span class="material-symbols-outlined text-5xl mb-3">verified</span>
+                    <h4 class="font-bold text-lg mb-2">Tests Pasados</h4>
+                    <p class="text-sm opacity-90">SAST y SCA ✓</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

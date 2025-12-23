@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quality Gates - Control de Calidad</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+        .fade-in-up { animation: fadeInUp 0.6s ease-out forwards; }
+        .gate-stop { animation: pulse 2s ease-in-out infinite; }
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .breadcrumb-item {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            color: #64748b;
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-red-50 to-orange-100 p-8 min-h-screen">
+    <div class="max-w-7xl mx-auto">
+        <!-- Breadcrumb -->
+        <nav class="breadcrumb fade-in-up" style="animation-delay: 0.1s;">
+            <span class="breadcrumb-item">
+                <span class="material-symbols-outlined text-sm">home</span>
+                Inicio
+            </span>
+            <span class="text-slate-300">/</span>
+            <span class="breadcrumb-item">
+                <span class="material-symbols-outlined text-sm">menu_book</span>
+                Capítulo 4
+            </span>
+            <span class="text-slate-300">/</span>
+            <span class="breadcrumb-item font-semibold text-red-600">
+                Calidad y Dependencias
+            </span>
+        </nav>
+        <div class="text-center mb-12 fade-in-up" style="animation-delay: 0.1s;">
+            <div class="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-red-600 to-orange-700 rounded-2xl mb-4 shadow-xl">
+                <span class="material-symbols-outlined text-white text-5xl">gpp_bad</span>
+            </div>
+            <h1 class="text-5xl font-black text-gray-900 mb-4">
+                Quality <span class="text-red-600">Gates</span>
+            </h1>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">Si no es seguro, no pasa. Control de calidad obligatorio en el pipeline</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+            <div class="bg-white rounded-2xl p-8 shadow-xl fade-in-up" style="animation-delay: 0.2s;">
+                <div class="flex items-center justify-center mb-8">
+                    <div class="relative">
+                        <div class="gate-stop w-32 h-32 bg-red-600 rounded-full flex items-center justify-center shadow-2xl">
+                            <span class="material-symbols-outlined text-white text-6xl">block</span>
+                        </div>
+                        <div class="absolute -top-4 -right-4 bg-yellow-400 rounded-full p-2">
+                            <span class="material-symbols-outlined text-gray-900 text-2xl">warning</span>
+                        </div>
+                    </div>
+                </div>
+                <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">Criterios de Bloqueo</h2>
+                <div class="space-y-3">
+                    <div class="flex items-start gap-3 p-4 bg-red-50 rounded-xl border-l-4 border-red-500">
+                        <span class="text-xl">❌</span>
+                        <div>
+                            <h3 class="font-bold text-gray-900">Fallo en SAST</h3>
+                            <p class="text-sm text-gray-600">Vulnerabilidades de alta severidad detectadas</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3 p-4 bg-orange-50 rounded-xl border-l-4 border-orange-500">
+                        <span class="text-xl">❌</span>
+                        <div>
+                            <h3 class="font-bold text-gray-900">Dependencias Vulnerables</h3>
+                            <p class="text-sm text-gray-600">CVEs críticos en librerías de terceros</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3 p-4 bg-amber-50 rounded-xl border-l-4 border-amber-500">
+                        <span class="text-xl">❌</span>
+                        <div>
+                            <h3 class="font-bold text-gray-900">Cobertura Insuficiente</h3>
+                            <p class="text-sm text-gray-600">Menos del umbral mínimo de tests (ej: 80%)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl p-8 shadow-xl fade-in-up" style="animation-delay: 0.3s;">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">¿Qué es un Quality Gate?</h2>
+                <p class="text-gray-700 mb-6 leading-relaxed">
+                    Un <span class="font-bold text-red-600">Quality Gate</span> es un punto de control obligatorio en el pipeline de CI/CD que evalúa si el código cumple con estándares mínimos de calidad y seguridad.
+                </p>
+                <div class="space-y-4">
+                    <div class="flex items-start gap-3">
+                        <div class="bg-green-100 p-2 rounded-lg">
+                            <span class="material-symbols-outlined text-green-600">check_circle</span>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-gray-900">Automático y Objetivo</h3>
+                            <p class="text-sm text-gray-600">Sin intervención humana, basado en métricas</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <div class="bg-blue-100 p-2 rounded-lg">
+                            <span class="material-symbols-outlined text-blue-600">policy</span>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-gray-900">Configurable por Proyecto</h3>
+                            <p class="text-sm text-gray-600">Umbrales adaptables según criticidad</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <div class="bg-purple-100 p-2 rounded-lg">
+                            <span class="material-symbols-outlined text-purple-600">block</span>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-gray-900">Bloquea el Deploy</h3>
+                            <p class="text-sm text-gray-600">No permite continuar si falla</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-gradient-to-r from-red-600 to-orange-600 rounded-2xl p-8 shadow-xl text-white text-center fade-in-up" style="animation-delay: 0.4s;">
+            <h3 class="text-3xl font-bold mb-3">Filosofía: "Fail Fast"</h3>
+            <p class="text-lg opacity-90">Detectar problemas temprano es 100x más barato que corregirlos en producción</p>
+        </div>
+    </div>
+</body>
+</html>
