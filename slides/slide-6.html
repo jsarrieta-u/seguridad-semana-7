@@ -1,208 +1,455 @@
 <!DOCTYPE html>
-
-<html class="light" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Comparativa BSIMM vs SAMM - UNIMINUTO Digital Booklet</title>
-<!-- Google Fonts: Inter -->
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
-<!-- Material Symbols -->
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<!-- Tailwind CSS with Plugins -->
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<!-- Tailwind Configuration -->
-<script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "primary": "#0066cc",
-                        "primary-dark": "#004c99",
-                        "cyan-brand": "#00A4CC",
-                        "yellow-brand": "#FFCC00",
-                        "background-light": "#f5f7f8",
-                        "background-dark": "#0f1923",
-                        "surface-light": "#ffffff",
-                        "surface-dark": "#1e293b",
-                    },
-                    fontFamily: {
-                        "display": ["Inter", "sans-serif"],
-                        "sans": ["Inter", "sans-serif"],
-                    },
-                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
-                },
-            },
-        }
-    </script>
-<style>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BSIMM vs SAMM - Comparativa de Marcos</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <style>
         body {
             font-family: 'Inter', sans-serif;
         }
-        /* Custom scrollbar for cleaner look if needed */
-        ::-webkit-scrollbar {
-            width: 8px;
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1; 
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
-        ::-webkit-scrollbar-thumb {
-            background: #cbd5e1; 
-            border-radius: 4px;
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #94a3b8; 
+
+        @keyframes pulse-glow {
+            0%, 100% {
+                box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+            }
+            50% {
+                box-shadow: 0 0 35px rgba(59, 130, 246, 0.6);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .slide-in-left {
+            animation: slideInLeft 0.7s ease-out forwards;
+        }
+
+        .slide-in-right {
+            animation: slideInRight 0.7s ease-out forwards;
+        }
+
+        .framework-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+
+        .framework-card:hover {
+            transform: translateY(-10px) scale(1.02);
+        }
+
+        .framework-card.active {
+            transform: scale(1.05);
+            z-index: 10;
+        }
+
+        .feature-item {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .feature-item:hover {
+            background: #f8fafc;
+            transform: translateX(8px);
+            border-left-width: 4px;
+        }
+
+        .comparison-toggle {
+            transition: all 0.3s ease;
+        }
+
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .breadcrumb-item {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            color: #64748b;
+            font-size: 0.875rem;
+        }
+
+        .breadcrumb-separator {
+            color: #cbd5e1;
+        }
+
+        .vs-badge {
+            animation: pulse-glow 2s ease-in-out infinite;
         }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-900 antialiased overflow-x-hidden min-h-screen flex flex-col">
-<!-- Top Navigation Bar -->
-<header class="sticky top-0 z-50 w-full bg-white border-b border-[#e6edf4] shadow-sm">
-<div class="max-w-[1200px] mx-auto px-4 md:px-10">
-<div class="flex items-center justify-between h-16">
-<!-- Logo & Title -->
-<div class="flex items-center gap-4 text-slate-900">
-<div class="size-8 flex items-center justify-center text-primary">
-<span class="material-symbols-outlined text-[32px]">menu_book</span>
-</div>
-<h2 class="text-slate-900 text-lg font-bold leading-tight tracking-[-0.015em]">UNIMINUTO Digital Booklet</h2>
-</div>
-<!-- Navigation Links -->
-<div class="hidden md:flex flex-1 justify-end gap-8 items-center">
-<nav class="flex items-center gap-6 lg:gap-9">
-<a class="text-slate-600 hover:text-primary text-sm font-medium transition-colors" href="#">Inicio</a>
-<a class="text-slate-600 hover:text-primary text-sm font-medium transition-colors" href="#">Modelos</a>
-<a class="text-primary text-sm font-bold transition-colors" href="#">Comparativa</a>
-<a class="text-slate-600 hover:text-primary text-sm font-medium transition-colors" href="#">Recursos</a>
-</nav>
-<div class="bg-center bg-no-repeat bg-cover rounded-full size-9 border border-slate-200 shadow-sm" data-alt="User profile avatar placeholder with abstract gradient" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDQUJnzUhN1RBgCuS9OUwwu_Clct9HXPWq9xHfqDFoot0S1y1ujc7uHAJ9jrLR6exHK0oHL77ka2ZTznMHKwIFfTerL2-ZKB1cifX9h-_G5jNXOt9Q5sI006MH-ncy_WY3WUGQHiA0QM32rSjPsT6pd0I_CCQqOmNskC4-qwNEX7mFn-oIlh-51CO3jgbiG1UC9NXfGf8RdBxQPUx77HZCVuBPivkl_xniZjb5LmbHGaGyKuZNNMDX-wYCJfVvDx_MHQ0TpFolPNEc0");'>
-</div>
-</div>
-<!-- Mobile Menu Button (Visible only on small screens) -->
-<button class="md:hidden text-slate-600">
-<span class="material-symbols-outlined">menu</span>
-</button>
-</div>
-</div>
-</header>
-<!-- Main Content Layout -->
-<main class="flex-grow flex flex-col items-center justify-start py-8 px-4 md:px-8">
-<div class="w-full max-w-[1200px] flex flex-col gap-8">
-<!-- Page Title -->
-<div class="text-center py-4">
-<h1 class="text-primary tracking-tight text-[32px] md:text-[48px] font-bold leading-tight">
-                    Marcos de Referencia para la Seguridad
-                </h1>
-<p class="mt-2 text-slate-500 text-lg">Comparativa detallada entre modelos de madurez</p>
-</div>
-<!-- Comparison Split Container -->
-<div class="w-full bg-white rounded-lg shadow-sm border border-slate-200 overflow-hidden flex flex-col md:flex-row min-h-[600px]">
-<!-- LEFT ZONE: BSIMM -->
-<div class="flex-1 bg-white border-l-[8px] border-l-primary md:border-r-[4px] md:border-r-yellow-brand border-dotted relative p-8 md:p-12">
-<div class="flex flex-col gap-8 h-full">
-<!-- Header -->
-<div class="border-b border-slate-100 pb-4">
-<h2 class="text-primary text-[32px] font-bold leading-tight">BSIMM</h2>
-<p class="text-slate-400 italic text-[14px] mt-1 font-normal">Building Security In Maturity Model</p>
-</div>
-<!-- Content Blocks -->
-<div class="flex flex-col gap-8">
-<!-- Block 1 -->
-<div class="group">
-<h3 class="text-slate-900 text-[16px] font-semibold mb-2 flex items-center gap-2">
-<span class="material-symbols-outlined text-primary text-[20px]">visibility</span>
-                                    Enfoque
-                                </h3>
-<p class="text-slate-700 text-[14px] leading-relaxed">
-                                    Basado en la observación científica de iniciativas reales de seguridad de software. Recopila datos de cientos de empresas para describir qué actividades se están realizando realmente en la industria.
+<body class="bg-gradient-to-br from-slate-50 to-blue-50 p-8 min-h-screen">
+    
+    <div class="max-w-7xl mx-auto">
+        
+        <!-- Breadcrumb -->
+        <nav class="breadcrumb fade-in-up" style="animation-delay: 0.1s;">
+            <span class="breadcrumb-item">
+                <span class="material-symbols-outlined text-sm">home</span>
+                Inicio
+            </span>
+            <span class="breadcrumb-separator">/</span>
+            <span class="breadcrumb-item">
+                <span class="material-symbols-outlined text-sm">menu_book</span>
+                Capítulo 2
+            </span>
+            <span class="breadcrumb-separator">/</span>
+            <span class="breadcrumb-item font-semibold text-blue-600">
+                Marcos de Seguridad
+            </span>
+        </nav>
+
+        <!-- Header -->
+        <div class="text-center mb-12 fade-in-up" style="animation-delay: 0.2s;">
+            <div class="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-700 rounded-2xl mb-4 shadow-xl">
+                <span class="material-symbols-outlined text-white text-5xl">compare</span>
+            </div>
+            <h1 class="text-5xl font-black text-gray-900 mb-4">
+                <span class="text-blue-600">BSIMM</span> vs <span class="text-cyan-600">SAMM</span>
+            </h1>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                Comparativa detallada entre los dos principales marcos de madurez en seguridad del software
+            </p>
+        </div>
+
+        <!-- VS Badge -->
+        <div class="flex justify-center mb-12 fade-in-up" style="animation-delay: 0.3s;">
+            <div class="vs-badge inline-flex items-center justify-center w-24 h-24 bg-gradient-to-br from-blue-600 to-cyan-600 rounded-full shadow-2xl">
+                <span class="text-5xl font-black text-white">VS</span>
+            </div>
+        </div>
+
+        <!-- Main Comparison Cards -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+            
+            <!-- BSIMM Card -->
+            <div class="framework-card bg-white rounded-2xl p-8 shadow-2xl border-t-8 border-blue-600 slide-in-left" style="animation-delay: 0.4s;" id="bsimm-card">
+                <div class="flex items-start gap-4 mb-6">
+                    <div class="bg-blue-100 p-4 rounded-xl">
+                        <span class="material-symbols-outlined text-blue-600 text-4xl">visibility</span>
+                    </div>
+                    <div>
+                        <h2 class="text-3xl font-black text-blue-600 mb-1">BSIMM</h2>
+                        <p class="text-gray-600 text-sm italic">Building Security In Maturity Model</p>
+                    </div>
+                </div>
+
+                <div class="space-y-6">
+                    <!-- Enfoque -->
+                    <div class="feature-item p-4 border-l-2 border-blue-200 rounded-lg">
+                        <div class="flex items-start gap-3">
+                            <span class="material-symbols-outlined text-blue-600 mt-1">analytics</span>
+                            <div>
+                                <h3 class="font-bold text-gray-900 mb-2">Enfoque Descriptivo</h3>
+                                <p class="text-sm text-gray-700">
+                                    Basado en observación científica de <span class="font-bold text-blue-600">iniciativas reales</span> de seguridad. Recopila datos de cientos de empresas para describir actividades en la industria.
                                 </p>
-</div>
-<!-- Block 2 -->
-<div class="group">
-<h3 class="text-slate-900 text-[16px] font-semibold mb-2 flex items-center gap-2">
-<span class="material-symbols-outlined text-primary text-[20px]">psychology</span>
-                                    Filosofía
-                                </h3>
-<p class="text-slate-700 text-[14px] leading-relaxed">
-                                    Es un modelo <strong>descriptivo</strong>, no prescriptivo. No dicta lo que "deberías" hacer, sino que refleja y cuantifica lo que las organizaciones líderes ya están haciendo con éxito.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Filosofía -->
+                    <div class="feature-item p-4 border-l-2 border-blue-200 rounded-lg">
+                        <div class="flex items-start gap-3">
+                            <span class="material-symbols-outlined text-blue-600 mt-1">psychology</span>
+                            <div>
+                                <h3 class="font-bold text-gray-900 mb-2">Filosofía Empírica</h3>
+                                <p class="text-sm text-gray-700">
+                                    Modelo <span class="font-bold text-blue-600">no prescriptivo</span>. No dicta lo que "deberías" hacer, sino que refleja lo que organizaciones líderes están haciendo con éxito.
                                 </p>
-</div>
-<!-- Block 3 -->
-<div class="group">
-<h3 class="text-slate-900 text-[16px] font-semibold mb-2 flex items-center gap-2">
-<span class="material-symbols-outlined text-primary text-[20px]">analytics</span>
-                                    Uso
-                                </h3>
-<p class="text-slate-700 text-[14px] leading-relaxed">
-                                    Ideal para <strong>benchmarking</strong>. Permite a una organización medir su madurez comparando sus actividades de seguridad directamente con las de sus pares en el mismo sector vertical.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Uso -->
+                    <div class="feature-item p-4 border-l-2 border-blue-200 rounded-lg">
+                        <div class="flex items-start gap-3">
+                            <span class="material-symbols-outlined text-blue-600 mt-1">leaderboard</span>
+                            <div>
+                                <h3 class="font-bold text-gray-900 mb-2">Ideal para Benchmarking</h3>
+                                <p class="text-sm text-gray-700">
+                                    Permite medir madurez comparando actividades de seguridad directamente con <span class="font-bold text-blue-600">pares del sector</span>.
                                 </p>
-</div>
-</div>
-</div>
-<!-- Mobile Divider fix (only visual if stacked) -->
-<div class="md:hidden w-full h-[4px] border-t-[4px] border-dotted border-yellow-brand my-8"></div>
-</div>
-<!-- RIGHT ZONE: SAMM -->
-<div class="flex-1 bg-[#F5F5F5] border-r-[8px] border-r-cyan-brand p-8 md:p-12">
-<div class="flex flex-col gap-8 h-full">
-<!-- Header -->
-<div class="border-b border-slate-200 pb-4">
-<h2 class="text-cyan-brand text-[32px] font-bold leading-tight">SAMM</h2>
-<p class="text-slate-400 italic text-[14px] mt-1 font-normal">Software Assurance Maturity Model</p>
-</div>
-<!-- Content Blocks -->
-<div class="flex flex-col gap-8">
-<!-- Block 1 -->
-<div class="group">
-<h3 class="text-slate-900 text-[16px] font-semibold mb-2 flex items-center gap-2">
-<span class="material-symbols-outlined text-cyan-brand text-[20px]">architecture</span>
-                                    Enfoque
-                                </h3>
-<p class="text-slate-700 text-[14px] leading-relaxed">
-                                    Proporciona un marco <strong>prescriptivo</strong> y flexible. Define prácticas de seguridad específicas agrupadas en funciones de negocio (Gobierno, Diseño, Implementación, Verificación, Operaciones).
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Estructura -->
+                    <div class="feature-item p-4 border-l-2 border-blue-200 rounded-lg">
+                        <div class="flex items-start gap-3">
+                            <span class="material-symbols-outlined text-blue-600 mt-1">account_tree</span>
+                            <div>
+                                <h3 class="font-bold text-gray-900 mb-2">Estructura de 12 Prácticas</h3>
+                                <p class="text-sm text-gray-700">
+                                    Organizado en 4 dominios: <span class="font-bold">Gobierno, Inteligencia, SSDL Touchpoints, Despliegue</span>
                                 </p>
-</div>
-<!-- Block 2 -->
-<div class="group">
-<h3 class="text-slate-900 text-[16px] font-semibold mb-2 flex items-center gap-2">
-<span class="material-symbols-outlined text-cyan-brand text-[20px]">tune</span>
-                                    Filosofía
-                                </h3>
-<p class="text-slate-700 text-[14px] leading-relaxed">
-                                    Diseñado para ser adaptable y personalizable. Su filosofía es que no existe una solución única para todos; el modelo se adapta al riesgo específico y al estilo de desarrollo de la organización.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mejor para -->
+                    <div class="bg-blue-50 rounded-xl p-4 border-l-4 border-blue-600">
+                        <div class="flex items-start gap-2">
+                            <span class="material-symbols-outlined text-blue-600 text-xl mt-0.5">check_circle</span>
+                            <div>
+                                <h4 class="font-bold text-blue-900 mb-1">Mejor para:</h4>
+                                <p class="text-sm text-blue-800">
+                                    Empresas maduras que quieren compararse con la industria y validar sus prácticas actuales
                                 </p>
-</div>
-<!-- Block 3 -->
-<div class="group">
-<h3 class="text-slate-900 text-[16px] font-semibold mb-2 flex items-center gap-2">
-<span class="material-symbols-outlined text-cyan-brand text-[20px]">map</span>
-                                    Uso
-                                </h3>
-<p class="text-slate-700 text-[14px] leading-relaxed">
-                                    Funciona como una <strong>hoja de ruta (roadmap)</strong>. Ayuda a las organizaciones a formular una estrategia de seguridad equilibrada y a mejorar su madurez paso a paso a lo largo del tiempo.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SAMM Card -->
+            <div class="framework-card bg-white rounded-2xl p-8 shadow-2xl border-t-8 border-cyan-600 slide-in-right" style="animation-delay: 0.5s;" id="samm-card">
+                <div class="flex items-start gap-4 mb-6">
+                    <div class="bg-cyan-100 p-4 rounded-xl">
+                        <span class="material-symbols-outlined text-cyan-600 text-4xl">architecture</span>
+                    </div>
+                    <div>
+                        <h2 class="text-3xl font-black text-cyan-600 mb-1">SAMM</h2>
+                        <p class="text-gray-600 text-sm italic">Software Assurance Maturity Model</p>
+                    </div>
+                </div>
+
+                <div class="space-y-6">
+                    <!-- Enfoque -->
+                    <div class="feature-item p-4 border-l-2 border-cyan-200 rounded-lg">
+                        <div class="flex items-start gap-3">
+                            <span class="material-symbols-outlined text-cyan-600 mt-1">map</span>
+                            <div>
+                                <h3 class="font-bold text-gray-900 mb-2">Enfoque Prescriptivo</h3>
+                                <p class="text-sm text-gray-700">
+                                    Marco <span class="font-bold text-cyan-600">flexible y adaptable</span>. Define prácticas específicas agrupadas en funciones de negocio.
                                 </p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<!-- Pagination -->
-<div class="flex items-center justify-center py-6">
-<nav aria-label="Pagination" class="flex items-center gap-2">
-<a class="flex size-10 items-center justify-center rounded-full hover:bg-slate-100 text-slate-600 transition-colors" href="#">
-<span class="material-symbols-outlined text-[20px]">chevron_left</span>
-</a>
-<a class="text-sm font-medium flex size-10 items-center justify-center text-slate-600 rounded-full hover:bg-slate-100 transition-colors" href="#">21</a>
-<a class="text-sm font-bold flex size-10 items-center justify-center text-primary rounded-full bg-[#e6edf4]" href="#">22</a>
-<a class="text-sm font-medium flex size-10 items-center justify-center text-slate-600 rounded-full hover:bg-slate-100 transition-colors" href="#">23</a>
-<a class="flex size-10 items-center justify-center rounded-full hover:bg-slate-100 text-slate-600 transition-colors" href="#">
-<span class="material-symbols-outlined text-[20px]">chevron_right</span>
-</a>
-</nav>
-</div>
-</div>
-</main>
-</body></html>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Filosofía -->
+                    <div class="feature-item p-4 border-l-2 border-cyan-200 rounded-lg">
+                        <div class="flex items-start gap-3">
+                            <span class="material-symbols-outlined text-cyan-600 mt-1">tune</span>
+                            <div>
+                                <h3 class="font-bold text-gray-900 mb-2">Filosofía Adaptable</h3>
+                                <p class="text-sm text-gray-700">
+                                    Diseñado para ser <span class="font-bold text-cyan-600">personalizable</span>. No existe solución única; se adapta al riesgo y estilo de desarrollo.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Uso -->
+                    <div class="feature-item p-4 border-l-2 border-cyan-200 rounded-lg">
+                        <div class="flex items-start gap-3">
+                            <span class="material-symbols-outlined text-cyan-600 mt-1">timeline</span>
+                            <div>
+                                <h3 class="font-bold text-gray-900 mb-2">Hoja de Ruta (Roadmap)</h3>
+                                <p class="text-sm text-gray-700">
+                                    Ayuda a formular <span class="font-bold text-cyan-600">estrategia equilibrada</span> y mejorar madurez paso a paso.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Estructura -->
+                    <div class="feature-item p-4 border-l-2 border-cyan-200 rounded-lg">
+                        <div class="flex items-start gap-3">
+                            <span class="material-symbols-outlined text-cyan-600 mt-1">grid_view</span>
+                            <div>
+                                <h3 class="font-bold text-gray-900 mb-2">Estructura de 5 Funciones</h3>
+                                <p class="text-sm text-gray-700">
+                                    Organizado en: <span class="font-bold">Gobierno, Diseño, Implementación, Verificación, Operaciones</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mejor para -->
+                    <div class="bg-cyan-50 rounded-xl p-4 border-l-4 border-cyan-600">
+                        <div class="flex items-start gap-2">
+                            <span class="material-symbols-outlined text-cyan-600 text-xl mt-0.5">check_circle</span>
+                            <div>
+                                <h4 class="font-bold text-cyan-900 mb-1">Mejor para:</h4>
+                                <p class="text-sm text-cyan-800">
+                                    Organizaciones que inician programa de seguridad o buscan estructura clara para mejorar
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Comparison Table -->
+        <div class="bg-white rounded-2xl p-8 shadow-xl mb-8 fade-in-up" style="animation-delay: 0.6s;">
+            <h2 class="text-3xl font-bold text-gray-900 mb-6 text-center flex items-center justify-center gap-3">
+                <span class="material-symbols-outlined text-purple-600">table_chart</span>
+                Comparación Rápida
+            </h2>
+            
+            <div class="overflow-x-auto">
+                <table class="w-full">
+                    <thead>
+                        <tr class="border-b-2 border-gray-200">
+                            <th class="text-left p-4 font-bold text-gray-700">Criterio</th>
+                            <th class="text-center p-4 font-bold text-blue-600">BSIMM</th>
+                            <th class="text-center p-4 font-bold text-cyan-600">SAMM</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                            <td class="p-4 font-semibold text-gray-900">Tipo de Modelo</td>
+                            <td class="p-4 text-center text-gray-700">Descriptivo</td>
+                            <td class="p-4 text-center text-gray-700">Prescriptivo</td>
+                        </tr>
+                        <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                            <td class="p-4 font-semibold text-gray-900">Origen de Datos</td>
+                            <td class="p-4 text-center text-gray-700">Observación empírica</td>
+                            <td class="p-4 text-center text-gray-700">Mejores prácticas OWASP</td>
+                        </tr>
+                        <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                            <td class="p-4 font-semibold text-gray-900">Costo</td>
+                            <td class="p-4 text-center text-gray-700">Comercial (licencia)</td>
+                            <td class="p-4 text-center text-gray-700">Open Source (gratuito)</td>
+                        </tr>
+                        <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                            <td class="p-4 font-semibold text-gray-900">Flexibilidad</td>
+                            <td class="p-4 text-center text-gray-700">Estructura fija</td>
+                            <td class="p-4 text-center text-gray-700">Alta personalización</td>
+                        </tr>
+                        <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                            <td class="p-4 font-semibold text-gray-900">Uso Principal</td>
+                            <td class="p-4 text-center text-gray-700">Benchmarking</td>
+                            <td class="p-4 text-center text-gray-700">Mejora continua</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50 transition-colors">
+                            <td class="p-4 font-semibold text-gray-900">Complejidad</td>
+                            <td class="p-4 text-center text-gray-700">Alta (119 actividades)</td>
+                            <td class="p-4 text-center text-gray-700">Moderada (15 prácticas)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Decision Guide -->
+        <div class="bg-gradient-to-r from-purple-600 to-indigo-600 rounded-2xl p-8 shadow-xl text-white fade-in-up" style="animation-delay: 0.7s;">
+            <h2 class="text-3xl font-bold mb-6 text-center">¿Cuál Elegir?</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-white bg-opacity-10 rounded-xl p-6 backdrop-blur-sm">
+                    <h3 class="font-bold text-xl mb-3 flex items-center gap-2">
+                        <span class="material-symbols-outlined">business</span>
+                        Elige BSIMM si:
+                    </h3>
+                    <ul class="space-y-2 text-sm">
+                        <li class="flex items-start gap-2">
+                            <span class="material-symbols-outlined text-green-300 text-lg">check</span>
+                            <span>Eres una empresa establecida con programa de seguridad existente</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="material-symbols-outlined text-green-300 text-lg">check</span>
+                            <span>Quieres compararte con competidores de tu industria</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="material-symbols-outlined text-green-300 text-lg">check</span>
+                            <span>Necesitas validar que tus prácticas son competitivas</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bg-white bg-opacity-10 rounded-xl p-6 backdrop-blur-sm">
+                    <h3 class="font-bold text-xl mb-3 flex items-center gap-2">
+                        <span class="material-symbols-outlined">rocket_launch</span>
+                        Elige SAMM si:
+                    </h3>
+                    <ul class="space-y-2 text-sm">
+                        <li class="flex items-start gap-2">
+                            <span class="material-symbols-outlined text-green-300 text-lg">check</span>
+                            <span>Estás iniciando tu programa de seguridad desde cero</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="material-symbols-outlined text-green-300 text-lg">check</span>
+                            <span>Buscas un roadmap claro y personalizable</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="material-symbols-outlined text-green-300 text-lg">check</span>
+                            <span>Prefieres herramientas open source y gratuitas</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mt-6 text-center p-4 bg-white bg-opacity-10 rounded-xl backdrop-blur-sm">
+                <p class="text-lg">
+                    <span class="font-bold">💡 Consejo:</span> Muchas organizaciones usan ambos marcos de forma complementaria
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Interactive card highlighting
+        const bsimmCard = document.getElementById('bsimm-card');
+        const sammCard = document.getElementById('samm-card');
+
+        bsimmCard.addEventListener('click', () => {
+            bsimmCard.classList.add('active');
+            sammCard.classList.remove('active');
+            setTimeout(() => bsimmCard.classList.remove('active'), 2000);
+        });
+
+        sammCard.addEventListener('click', () => {
+            sammCard.classList.add('active');
+            bsimmCard.classList.remove('active');
+            setTimeout(() => sammCard.classList.remove('active'), 2000);
+        });
+    </script>
+
+</body>
+</html>

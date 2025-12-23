@@ -1,181 +1,146 @@
 <!DOCTYPE html>
-
-<html class="dark" lang="es"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>UNIMINUTO SDLC Security - Paso 1</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;family=JetBrains+Mono:wght@400;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "primary": "#137fec",
-                        "primary-dark": "#0b5db0",
-                        "background-light": "#f6f7f8",
-                        "background-dark": "#101922",
-                        "console-bg": "#1A1A1A",
-                        "console-green": "#00FF00",
-                        "console-error": "#FF6B6B",
-                        "console-critical": "#FF0000",
-                        "cyan-label": "#00BCD4"
-                    },
-                    fontFamily: {
-                        "display": ["Inter", "sans-serif"],
-                        "mono": ["JetBrains Mono", "monospace"]
-                    },
-                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
-                },
-            },
-        }
-    </script>
-<style>
-        /* Custom scrollbar for console if needed */
-        .custom-scrollbar::-webkit-scrollbar {
-            width: 8px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-track {
-            background: #1A1A1A;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-            background: #333;
-            border-radius: 4px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-            background: #444;
-        }
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paso 1: Detección SCA - Log4j Vulnerable</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .font-mono { font-family: 'JetBrains Mono', monospace; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+        .fade-in-up { animation: fadeInUp 0.6s ease-out forwards; }
+        .terminal-cursor { animation: blink 1s infinite; }
     </style>
 </head>
-<body class="relative flex h-screen w-full flex-col bg-background-light dark:bg-background-dark overflow-hidden font-display text-slate-900 dark:text-white">
-<!-- Top Navigation (Reused & Adapted) -->
-<header class="flex shrink-0 items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-[#233648] bg-white dark:bg-[#111a22] px-10 py-3 z-20">
-<div class="flex items-center gap-4">
-<div class="size-8 flex items-center justify-center text-primary dark:text-white">
-<span class="material-symbols-outlined text-3xl">security</span>
-</div>
-<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">UNIMINUTO SDLC Security</h2>
-</div>
-<div class="flex flex-1 justify-end gap-8">
-<div class="hidden md:flex items-center gap-9">
-<a class="text-slate-600 dark:text-white text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Inicio</a>
-<a class="text-primary dark:text-white text-sm font-bold leading-normal border-b-2 border-primary" href="#">Guía</a>
-<a class="text-slate-600 dark:text-white text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Casos de Estudio</a>
-<a class="text-slate-600 dark:text-white text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Recursos</a>
-</div>
-<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 bg-primary text-white gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-4 hover:bg-primary-dark transition-colors">
-<span class="material-symbols-outlined">menu_book</span>
-<span class="hidden sm:inline">Índice</span>
-</button>
-</div>
-</header>
-<!-- Main Content Area: Split View -->
-<main class="flex flex-col flex-1 overflow-hidden">
-<!-- Top Section: Context (40% height) -->
-<section class="h-[40%] bg-white w-full flex flex-col justify-center px-10 py-8 md:px-20 lg:px-40 border-b border-slate-200 dark:border-none relative z-10">
-<div class="max-w-5xl w-full mx-auto flex flex-col justify-center h-full">
-<!-- Breadcrumbs/Meta -->
-<div class="flex items-center gap-2 mb-4 text-xs font-semibold tracking-wider text-slate-400 uppercase">
-<span>Caso de Estudio Práctico</span>
-<span class="material-symbols-outlined text-xs">chevron_right</span>
-<span>Slide 12/22</span>
-</div>
-<!-- Headline -->
-<h1 class="text-primary tracking-tight text-3xl md:text-[40px] font-bold leading-[1.1] mb-6">
-                    Paso 1: Detección en el Pipeline de Compilación
-                </h1>
-<!-- Body Text -->
-<p class="text-slate-600 text-base md:text-lg font-normal leading-relaxed max-w-3xl mb-6">
-                    Durante esta fase, el servidor de integración continua (Jenkins) detiene momentáneamente el proceso de compilación para ejecutar un escaneo de seguridad automatizado. La herramienta <strong class="text-slate-800">OWASP Dependency Check</strong> analiza el archivo <code class="bg-slate-100 px-1 py-0.5 rounded text-sm font-mono text-slate-700">pom.xml</code> en busca de bibliotecas con vulnerabilidades conocidas registradas en la NVD.
+<body class="bg-gradient-to-br from-gray-900 to-gray-800 p-8 min-h-screen">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-8 fade-in-up" style="animation-delay: 0.1s;">
+            <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl mb-4 shadow-xl">
+                <span class="material-symbols-outlined text-white text-4xl">terminal</span>
+            </div>
+            <h1 class="text-4xl font-black text-white mb-2">
+                Paso 1: <span class="text-green-400">Detección en Pipeline</span>
+            </h1>
+            <p class="text-lg text-gray-300">OWASP Dependency Check encuentra Log4j vulnerable</p>
+        </div>
+
+        <div class="bg-white rounded-xl p-6 shadow-xl mb-8 fade-in-up" style="animation-delay: 0.2s;">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4 flex items-center gap-3">
+                <span class="material-symbols-outlined text-blue-600 text-3xl">info</span>
+                Contexto
+            </h2>
+            <p class="text-gray-700 text-lg leading-relaxed">
+                Durante la compilación, el servidor de integración continua (<span class="font-bold text-blue-600">Jenkins</span>) 
+                ejecuta un escaneo de seguridad automatizado. La herramienta 
+                <span class="font-bold text-purple-600">OWASP Dependency Check</span> analiza el archivo 
+                <code class="bg-gray-100 px-2 py-1 rounded text-sm font-mono">pom.xml</code> 
+                en busca de bibliotecas con vulnerabilidades conocidas (NVD).
+            </p>
+        </div>
+
+        <div class="bg-gray-950 rounded-2xl shadow-2xl overflow-hidden fade-in-up" style="animation-delay: 0.3s;">
+            <div class="bg-gray-800 px-6 py-3 flex items-center gap-3 border-b border-gray-700">
+                <div class="flex gap-2">
+                    <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                    <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                    <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                </div>
+                <span class="text-gray-400 text-sm font-mono ml-4">jenkins@build-server:~/shopsa fe</span>
+            </div>
+
+            <div class="p-8 font-mono text-sm text-green-400 space-y-2 overflow-x-auto">
+                <div class="flex gap-4">
+                    <span class="text-gray-600 select-none">1</span>
+                    <span><span class="text-cyan-400">[INFO]</span> Scanning for projects...</span>
+                </div>
+                <div class="flex gap-4">
+                    <span class="text-gray-600 select-none">2</span>
+                    <span><span class="text-cyan-400">[INFO]</span> ────────────────────────────────────────────────────────────</span>
+                </div>
+                <div class="flex gap-4">
+                    <span class="text-gray-600 select-none">3</span>
+                    <span><span class="text-cyan-400">[INFO]</span> Building ShopSafe-Core 1.0-SNAPSHOT</span>
+                </div>
+                <div class="flex gap-4">
+                    <span class="text-gray-600 select-none">4</span>
+                    <span><span class="text-cyan-400">[INFO]</span> --- owasp-dependency-check:6.5.0:check (default) ---</span>
+                </div>
+                <div class="flex gap-4">
+                    <span class="text-gray-600 select-none">5</span>
+                    <span><span class="text-cyan-400">[INFO]</span> Checking for updates...</span>
+                </div>
+                <div class="flex gap-4">
+                    <span class="text-gray-600 select-none">6</span>
+                    <span><span class="text-cyan-400">[INFO]</span> Analysis Started</span>
+                </div>
+                <div class="h-4"></div>
+                <div class="flex gap-4 bg-red-900/20 -mx-8 px-8 py-2 border-l-4 border-red-500">
+                    <span class="text-gray-600 select-none">7</span>
+                    <span><span class="text-red-400 font-bold">[ERROR]</span> CVE-2021-44228 detected in log4j-core:2.14.1</span>
+                </div>
+                <div class="flex gap-4 bg-red-900/20 -mx-8 px-8 py-2 border-l-4 border-red-500">
+                    <span class="text-gray-600 select-none">8</span>
+                    <span class="pl-8 text-red-300">Severity: <span class="font-bold">CRITICAL</span></span>
+                </div>
+                <div class="flex gap-4 bg-red-900/20 -mx-8 px-8 py-2 border-l-4 border-red-500">
+                    <span class="text-gray-600 select-none">9</span>
+                    <span class="pl-8 text-red-300">CVSS Score: <span class="font-bold text-red-400">10.0</span></span>
+                </div>
+                <div class="flex gap-4 bg-red-900/20 -mx-8 px-8 py-2 border-l-4 border-red-500">
+                    <span class="text-gray-600 select-none">10</span>
+                    <span class="pl-8 text-red-300">Description: Remote Code Execution (RCE)</span>
+                </div>
+                <div class="h-4"></div>
+                <div class="flex gap-4">
+                    <span class="text-gray-600 select-none">11</span>
+                    <span><span class="text-red-400 font-bold">[ERROR]</span> BUILD FAILED - Quality gate not passed</span>
+                </div>
+                <div class="flex gap-4">
+                    <span class="text-gray-600 select-none">12</span>
+                    <span><span class="text-yellow-400">[WARNING]</span> Fix vulnerabilities before deployment</span>
+                </div>
+                <div class="h-4"></div>
+                <div class="flex gap-4">
+                    <span class="text-gray-600 select-none">13</span>
+                    <span class="text-gray-400">$<span class="terminal-cursor">_</span></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+            <div class="bg-gradient-to-br from-red-500 to-red-600 rounded-xl p-6 shadow-xl text-white fade-in-up" style="animation-delay: 0.4s;">
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="material-symbols-outlined text-4xl">dangerous</span>
+                    <h3 class="text-2xl font-bold">Vulnerabilidad Detectada</h3>
+                </div>
+                <p class="text-red-100 mb-3">
+                    <span class="font-bold">Log4Shell (CVE-2021-44228)</span> permite a un atacante ejecutar código arbitrario 
+                    de forma remota mediante una entrada maliciosa en el sistema de logging.
                 </p>
-<!-- Label Tag -->
-<div class="mt-auto">
-<p class="text-cyan-label text-sm font-bold leading-normal uppercase tracking-wide flex items-center gap-2">
-<span class="material-symbols-outlined text-lg">terminal</span>
-                        Salida de Consola (Simulada):
-                    </p>
-</div>
-</div>
-</section>
-<!-- Bottom Section: Console (60% height) -->
-<section class="h-[60%] bg-console-bg w-full flex flex-col relative overflow-hidden">
-<!-- Decorative Terminal Header -->
-<div class="h-8 bg-[#252525] w-full flex items-center px-4 border-b border-[#333] shrink-0">
-<div class="flex gap-2">
-<div class="w-3 h-3 rounded-full bg-[#FF5F56]"></div>
-<div class="w-3 h-3 rounded-full bg-[#FFBD2E]"></div>
-<div class="w-3 h-3 rounded-full bg-[#27C93F]"></div>
-</div>
-<div class="ml-4 text-[#888] text-xs font-mono select-none">jenkins-agent — bash — 80x24</div>
-</div>
-<!-- Console Content -->
-<div class="flex-1 overflow-auto custom-scrollbar p-6 md:p-10 lg:px-40 flex justify-center">
-<div class="max-w-5xl w-full font-mono text-[13px] md:text-[15px] leading-relaxed">
-<!-- Line 1 -->
-<div class="flex gap-4 group">
-<span class="text-gray-600 select-none w-6 text-right">1</span>
-<span class="text-console-green"><span class="font-bold">[INFO]</span> Scanning for projects...</span>
-</div>
-<!-- Line 2 -->
-<div class="flex gap-4 group">
-<span class="text-gray-600 select-none w-6 text-right">2</span>
-<span class="text-console-green"><span class="font-bold">[INFO]</span> ------------------------------------------------------------------------</span>
-</div>
-<!-- Line 3 -->
-<div class="flex gap-4 group">
-<span class="text-gray-600 select-none w-6 text-right">3</span>
-<span class="text-console-green"><span class="font-bold">[INFO]</span> Building UNIMINUTO-App-Core 1.0-SNAPSHOT</span>
-</div>
-<!-- Line 4 -->
-<div class="flex gap-4 group">
-<span class="text-gray-600 select-none w-6 text-right">4</span>
-<span class="text-console-green"><span class="font-bold">[INFO]</span> --- owasp-dependency-check-maven:6.5.0:check (default) @ core ---</span>
-</div>
-<!-- Line 5 -->
-<div class="flex gap-4 group bg-[#2a2a2a]/30 -mx-4 px-4 py-1 my-1 rounded">
-<span class="text-gray-600 select-none w-6 text-right">5</span>
-<span class="text-console-green"><span class="font-bold">[INFO]</span> Checking for updates...</span>
-</div>
-<!-- Line 6 -->
-<div class="flex gap-4 group">
-<span class="text-gray-600 select-none w-6 text-right">6</span>
-<span class="text-console-green"><span class="font-bold">[INFO]</span> Analysis Started</span>
-</div>
-<!-- Line 7 -->
-<div class="flex gap-4 group mt-2">
-<span class="text-gray-600 select-none w-6 text-right">7</span>
-<span class="text-console-error"><span class="font-bold">[ERROR]</span> CVE-2021-44228 detected in log4j-core:2.14.1 (CVSS Score: 10.0)</span>
-</div>
-<!-- Line 8 -->
-<div class="flex gap-4 group">
-<span class="text-gray-600 select-none w-6 text-right">8</span>
-<span class="text-console-critical"><span class="font-bold">[CRITICAL]</span> High severity vulnerability found. Build unstable. Failing build.</span>
-</div>
-<!-- Cursor -->
-<div class="flex gap-4 group mt-2">
-<span class="text-gray-600 select-none w-6 text-right">9</span>
-<span class="text-console-green flex items-center">jenkins@runner:~$ <span class="w-2.5 h-5 bg-console-green ml-1 animate-pulse"></span></span>
-</div>
-</div>
-</div>
-<!-- Bottom Navigation Bar for Presentation -->
-<div class="absolute bottom-0 w-full h-16 bg-gradient-to-t from-[#111] to-transparent flex items-center justify-between px-10 pb-4">
-<button class="text-slate-500 hover:text-white transition-colors flex items-center gap-2 group">
-<span class="material-symbols-outlined group-hover:-translate-x-1 transition-transform">arrow_back</span>
-<span class="text-sm font-medium">Anterior</span>
-</button>
-<div class="flex gap-1">
-<div class="h-1 w-8 bg-primary rounded-full"></div>
-<div class="h-1 w-2 bg-slate-700 rounded-full"></div>
-<div class="h-1 w-2 bg-slate-700 rounded-full"></div>
-</div>
-<button class="text-white hover:text-primary transition-colors flex items-center gap-2 group">
-<span class="text-sm font-medium">Siguiente: Análisis</span>
-<span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
-</button>
-</div>
-</section>
-</main>
-</body></html>
+                <div class="bg-red-900/50 rounded-lg p-3">
+                    <p class="text-sm font-mono">Impact: Complete system compromise</p>
+                </div>
+            </div>
+
+            <div class="bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl p-6 shadow-xl text-white fade-in-up" style="animation-delay: 0.5s;">
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="material-symbols-outlined text-4xl">build_circle</span>
+                    <h3 class="text-2xl font-bold">Acción Requerida</h3>
+                </div>
+                <p class="text-green-100 mb-3">
+                    El pipeline se detiene automáticamente. El equipo debe actualizar Log4j a la versión 
+                    <span class="font-bold">2.17.1</span> o superior antes de continuar.
+                </p>
+                <div class="bg-green-900/50 rounded-lg p-3">
+                    <p class="text-sm font-mono">Fix: Update dependency in pom.xml</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,231 +1,111 @@
 <!DOCTYPE html>
-
-<html class="dark" lang="es"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>UNIMINUTO SDLC Security - Quality Gates</title>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "primary": "#fad338",
-                        "background-light": "#f8f8f5",
-                        "background-dark": "#231f0f",
-                        "uniminuto-blue": "#003264", // Adding brand color reference
-                    },
-                    fontFamily: {
-                        "display": ["Inter", "sans-serif"],
-                        "body": ["Inter", "sans-serif"],
-                    },
-                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px"},
-                },
-            },
-        }
-    </script>
-<style>
-        /* Custom scrollbar for webkit */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #231f0f; 
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #4a4221; 
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #6a5e2f; 
-        }
-        .glow-gold {
-            box-shadow: 0 0 15px rgba(250, 211, 56, 0.2);
-        }
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quality Gates - Control de Calidad</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+        .fade-in-up { animation: fadeInUp 0.6s ease-out forwards; }
+        .gate-stop { animation: pulse 2s ease-in-out infinite; }
     </style>
 </head>
-<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display overflow-x-hidden min-h-screen flex flex-col">
-<!-- Top Navigation Bar -->
-<header class="sticky top-0 z-50 w-full border-b border-stone-200 dark:border-[#4a4221] bg-background-light/95 dark:bg-[#231f10]/95 backdrop-blur">
-<div class="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8">
-<div class="flex h-16 items-center justify-between">
-<div class="flex items-center gap-4">
-<div class="flex items-center justify-center size-8 rounded bg-primary/20 text-primary">
-<span class="material-symbols-outlined text-xl">security</span>
-</div>
-<h2 class="text-lg font-bold leading-tight tracking-tight dark:text-white text-slate-900">UNIMINUTO SDLC Security</h2>
-</div>
-<nav class="hidden md:flex items-center gap-8">
-<a class="text-sm font-medium hover:text-primary transition-colors dark:text-gray-300 text-slate-600" href="#">Inicio</a>
-<a class="text-sm font-medium text-primary" href="#">Guía</a>
-<a class="text-sm font-medium hover:text-primary transition-colors dark:text-gray-300 text-slate-600" href="#">Recursos</a>
-<a class="text-sm font-medium hover:text-primary transition-colors dark:text-gray-300 text-slate-600" href="#">Contacto</a>
-</nav>
-<div class="hidden md:flex items-center gap-4">
-<div class="size-8 rounded-full bg-cover bg-center border border-stone-300 dark:border-stone-700" data-alt="User profile avatar placeholder" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCwuI5TAgtITZcTb26N1UnklLfWpC4JALxNdR19HzKaeHXrFW1_z6iIf0OZtPcA9wVV2iKNACPrfYpQDW1RyLut6hNynbAP_uF02XHMUUxE1lVGJacKWD2HKHHCUAXQR7W9az4v7nUuYx2SdS8sQ5mgMvbsSyPOcby3lfwfu_PeJha2XA1M9qDg8NaY-O9LyNNN3uUN9TjSd6wsDcXYWdIhj5Z_Nn1g59H14tILrgcPa50ZJf88KDXG_7-QKIwkyeh9OMA9f92CDs3M');"></div>
-</div>
-</div>
-</div>
-</header>
-<main class="flex-grow flex flex-col items-center py-8 px-4 sm:px-6 lg:px-8">
-<div class="w-full max-w-[1024px] space-y-8">
-<!-- Progress & Breadcrumb -->
-<div class="flex flex-col gap-2">
-<div class="flex items-center justify-between text-sm text-stone-500 dark:text-[#ccc08e]">
-<span>Sección: Compilación y Build</span>
-<span class="font-medium">Diapositiva 22 de 25</span>
-</div>
-<div class="h-2 w-full rounded-full bg-stone-200 dark:bg-[#4a4221] overflow-hidden">
-<div class="h-full bg-primary rounded-full" style="width: 88%"></div>
-</div>
-</div>
-<!-- Header Content -->
-<div class="space-y-2">
-<h1 class="text-4xl md:text-5xl font-black tracking-tight text-slate-900 dark:text-white leading-[1.1]">
-                    Quality Gates: <span class="text-primary block md:inline">Si no es seguro, no pasa</span>
-</h1>
-<p class="text-lg text-stone-600 dark:text-stone-300 max-w-2xl">
-                    Los controles de calidad son los peajes obligatorios que aseguran la integridad del sistema antes de continuar.
-                </p>
-</div>
-<!-- Main Content Grid -->
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mt-8">
-<!-- Left Column: Illustration & Blocking Criteria -->
-<div class="lg:col-span-7 flex flex-col gap-8">
-<!-- Central Illustration Container -->
-<div class="relative w-full aspect-[16/9] bg-gradient-to-br from-stone-100 to-stone-200 dark:from-[#2a2515] dark:to-[#1a170b] rounded-2xl border border-stone-200 dark:border-[#4a4221] flex items-center justify-center p-8 overflow-hidden group">
-<!-- Abstract Background Pattern -->
-<div class="absolute inset-0 opacity-10 dark:opacity-5" style="background-image: radial-gradient(#fad338 1px, transparent 1px); background-size: 20px 20px;"></div>
-<!-- Barrier Illustration (CSS Constructed) -->
-<div class="relative w-full max-w-sm flex flex-col items-center z-10">
-<!-- Traffic Light -->
-<div class="absolute -top-16 -right-4 flex flex-col gap-2 bg-stone-800 p-2 rounded-lg border border-stone-700 shadow-xl scale-75 md:scale-100 transform origin-bottom-left">
-<div class="size-4 rounded-full bg-red-500 shadow-[0_0_10px_rgba(239,68,68,0.6)] animate-pulse"></div>
-<div class="size-4 rounded-full bg-stone-700"></div>
-<div class="size-4 rounded-full bg-stone-700"></div>
-</div>
-<!-- Barrier Base -->
-<div class="w-16 h-24 bg-slate-700 rounded-t-lg border-2 border-slate-600 relative flex justify-center items-center">
-<div class="w-10 h-16 bg-slate-800 rounded flex flex-col gap-1 items-center justify-center pt-2">
-<span class="material-symbols-outlined text-primary text-2xl">lock</span>
-</div>
-</div>
-<!-- Barrier Arm -->
-<div class="absolute bottom-6 left-8 h-4 w-64 md:w-80 bg-stone-800 rounded-r-full origin-left transform -rotate-0 shadow-lg flex overflow-hidden border border-stone-600">
-<div class="w-1/5 h-full bg-primary skew-x-[-20deg] mx-2"></div>
-<div class="w-1/5 h-full bg-primary skew-x-[-20deg] mx-2"></div>
-<div class="w-1/5 h-full bg-primary skew-x-[-20deg] mx-2"></div>
-<div class="w-1/5 h-full bg-primary skew-x-[-20deg] mx-2"></div>
-</div>
-<!-- Stop Sign (Concept) -->
-<div class="absolute bottom-20 left-1/2 transform -translate-x-1/2 bg-red-600 text-white font-bold text-xs px-2 py-1 rounded border border-red-400 shadow-lg">
-                                STOP
-                            </div>
-</div>
-<!-- Decoration circles -->
-<div class="absolute bottom-4 right-4 text-stone-300 dark:text-stone-700">
-<span class="material-symbols-outlined text-6xl opacity-20">verified_user</span>
-</div>
-</div>
-<!-- Blocking Criteria -->
-<div class="flex flex-col gap-4">
-<h3 class="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
-<span class="material-symbols-outlined text-red-500">gpp_bad</span>
-                            Criterios de Bloqueo
-                        </h3>
-<div class="grid gap-3">
-<div class="flex items-center gap-4 p-4 rounded-xl bg-red-50/50 dark:bg-red-900/10 border border-red-100 dark:border-red-900/30">
-<span class="text-xl">❌</span>
-<div class="flex flex-col">
-<span class="font-bold text-slate-800 dark:text-red-100">Fallo en análisis estático (SAST)</span>
-<span class="text-xs text-slate-500 dark:text-red-300/70">High severity o superior detectado</span>
-</div>
-</div>
-<div class="flex items-center gap-4 p-4 rounded-xl bg-red-50/50 dark:bg-red-900/10 border border-red-100 dark:border-red-900/30">
-<span class="text-xl">❌</span>
-<div class="flex flex-col">
-<span class="font-bold text-slate-800 dark:text-red-100">Dependencias vulnerables</span>
-<span class="text-xs text-slate-500 dark:text-red-300/70">CVSS &gt; 7.0 sin parche aplicado</span>
-</div>
-</div>
-<div class="flex items-center gap-4 p-4 rounded-xl bg-red-50/50 dark:bg-red-900/10 border border-red-100 dark:border-red-900/30">
-<span class="text-xl">❌</span>
-<div class="flex flex-col">
-<span class="font-bold text-slate-800 dark:text-red-100">Cobertura de pruebas insuficiente</span>
-<span class="text-xs text-slate-500 dark:text-red-300/70">Menos del 80% de coverage en módulos críticos</span>
-</div>
-</div>
-</div>
-</div>
-</div>
-<!-- Right Column: Golden Rule & Conclusion -->
-<div class="lg:col-span-5 flex flex-col gap-6 h-full">
-<!-- Golden Rule Card -->
-<div class="bg-gradient-to-b from-primary/20 to-primary/5 border border-primary/40 rounded-2xl p-6 lg:p-8 flex flex-col gap-4 glow-gold relative overflow-hidden">
-<div class="absolute top-0 right-0 p-4 opacity-10">
-<span class="material-symbols-outlined text-8xl text-primary">workspace_premium</span>
-</div>
-<div class="flex items-center gap-2 text-primary font-bold uppercase tracking-wider text-sm z-10">
-<span class="material-symbols-outlined text-lg">star</span>
-                            Regla de Oro
+<body class="bg-gradient-to-br from-red-50 to-orange-100 p-8 min-h-screen">
+    <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-12 fade-in-up" style="animation-delay: 0.1s;">
+            <div class="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-red-600 to-orange-700 rounded-2xl mb-4 shadow-xl">
+                <span class="material-symbols-outlined text-white text-5xl">gpp_bad</span>
+            </div>
+            <h1 class="text-5xl font-black text-gray-900 mb-4">
+                Quality <span class="text-red-600">Gates</span>
+            </h1>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">Si no es seguro, no pasa. Control de calidad obligatorio en el pipeline</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+            <div class="bg-white rounded-2xl p-8 shadow-xl fade-in-up" style="animation-delay: 0.2s;">
+                <div class="flex items-center justify-center mb-8">
+                    <div class="relative">
+                        <div class="gate-stop w-32 h-32 bg-red-600 rounded-full flex items-center justify-center shadow-2xl">
+                            <span class="material-symbols-outlined text-white text-6xl">block</span>
                         </div>
-<h3 class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white leading-tight z-10">
-                            El código no avanza a la siguiente etapa si existen vulnerabilidades críticas detectadas.
-                        </h3>
-<div class="h-1 w-20 bg-primary rounded z-10"></div>
-<p class="text-sm text-stone-600 dark:text-stone-300 z-10">
-                            Sin excepciones. La deuda técnica de seguridad se paga antes del despliegue, no después.
-                        </p>
-</div>
-<!-- Additional Info / Context -->
-<div class="bg-stone-100 dark:bg-[#2a2515] rounded-xl p-6 border border-stone-200 dark:border-[#4a4221] flex-grow flex flex-col justify-center gap-4">
-<div class="flex items-start gap-3">
-<span class="material-symbols-outlined text-stone-500 mt-1">info</span>
-<div>
-<h4 class="font-bold text-slate-900 dark:text-white mb-1">¿Por qué bloqueamos?</h4>
-<p class="text-sm text-stone-600 dark:text-stone-400">
-                                    Corregir un error en la etapa de desarrollo cuesta <span class="text-primary font-bold">30x menos</span> que en producción. El Quality Gate es nuestro mecanismo de ahorro y protección.
-                                </p>
-</div>
-</div>
-</div>
-<!-- Conclusion Box (Success state) -->
-<div class="bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-200 dark:border-emerald-800 rounded-xl p-5 flex items-center gap-4 mt-auto">
-<div class="bg-emerald-100 dark:bg-emerald-800/40 p-2 rounded-full flex-shrink-0">
-<span class="material-symbols-outlined text-emerald-600 dark:text-emerald-400">check_circle</span>
-</div>
-<div>
-<p class="font-bold text-emerald-800 dark:text-emerald-100 text-lg leading-tight">
-                                La seguridad es un requisito funcional, no un añadido.
-                            </p>
-</div>
-</div>
-</div>
-</div>
-<!-- Footer Navigation -->
-<div class="flex justify-between items-center pt-8 border-t border-stone-200 dark:border-[#4a4221] mt-8">
-<button class="flex items-center gap-2 px-4 py-2 text-stone-500 hover:text-stone-900 dark:text-stone-400 dark:hover:text-white transition-colors">
-<span class="material-symbols-outlined">arrow_back</span>
-<span>Anterior</span>
-</button>
-<button class="group flex items-center gap-2 px-6 py-3 bg-primary text-stone-900 font-bold rounded-lg hover:bg-[#eec528] transition-colors shadow-lg shadow-primary/20">
-<span>Siguiente Tema</span>
-<span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
-</button>
-</div>
-</div>
-</main>
-<footer class="mt-auto py-6 border-t border-stone-200 dark:border-[#4a4221] bg-background-light dark:bg-[#1a170b]">
-<div class="max-w-[1024px] mx-auto px-4 text-center">
-<p class="text-xs text-stone-400 dark:text-stone-600">
-                © 2024 Corporación Universitaria Minuto de Dios - UNIMINUTO. Todos los derechos reservados.
-            </p>
-</div>
-</footer>
-</body></html>
+                        <div class="absolute -top-4 -right-4 bg-yellow-400 rounded-full p-2">
+                            <span class="material-symbols-outlined text-gray-900 text-2xl">warning</span>
+                        </div>
+                    </div>
+                </div>
+                <h2 class="text-2xl font-bold text-gray-900 mb-6 text-center">Criterios de Bloqueo</h2>
+                <div class="space-y-3">
+                    <div class="flex items-start gap-3 p-4 bg-red-50 rounded-xl border-l-4 border-red-500">
+                        <span class="text-xl">❌</span>
+                        <div>
+                            <h3 class="font-bold text-gray-900">Fallo en SAST</h3>
+                            <p class="text-sm text-gray-600">Vulnerabilidades de alta severidad detectadas</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3 p-4 bg-orange-50 rounded-xl border-l-4 border-orange-500">
+                        <span class="text-xl">❌</span>
+                        <div>
+                            <h3 class="font-bold text-gray-900">Dependencias Vulnerables</h3>
+                            <p class="text-sm text-gray-600">CVEs críticos en librerías de terceros</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3 p-4 bg-amber-50 rounded-xl border-l-4 border-amber-500">
+                        <span class="text-xl">❌</span>
+                        <div>
+                            <h3 class="font-bold text-gray-900">Cobertura Insuficiente</h3>
+                            <p class="text-sm text-gray-600">Menos del umbral mínimo de tests (ej: 80%)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-2xl p-8 shadow-xl fade-in-up" style="animation-delay: 0.3s;">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">¿Qué es un Quality Gate?</h2>
+                <p class="text-gray-700 mb-6 leading-relaxed">
+                    Un <span class="font-bold text-red-600">Quality Gate</span> es un punto de control obligatorio en el pipeline de CI/CD que evalúa si el código cumple con estándares mínimos de calidad y seguridad.
+                </p>
+                <div class="space-y-4">
+                    <div class="flex items-start gap-3">
+                        <div class="bg-green-100 p-2 rounded-lg">
+                            <span class="material-symbols-outlined text-green-600">check_circle</span>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-gray-900">Automático y Objetivo</h3>
+                            <p class="text-sm text-gray-600">Sin intervención humana, basado en métricas</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <div class="bg-blue-100 p-2 rounded-lg">
+                            <span class="material-symbols-outlined text-blue-600">policy</span>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-gray-900">Configurable por Proyecto</h3>
+                            <p class="text-sm text-gray-600">Umbrales adaptables según criticidad</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <div class="bg-purple-100 p-2 rounded-lg">
+                            <span class="material-symbols-outlined text-purple-600">block</span>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-gray-900">Bloquea el Deploy</h3>
+                            <p class="text-sm text-gray-600">No permite continuar si falla</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-gradient-to-r from-red-600 to-orange-600 rounded-2xl p-8 shadow-xl text-white text-center fade-in-up" style="animation-delay: 0.4s;">
+            <h3 class="text-3xl font-bold mb-3">Filosofía: "Fail Fast"</h3>
+            <p class="text-lg opacity-90">Detectar problemas temprano es 100x más barato que corregirlos en producción</p>
+        </div>
+    </div>
+</body>
+</html>

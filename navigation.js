@@ -147,6 +147,23 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 });
 
+// Listen for messages from iframes (for buttons inside slides)
+window.addEventListener('message', (event) => {
+    if (event.data && event.data.action) {
+        switch(event.data.action) {
+            case 'nextSlide':
+                nextSlide();
+                break;
+            case 'previousSlide':
+                previousSlide();
+                break;
+            case 'goHome':
+                goHome();
+                break;
+        }
+    }
+});
+
 // Prevent iframe from capturing keyboard events
 window.addEventListener('load', () => {
     const iframe = document.getElementById('slide-frame');
