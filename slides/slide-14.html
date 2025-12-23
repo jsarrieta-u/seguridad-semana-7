@@ -17,10 +17,39 @@
         .pulse-anim { animation: pulse 2s ease-in-out infinite; }
         .code-line { transition: all 0.3s ease; }
         .code-line:hover { background-color: rgba(250, 211, 56, 0.1); transform: translateX(5px); }
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .breadcrumb-item {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            color: #64748b;
+            font-size: 0.875rem;
+        }
     </style>
 </head>
 <body class="bg-gradient-to-br from-amber-50 to-yellow-100 p-8 min-h-screen">
     <div class="max-w-7xl mx-auto">
+        <!-- Breadcrumb -->
+        <nav class="breadcrumb fade-in-up" style="animation-delay: 0.1s;">
+            <span class="breadcrumb-item">
+                <span class="material-symbols-outlined text-sm">home</span>
+                Inicio
+            </span>
+            <span class="text-slate-300">/</span>
+            <span class="breadcrumb-item">
+                <span class="material-symbols-outlined text-sm">menu_book</span>
+                Capítulo 5
+            </span>
+            <span class="text-slate-300">/</span>
+            <span class="breadcrumb-item font-semibold text-amber-600">
+                Pruebas de Seguridad
+            </span>
+        </nav>
         <div class="text-center mb-12 fade-in-up" style="animation-delay: 0.1s;">
             <div class="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-amber-500 to-yellow-600 rounded-2xl mb-4 shadow-xl">
                 <span class="material-symbols-outlined text-white text-5xl">code</span>
@@ -68,7 +97,7 @@
                     <div class="code-line bg-gray-800 p-3 rounded border-l-4 border-red-500 relative">
                         <span class="text-white pl-4">query = </span>
                         <span class="text-green-400">"SELECT * FROM users WHERE..."</span>
-                        <span class="absolute -left-3 top-2 text-red-500 pulse-anim text-2xl">⚠️</span>
+                        <span class="absolute right-4 top-1/2 -translate-y-1/2 text-red-500 pulse-anim text-2xl">⚠️</span>
                     </div>
                     <div class="code-line bg-gray-800 p-3 rounded border-l-4 border-gray-700">
                         <span class="text-white pl-4">db.</span>

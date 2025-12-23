@@ -15,10 +15,39 @@
         @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.6; } }
         .fade-in-up { animation: fadeInUp 0.6s ease-out forwards; }
         .pulse-anim { animation: pulse 2s infinite; }
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .breadcrumb-item {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            color: #64748b;
+            font-size: 0.875rem;
+        }
     </style>
 </head>
 <body class="bg-gradient-to-br from-purple-50 to-pink-100 p-8 min-h-screen">
     <div class="max-w-7xl mx-auto">
+        <!-- Breadcrumb -->
+        <nav class="breadcrumb fade-in-up" style="animation-delay: 0.1s;">
+            <span class="breadcrumb-item">
+                <span class="material-symbols-outlined text-sm">home</span>
+                Inicio
+            </span>
+            <span class="text-slate-300">/</span>
+            <span class="breadcrumb-item">
+                <span class="material-symbols-outlined text-sm">menu_book</span>
+                Capítulo 6
+            </span>
+            <span class="text-slate-300">/</span>
+            <span class="breadcrumb-item font-semibold text-purple-600">
+                Caso de Estudio
+            </span>
+        </nav>
         <div class="text-center mb-8 fade-in-up" style="animation-delay: 0.1s;">
             <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-xl mb-4 shadow-xl">
                 <span class="material-symbols-outlined text-white text-4xl">code_blocks</span>
@@ -52,38 +81,38 @@
                     <span class="bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full">VULNERABLE</span>
                 </div>
 
-                <div class="p-6 font-mono text-sm space-y-1 overflow-x-auto">
-                    <div class="flex gap-4 text-gray-500">
+                <div class="p-6 font-mono text-sm space-y-1 overflow-x-auto text-gray-200">
+                    <div class="flex gap-4 text-gray-400">
                         <span class="select-none w-6 text-right">10</span>
-                        <span class="text-gray-500">// Authenticate user by ID</span>
+                        <span class="text-gray-400">// Authenticate user by ID</span>
                     </div>
                     <div class="flex gap-4">
-                        <span class="text-gray-600 select-none w-6 text-right">11</span>
-                        <span><span class="text-purple-400">public</span> <span class="text-yellow-400">String</span> <span class="text-blue-400">getUser</span>(<span class="text-yellow-400">String</span> userId) {</span>
+                        <span class="text-gray-400 select-none w-6 text-right">11</span>
+                        <span><span class="text-purple-300">public</span> <span class="text-yellow-300">String</span> <span class="text-blue-300">getUser</span>(<span class="text-yellow-300">String</span> userId) {</span>
                     </div>
-                    <div class="flex gap-4 bg-red-900/30 -mx-6 px-6 py-2 border-l-4 border-red-500 relative">
-                        <span class="text-gray-600 select-none w-6 text-right">12</span>
+                    <div class="flex gap-4 bg-red-900/40 -mx-6 px-6 py-2 border-l-4 border-red-500 relative">
+                        <span class="text-gray-300 select-none w-6 text-right">12</span>
                         <div class="flex-1">
-                            <span class="text-yellow-400">String</span> query = <span class="text-green-400">"SELECT * FROM users WHERE id = '"</span> + userId + <span class="text-green-400">"'"</span>;
+                            <span class="text-yellow-300">String</span> query = <span class="text-green-300">"SELECT * FROM users WHERE id = '"</span> + userId + <span class="text-green-300">"'"</span>;
                             <div class="absolute right-4 top-1/2 -translate-y-1/2 pulse-anim">
                                 <span class="material-symbols-outlined text-red-400 text-2xl">warning</span>
                             </div>
                         </div>
                     </div>
                     <div class="flex gap-4">
-                        <span class="text-gray-600 select-none w-6 text-right">13</span>
-                        <span class="pl-4"><span class="text-yellow-400">Statement</span> stmt = connection.<span class="text-blue-400">createStatement</span>();</span>
+                        <span class="text-gray-400 select-none w-6 text-right">13</span>
+                        <span class="pl-4"><span class="text-yellow-300">Statement</span> stmt = connection.<span class="text-blue-300">createStatement</span>();</span>
                     </div>
                     <div class="flex gap-4">
-                        <span class="text-gray-600 select-none w-6 text-right">14</span>
-                        <span class="pl-4"><span class="text-yellow-400">ResultSet</span> rs = stmt.<span class="text-blue-400">executeQuery</span>(query);</span>
+                        <span class="text-gray-400 select-none w-6 text-right">14</span>
+                        <span class="pl-4"><span class="text-yellow-300">ResultSet</span> rs = stmt.<span class="text-blue-300">executeQuery</span>(query);</span>
                     </div>
                     <div class="flex gap-4">
-                        <span class="text-gray-600 select-none w-6 text-right">15</span>
-                        <span class="pl-4"><span class="text-purple-400">return</span> rs.<span class="text-blue-400">toString</span>();</span>
+                        <span class="text-gray-400 select-none w-6 text-right">15</span>
+                        <span class="pl-4"><span class="text-purple-300">return</span> rs.<span class="text-blue-300">toString</span>();</span>
                     </div>
                     <div class="flex gap-4">
-                        <span class="text-gray-600 select-none w-6 text-right">16</span>
+                        <span class="text-gray-400 select-none w-6 text-right">16</span>
                         <span>}</span>
                     </div>
                 </div>
@@ -105,37 +134,37 @@
                     <span class="bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-full">SECURE</span>
                 </div>
 
-                <div class="p-6 font-mono text-sm space-y-1 overflow-x-auto">
+                <div class="p-6 font-mono text-sm space-y-1 overflow-x-auto text-gray-200">
                     <div class="flex gap-4 text-gray-400">
                         <span class="select-none w-6 text-right">10</span>
                         <span class="text-gray-400">// Authenticate user using PreparedStatement</span>
                     </div>
                     <div class="flex gap-4">
-                        <span class="text-gray-500 select-none w-6 text-right">11</span>
+                        <span class="text-gray-400 select-none w-6 text-right">11</span>
                         <span><span class="text-purple-300">public</span> <span class="text-yellow-300">String</span> <span class="text-blue-300">getUser</span>(<span class="text-yellow-300">String</span> userId) {</span>
                     </div>
                     <div class="flex gap-4 bg-green-900/40 -mx-6 px-6 py-2 border-l-4 border-green-500">
-                        <span class="text-gray-500 select-none w-6 text-right">12</span>
+                        <span class="text-gray-400 select-none w-6 text-right">12</span>
                         <span><span class="text-yellow-300">String</span> query = <span class="text-green-300">"SELECT * FROM users WHERE id = ?"</span>;</span>
                     </div>
                     <div class="flex gap-4 bg-green-900/40 -mx-6 px-6 py-2 border-l-4 border-green-500">
-                        <span class="text-gray-500 select-none w-6 text-right">13</span>
+                        <span class="text-gray-400 select-none w-6 text-right">13</span>
                         <span class="pl-4"><span class="text-yellow-300">PreparedStatement</span> pstmt = connection.<span class="text-blue-300">prepareStatement</span>(query);</span>
                     </div>
                     <div class="flex gap-4 bg-green-900/40 -mx-6 px-6 py-2 border-l-4 border-green-500">
-                        <span class="text-gray-500 select-none w-6 text-right">14</span>
+                        <span class="text-gray-400 select-none w-6 text-right">14</span>
                         <span class="pl-4">pstmt.<span class="text-blue-300">setString</span>(<span class="text-orange-300">1</span>, userId);</span>
                     </div>
                     <div class="flex gap-4">
-                        <span class="text-gray-500 select-none w-6 text-right">15</span>
+                        <span class="text-gray-400 select-none w-6 text-right">15</span>
                         <span class="pl-4"><span class="text-yellow-300">ResultSet</span> rs = pstmt.<span class="text-blue-300">executeQuery</span>();</span>
                     </div>
                     <div class="flex gap-4">
-                        <span class="text-gray-500 select-none w-6 text-right">16</span>
+                        <span class="text-gray-400 select-none w-6 text-right">16</span>
                         <span class="pl-4"><span class="text-purple-300">return</span> rs.<span class="text-blue-300">toString</span>();</span>
                     </div>
                     <div class="flex gap-4">
-                        <span class="text-gray-500 select-none w-6 text-right">17</span>
+                        <span class="text-gray-400 select-none w-6 text-right">17</span>
                         <span>}</span>
                     </div>
                 </div>

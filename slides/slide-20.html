@@ -15,10 +15,39 @@
         @keyframes slideIn { from { opacity: 0; transform: translateX(-20px); } to { opacity: 1; transform: translateX(0); } }
         .fade-in-up { animation: fadeInUp 0.6s ease-out forwards; }
         .slide-in { animation: slideIn 0.6s ease-out forwards; }
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .breadcrumb-item {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            color: #64748b;
+            font-size: 0.875rem;
+        }
     </style>
 </head>
 <body class="bg-gradient-to-br from-teal-50 to-cyan-100 p-8 min-h-screen">
     <div class="max-w-7xl mx-auto">
+        <!-- Breadcrumb -->
+        <nav class="breadcrumb fade-in-up" style="animation-delay: 0.1s;">
+            <span class="breadcrumb-item">
+                <span class="material-symbols-outlined text-sm">home</span>
+                Inicio
+            </span>
+            <span class="text-slate-300">/</span>
+            <span class="breadcrumb-item">
+                <span class="material-symbols-outlined text-sm">menu_book</span>
+                Capítulo 6
+            </span>
+            <span class="text-slate-300">/</span>
+            <span class="breadcrumb-item font-semibold text-teal-600">
+                Caso de Estudio
+            </span>
+        </nav>
         <div class="text-center mb-8 fade-in-up" style="animation-delay: 0.1s;">
             <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-teal-500 to-cyan-600 rounded-xl mb-4 shadow-xl">
                 <span class="material-symbols-outlined text-white text-4xl">sync</span>
@@ -39,42 +68,42 @@
                     <span class="bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase">Antes</span>
                 </div>
 
-                <div class="p-6 font-mono text-sm space-y-2">
-                    <div class="flex gap-4 text-gray-500">
+                <div class="p-6 font-mono text-sm space-y-2 text-gray-200">
+                    <div class="flex gap-4 text-gray-400">
                         <span class="select-none w-8 text-right">10</span>
                         <span>// Update Log4j dependency</span>
                     </div>
-                    <div class="flex gap-4 bg-red-900/30 -mx-6 px-6 py-2 border-l-4 border-red-500">
-                        <span class="text-gray-600 select-none w-8 text-right">11</span>
-                        <span>&lt;groupId&gt;<span class="text-green-400">org.apache.logging.log4j</span>&lt;/groupId&gt;</span>
+                    <div class="flex gap-4 bg-red-900/40 -mx-6 px-6 py-2 border-l-4 border-red-500">
+                        <span class="text-gray-400 select-none w-8 text-right">11</span>
+                        <span>&lt;groupId&gt;<span class="text-green-300">org.apache.logging.log4j</span>&lt;/groupId&gt;</span>
                     </div>
-                    <div class="flex gap-4 bg-red-900/30 -mx-6 px-6 py-2 border-l-4 border-red-500">
-                        <span class="text-gray-600 select-none w-8 text-right">12</span>
-                        <span>&lt;artifactId&gt;<span class="text-green-400">log4j-core</span>&lt;/artifactId&gt;</span>
+                    <div class="flex gap-4 bg-red-900/40 -mx-6 px-6 py-2 border-l-4 border-red-500">
+                        <span class="text-gray-400 select-none w-8 text-right">12</span>
+                        <span>&lt;artifactId&gt;<span class="text-green-300">log4j-core</span>&lt;/artifactId&gt;</span>
                     </div>
-                    <div class="flex gap-4 bg-red-900/30 -mx-6 px-6 py-2 border-l-4 border-red-500">
-                        <span class="text-gray-600 select-none w-8 text-right">13</span>
-                        <span>&lt;version&gt;<span class="text-red-400 font-bold">2.14.1</span>&lt;/version&gt;</span>
+                    <div class="flex gap-4 bg-red-900/40 -mx-6 px-6 py-2 border-l-4 border-red-500">
+                        <span class="text-gray-400 select-none w-8 text-right">13</span>
+                        <span>&lt;version&gt;<span class="text-red-300 font-bold">2.14.1</span>&lt;/version&gt;</span>
                     </div>
                     <div class="h-4"></div>
-                    <div class="flex gap-4 text-gray-500">
+                    <div class="flex gap-4 text-gray-400">
                         <span class="select-none w-8 text-right">14</span>
                         <span>// SQL Query vulnerable</span>
                     </div>
                     <div class="flex gap-4">
-                        <span class="text-gray-600 select-none w-8 text-right">15</span>
-                        <span><span class="text-purple-400">public String</span> <span class="text-blue-400">getUser</span>(<span class="text-yellow-400">String</span> id) {</span>
+                        <span class="text-gray-400 select-none w-8 text-right">15</span>
+                        <span><span class="text-purple-300">public String</span> <span class="text-blue-300">getUser</span>(<span class="text-yellow-300">String</span> id) {</span>
                     </div>
-                    <div class="flex gap-4 bg-red-900/30 -mx-6 px-6 py-2 border-l-4 border-red-500">
-                        <span class="text-gray-600 select-none w-8 text-right">16</span>
-                        <span class="pl-4"><span class="text-yellow-400">String</span> query = <span class="text-green-400">"SELECT * FROM users WHERE id='"</span></span>
+                    <div class="flex gap-4 bg-red-900/40 -mx-6 px-6 py-2 border-l-4 border-red-500">
+                        <span class="text-gray-400 select-none w-8 text-right">16</span>
+                        <span class="pl-4"><span class="text-yellow-300">String</span> query = <span class="text-green-300">"SELECT * FROM users WHERE id='"</span></span>
                     </div>
-                    <div class="flex gap-4 bg-red-900/30 -mx-6 px-6 py-2 border-l-4 border-red-500">
-                        <span class="text-gray-600 select-none w-8 text-right">17</span>
-                        <span class="pl-4 pl-12">+ id + <span class="text-green-400">"'"</span>;</span>
+                    <div class="flex gap-4 bg-red-900/40 -mx-6 px-6 py-2 border-l-4 border-red-500">
+                        <span class="text-gray-400 select-none w-8 text-right">17</span>
+                        <span class="pl-4 pl-12">+ id + <span class="text-green-300">"'"</span>;</span>
                     </div>
                     <div class="flex gap-4">
-                        <span class="text-gray-600 select-none w-8 text-right">18</span>
+                        <span class="text-gray-400 select-none w-8 text-right">18</span>
                         <span>}</span>
                     </div>
                 </div>
@@ -100,21 +129,21 @@
                     <span class="bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase">Después</span>
                 </div>
 
-                <div class="p-6 font-mono text-sm space-y-2">
+                <div class="p-6 font-mono text-sm space-y-2 text-gray-200">
                     <div class="flex gap-4 text-gray-400">
                         <span class="select-none w-8 text-right">10</span>
                         <span>// Updated to secure version</span>
                     </div>
                     <div class="flex gap-4 bg-green-900/40 -mx-6 px-6 py-2 border-l-4 border-green-500">
-                        <span class="text-gray-500 select-none w-8 text-right">11</span>
+                        <span class="text-gray-400 select-none w-8 text-right">11</span>
                         <span>&lt;groupId&gt;<span class="text-green-300">org.apache.logging.log4j</span>&lt;/groupId&gt;</span>
                     </div>
                     <div class="flex gap-4 bg-green-900/40 -mx-6 px-6 py-2 border-l-4 border-green-500">
-                        <span class="text-gray-500 select-none w-8 text-right">12</span>
+                        <span class="text-gray-400 select-none w-8 text-right">12</span>
                         <span>&lt;artifactId&gt;<span class="text-green-300">log4j-core</span>&lt;/artifactId&gt;</span>
                     </div>
                     <div class="flex gap-4 bg-green-900/40 -mx-6 px-6 py-2 border-l-4 border-green-500">
-                        <span class="text-gray-500 select-none w-8 text-right">13</span>
+                        <span class="text-gray-400 select-none w-8 text-right">13</span>
                         <span>&lt;version&gt;<span class="text-green-300 font-bold">2.17.1</span>&lt;/version&gt;</span>
                     </div>
                     <div class="h-4"></div>
@@ -123,23 +152,23 @@
                         <span>// Using PreparedStatement</span>
                     </div>
                     <div class="flex gap-4">
-                        <span class="text-gray-500 select-none w-8 text-right">15</span>
+                        <span class="text-gray-400 select-none w-8 text-right">15</span>
                         <span><span class="text-purple-300">public String</span> <span class="text-blue-300">getUser</span>(<span class="text-yellow-300">String</span> id) {</span>
                     </div>
                     <div class="flex gap-4 bg-green-900/40 -mx-6 px-6 py-2 border-l-4 border-green-500">
-                        <span class="text-gray-500 select-none w-8 text-right">16</span>
+                        <span class="text-gray-400 select-none w-8 text-right">16</span>
                         <span class="pl-4"><span class="text-yellow-300">String</span> q = <span class="text-green-300">"SELECT * FROM users WHERE id=?"</span>;</span>
                     </div>
                     <div class="flex gap-4 bg-green-900/40 -mx-6 px-6 py-2 border-l-4 border-green-500">
-                        <span class="text-gray-500 select-none w-8 text-right">17</span>
+                        <span class="text-gray-400 select-none w-8 text-right">17</span>
                         <span class="pl-4"><span class="text-yellow-300">PreparedStatement</span> ps = conn.<span class="text-blue-300">prepareStatement</span>(q);</span>
                     </div>
                     <div class="flex gap-4 bg-green-900/40 -mx-6 px-6 py-2 border-l-4 border-green-500">
-                        <span class="text-gray-500 select-none w-8 text-right">18</span>
+                        <span class="text-gray-400 select-none w-8 text-right">18</span>
                         <span class="pl-4">ps.<span class="text-blue-300">setString</span>(<span class="text-orange-300">1</span>, id);</span>
                     </div>
                     <div class="flex gap-4">
-                        <span class="text-gray-500 select-none w-8 text-right">19</span>
+                        <span class="text-gray-400 select-none w-8 text-right">19</span>
                         <span>}</span>
                     </div>
                 </div>

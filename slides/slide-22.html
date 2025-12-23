@@ -12,6 +12,19 @@
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
         .fade-in-up { animation: fadeInUp 0.6s ease-out forwards; }
         .apa-reference { padding-left: 2rem; text-indent: -2rem; }
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .breadcrumb-item {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            color: #64748b;
+            font-size: 0.875rem;
+        }
     </style>
 </head>
 <body class="bg-gradient-to-br from-slate-50 to-gray-100 min-h-screen">
@@ -25,6 +38,22 @@
     </div>
 
     <div class="max-w-5xl mx-auto px-8 py-12">
+        <!-- Breadcrumb -->
+        <nav class="breadcrumb fade-in-up" style="animation-delay: 0.1s;">
+            <span class="breadcrumb-item">
+                <span class="material-symbols-outlined text-sm">home</span>
+                Inicio
+            </span>
+            <span class="text-slate-300">/</span>
+            <span class="breadcrumb-item">
+                <span class="material-symbols-outlined text-sm">menu_book</span>
+                Capítulo 7
+            </span>
+            <span class="text-slate-300">/</span>
+            <span class="breadcrumb-item font-semibold text-blue-900">
+                Conclusiones y Referencias
+            </span>
+        </nav>
         <!-- Conclusiones Section -->
         <div class="mb-16 fade-in-up" style="animation-delay: 0.1s;">
             <h2 class="text-blue-900 text-5xl font-black mb-6">Conclusiones</h2>
@@ -121,7 +150,7 @@
                     <span>Volver al Inicio</span>
                 </button>
 
-                <p class="text-sm opacity-75 mt-2">© 2024 UNIMINUTO - Todos los derechos reservados</p>
+                <p class="text-sm opacity-75 mt-2">© 2025 UNIMINUTO - Todos los derechos reservados</p>
             </div>
         </div>
 
