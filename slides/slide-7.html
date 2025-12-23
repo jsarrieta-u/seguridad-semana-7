@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Profundizando en BSIMM - UNIMINUTO</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#003366", // UNIMINUTO Blue
+                        "primary-light": "#2d5d8f",
+                        "background-light": "#ffffff",
+                        "background-dark": "#0f1923",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "sans": ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 6px -1px rgba(0, 51, 102, 0.05), 0 2px 4px -1px rgba(0, 51, 102, 0.03)',
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
+        .icon-filled {
+            font-variation-settings:
+            'FILL' 1,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 flex min-h-screen overflow-x-hidden transition-colors duration-300">
+<!-- Sidebar / Vertical Strip Container -->
+<div class="fixed left-0 top-0 bottom-0 z-20 flex h-screen w-24 flex-col items-center">
+<!-- 8px Corporate Blue Bar -->
+<div class="absolute left-0 top-0 h-full w-2 bg-primary"></div>
+<!-- Sidebar Content Area with Subtle Gradient -->
+<div class="flex h-full w-full flex-col items-center pt-12 bg-gradient-to-r from-slate-50 to-white dark:from-slate-900 dark:to-background-dark">
+<!-- Microscope Icon (Observation Concept) -->
+<div class="ml-2 flex h-14 w-14 items-center justify-center rounded-full bg-primary/10 text-primary mb-8">
+<span class="material-symbols-outlined text-3xl" data-alt="Microscope icon representing observation">biotech</span>
+</div>
+<!-- Decorative vertical line (fading) -->
+<div class="ml-2 h-32 w-[1px] bg-gradient-to-b from-primary/20 to-transparent"></div>
+</div>
+</div>
+<!-- Main Content Area -->
+<main class="ml-24 flex w-full flex-col min-h-screen pl-8 pr-12 py-10 lg:pl-16 lg:pr-24 lg:py-16">
+<!-- Header Section -->
+<header class="mb-10 max-w-4xl relative">
+<div class="absolute -left-16 top-2 text-primary/10 -z-10 select-none hidden lg:block">
+<span class="material-symbols-outlined text-[120px]" style="font-weight: 700;">visibility</span>
+</div>
+<h1 class="text-primary dark:text-white text-4xl lg:text-5xl font-bold leading-tight tracking-tight mb-6">
+                BSIMM: La Ciencia de la Observación
+            </h1>
+</header>
+<!-- Body Text Section -->
+<section class="mb-14 max-w-4xl">
+<div class="space-y-4 text-base lg:text-lg text-slate-700 dark:text-slate-300 font-normal leading-relaxed">
+<p>
+                    BSIMM (Building Security In Maturity Model) es un modelo <strong class="text-primary dark:text-blue-300 font-semibold">descriptivo, no prescriptivo</strong>. Se fundamenta en la ciencia de la observación directa: documentar y analizar las prácticas de seguridad de software que realmente funcionan en organizaciones líderes, en lugar de dictar una teoría abstracta sobre lo que "debería" hacerse.
+                </p>
+<p>
+                    A diferencia de otros marcos teóricos, BSIMM actúa como un 'microscopio' científico que recopila datos reales de cientos de empresas para cuantificar la madurez. Esto permite a las organizaciones comparar su postura de seguridad con la de sus pares y priorizar esfuerzos basados en evidencia empírica sólida.
+                </p>
+</div>
+</section>
+<!-- Feature Section: Los 4 Dominios -->
+<section class="w-full mb-auto">
+<div class="flex items-center gap-3 mb-6">
+<span class="h-px w-8 bg-primary/30"></span>
+<h2 class="text-primary dark:text-white text-2xl font-bold tracking-tight">Los 4 Dominios del BSIMM</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+<!-- Domain 1: Gobernanza -->
+<div class="group flex flex-col p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:border-primary/40 hover:shadow-soft transition-all duration-300">
+<div class="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined">gavel</span>
+</div>
+<h3 class="text-primary dark:text-white text-lg font-bold mb-2">Gobernanza</h3>
+<p class="text-slate-600 dark:text-slate-400 text-sm leading-snug">
+                        Estrategia, métricas, cumplimiento y formación. Define cómo se gestiona, organiza y mide la seguridad desde la dirección.
+                    </p>
+</div>
+<!-- Domain 2: Inteligencia -->
+<div class="group flex flex-col p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:border-primary/40 hover:shadow-soft transition-all duration-300">
+<div class="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined">psychology</span>
+</div>
+<h3 class="text-primary dark:text-white text-lg font-bold mb-2">Inteligencia</h3>
+<p class="text-slate-600 dark:text-slate-400 text-sm leading-snug">
+                        Modelos de ataque y características de seguridad. Enfocado en el conocimiento proactivo de las amenazas y estándares.
+                    </p>
+</div>
+<!-- Domain 3: SSDL Touchpoints -->
+<div class="group flex flex-col p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:border-primary/40 hover:shadow-soft transition-all duration-300">
+<div class="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined">integration_instructions</span>
+</div>
+<h3 class="text-primary dark:text-white text-lg font-bold mb-2">SSDL Touchpoints</h3>
+<p class="text-slate-600 dark:text-slate-400 text-sm leading-snug">
+                        Análisis de arquitectura y revisión de código. Integra prácticas de seguridad específicas en el ciclo de desarrollo.
+                    </p>
+</div>
+<!-- Domain 4: Despliegue -->
+<div class="group flex flex-col p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:border-primary/40 hover:shadow-soft transition-all duration-300">
+<div class="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary group-hover:bg-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined">rocket_launch</span>
+</div>
+<h3 class="text-primary dark:text-white text-lg font-bold mb-2">Despliegue</h3>
+<p class="text-slate-600 dark:text-slate-400 text-sm leading-snug">
+                        Gestión de configuración, pruebas de vulnerabilidad y seguridad en la operación del entorno productivo.
+                    </p>
+</div>
+</div>
+</section>
+<!-- Footer Section -->
+<footer class="mt-12 border-t border-slate-100 dark:border-slate-800 pt-6 flex flex-col md:flex-row justify-between items-center text-sm text-primary/70 dark:text-slate-500">
+<div class="flex items-center gap-2">
+<span class="font-medium">Fuente:</span> Synopsys (2024). BSIMM14 Trends &amp; Insights.
+            </div>
+<div class="flex items-center gap-6 mt-4 md:mt-0">
+<span>© 2024 UNIMINUTO Digital Booklet</span>
+<span class="bg-primary/5 px-3 py-1 rounded font-bold text-primary dark:text-blue-300">Slide 22</span>
+</div>
+</footer>
+</main>
+<!-- Navigation Overlay (Optional for booklet feel) -->
+<div class="fixed right-6 bottom-6 flex gap-2">
+<button aria-label="Previous Slide" class="h-10 w-10 flex items-center justify-center rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 shadow-sm text-primary hover:bg-slate-50 transition-colors">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button aria-label="Next Slide" class="h-10 w-10 flex items-center justify-center rounded-full bg-primary text-white shadow-md hover:bg-primary-light transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</body></html>

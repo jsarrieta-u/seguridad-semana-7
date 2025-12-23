@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Paso 4 - Testing Dinámico</title>
+<!-- Google Fonts: Inter and Material Symbols -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS with Config -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0d7ff2",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom checkbox style adaptation */
+        .custom-checkbox:checked {
+            background-color: #0d7ff2;
+            border-color: #0d7ff2;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-[#0d141c] flex flex-col min-h-screen">
+<!-- Top Navigation -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#e7edf4] px-10 py-4 bg-white dark:bg-[#1a2634] dark:border-b-[#2a3644]">
+<div class="flex items-center gap-4 text-[#0d141c] dark:text-white">
+<div class="size-8 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-3xl">security</span>
+</div>
+<h2 class="text-lg font-bold leading-tight tracking-[-0.015em]">UNIMINUTO SDLC Security</h2>
+</div>
+<div class="flex flex-1 justify-end gap-8 items-center">
+<div class="hidden md:flex items-center gap-9">
+<a class="text-[#0d141c] dark:text-gray-200 text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Inicio</a>
+<a class="text-[#0d141c] dark:text-gray-200 text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Guía</a>
+<a class="text-primary text-sm font-bold leading-normal" href="#">Casos</a>
+<a class="text-[#0d141c] dark:text-gray-200 text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Recursos</a>
+</div>
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-10 border-2 border-slate-100 dark:border-slate-700" data-alt="User profile avatar placeholder" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC2Nov6YqLadqgRN68ZPtCQPxxlS1pjqsrVgcil8kWQCVdQ4c5SBhnmC1II7xpAnuRq-AcZ5QG4lVZNFeR57_nSNqUzVtKyxYuqHieybhw-Ra8N-KRRym8HJlgZX20guEap1rtCmdKKTuR9bzF_58yF_-kiob8nGy_31UqrZq6lYNmvCZPDHzwGdQC7CxDHDO2yyRFMPWB2WOojVtoB1zMPpQjqHy8ZGHdgdf5PQogXLm9PV2b9H3hdnKcb_fkQ1s_PLN0zOdQcxWYL");'>
+</div>
+</div>
+</header>
+<!-- Main Content Slide Area -->
+<main class="flex-grow flex flex-col items-center justify-center p-6 md:p-12 lg:px-24">
+<div class="w-full max-w-6xl bg-white dark:bg-[#1a2634] rounded-2xl shadow-sm border border-[#e7edf4] dark:border-[#2a3644] overflow-hidden flex flex-col min-h-[600px]">
+<!-- Slide Header -->
+<div class="px-8 pt-10 pb-2">
+<span class="inline-block py-1 px-3 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider mb-4">Caso de Estudio Práctico</span>
+<h1 class="text-primary text-5xl font-bold leading-tight tracking-tight">Paso 4: Validación con DAST</h1>
+</div>
+<!-- Slide Content Grid -->
+<div class="flex flex-col lg:flex-row flex-1 p-8 gap-12">
+<!-- Left Column: Description -->
+<div class="flex-1 flex flex-col gap-6 justify-center">
+<p class="text-[#0d141c] dark:text-gray-300 text-base font-normal leading-relaxed text-lg">
+                        Se ejecutaron pruebas de seguridad dinámicas (DAST) utilizando la herramienta <span class="font-semibold text-primary">OWASP ZAP</span> para simular ataques externos sobre la aplicación en ejecución.
+                    </p>
+<p class="text-[#0d141c] dark:text-gray-300 text-base font-normal leading-relaxed text-lg">
+                        El objetivo fue identificar vulnerabilidades en tiempo real sin acceso al código fuente, analizando las respuestas del servidor ante entradas maliciosas y asegurando que los mecanismos de defensa respondan adecuadamente ante vectores de ataque comunes.
+                    </p>
+<!-- Decorative Visual: Abstract representation of scanning -->
+<div class="mt-4 h-32 w-full rounded-xl bg-gradient-to-r from-slate-50 to-slate-100 dark:from-slate-800 dark:to-slate-900 border border-slate-200 dark:border-slate-700 flex items-center justify-center gap-4 relative overflow-hidden group">
+<div class="absolute inset-0 opacity-10 bg-[radial-gradient(#0d7ff2_1px,transparent_1px)] [background-size:16px_16px]"></div>
+<div class="flex items-center gap-2 z-10">
+<span class="material-symbols-outlined text-primary text-4xl animate-pulse">radar</span>
+<span class="text-sm font-medium text-slate-500 dark:text-slate-400">Escaneo Activo...</span>
+</div>
+</div>
+</div>
+<!-- Right Column: Checklists & Results -->
+<div class="flex-1 flex flex-col gap-6">
+<!-- Test Scenarios Card -->
+<div class="bg-slate-50 dark:bg-[#202d3b] rounded-xl border border-slate-200 dark:border-slate-700 p-6 shadow-sm">
+<div class="flex items-center gap-2 mb-4 pb-2 border-b border-slate-200 dark:border-slate-700">
+<span class="material-symbols-outlined text-slate-500">checklist</span>
+<h3 class="text-lg font-bold text-[#0d141c] dark:text-white">Escenarios de Prueba</h3>
+</div>
+<div class="space-y-4">
+<label class="flex gap-x-3 items-start group cursor-pointer">
+<div class="relative flex items-center">
+<input checked="" class="peer h-5 w-5 cursor-pointer appearance-none rounded border border-slate-300 bg-white checked:border-primary checked:bg-primary focus:ring-2 focus:ring-primary/20 dark:border-slate-600 dark:bg-slate-700 transition-all" disabled="" type="checkbox"/>
+<span class="absolute text-white opacity-0 peer-checked:opacity-100 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none">
+<svg class="h-3.5 w-3.5" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path clip-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" fill-rule="evenodd"></path></svg>
+</span>
+</div>
+<div class="flex flex-col">
+<span class="text-base font-medium text-slate-800 dark:text-slate-200">Inyección SQL en campos de login</span>
+<span class="text-sm text-slate-500 dark:text-slate-400">Verificación de sanitización de inputs</span>
+</div>
+</label>
+<label class="flex gap-x-3 items-start group cursor-pointer">
+<div class="relative flex items-center">
+<input checked="" class="peer h-5 w-5 cursor-pointer appearance-none rounded border border-slate-300 bg-white checked:border-primary checked:bg-primary focus:ring-2 focus:ring-primary/20 dark:border-slate-600 dark:bg-slate-700 transition-all" disabled="" type="checkbox"/>
+<span class="absolute text-white opacity-0 peer-checked:opacity-100 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none">
+<svg class="h-3.5 w-3.5" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path clip-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" fill-rule="evenodd"></path></svg>
+</span>
+</div>
+<div class="flex flex-col">
+<span class="text-base font-medium text-slate-800 dark:text-slate-200">Intentos de escape de contexto (XSS)</span>
+<span class="text-sm text-slate-500 dark:text-slate-400">Pruebas en formularios de comentarios</span>
+</div>
+</label>
+<label class="flex gap-x-3 items-start group cursor-pointer">
+<div class="relative flex items-center">
+<input checked="" class="peer h-5 w-5 cursor-pointer appearance-none rounded border border-slate-300 bg-white checked:border-primary checked:bg-primary focus:ring-2 focus:ring-primary/20 dark:border-slate-600 dark:bg-slate-700 transition-all" disabled="" type="checkbox"/>
+<span class="absolute text-white opacity-0 peer-checked:opacity-100 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none">
+<svg class="h-3.5 w-3.5" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path clip-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" fill-rule="evenodd"></path></svg>
+</span>
+</div>
+<div class="flex flex-col">
+<span class="text-base font-medium text-slate-800 dark:text-slate-200">Validación de respuestas de error</span>
+<span class="text-sm text-slate-500 dark:text-slate-400">Prevención de fuga de información técnica</span>
+</div>
+</label>
+</div>
+</div>
+<!-- Success Badge -->
+<div class="mt-auto">
+<div class="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg p-4 flex items-center justify-between shadow-sm group hover:shadow-md transition-shadow duration-300">
+<div class="flex items-center gap-3">
+<div class="bg-green-100 dark:bg-green-900 rounded-full p-2 flex items-center justify-center">
+<span class="material-symbols-outlined text-green-600 dark:text-green-400">verified_user</span>
+</div>
+<div>
+<p class="text-green-800 dark:text-green-300 font-bold text-lg">Vulnerabilidad Resuelta</p>
+<p class="text-green-600 dark:text-green-400 text-sm">Validación de seguridad exitosa</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-green-400 dark:text-green-600 text-4xl opacity-50">check_circle</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Slide Footer / Pagination -->
+<div class="bg-slate-50 dark:bg-[#15202b] px-8 py-4 border-t border-slate-100 dark:border-slate-700 flex justify-between items-center">
+<div class="text-sm text-slate-500 dark:text-slate-400 font-medium">
+                    Diapositiva 4 de 22
+                </div>
+<div class="flex gap-2">
+<button class="flex items-center justify-center gap-1 px-4 py-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors">
+<span class="material-symbols-outlined text-lg">arrow_back</span>
+                        Anterior
+                    </button>
+<button class="flex items-center justify-center gap-1 px-4 py-2 rounded-lg bg-primary text-white hover:bg-blue-600 transition-colors shadow-sm shadow-blue-200 dark:shadow-none">
+                        Siguiente
+                        <span class="material-symbols-outlined text-lg">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+</body></html>

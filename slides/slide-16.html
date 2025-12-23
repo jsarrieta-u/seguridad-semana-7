@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Tabla Comparativa SAST vs DAST - UNIMINUTO</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#003366", // Corporate Blue
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#0f1923",
+                        "row-odd": "#F5F5F5",
+                        "border-gray": "#CCCCCC",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "body": ["Noto Sans", "sans-serif"],
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="relative flex h-auto min-h-screen w-full flex-col bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display transition-colors duration-200">
+<!-- Layout Container -->
+<div class="layout-container flex h-full grow flex-col">
+<!-- Main Content Area -->
+<div class="flex flex-1 justify-center py-5 px-4 md:px-10 lg:px-40">
+<div class="layout-content-container flex flex-col w-full max-w-[960px] flex-1 gap-8">
+<!-- Page Heading -->
+<header class="flex flex-col gap-2 pt-4">
+<div class="flex flex-col gap-1">
+<!-- Primary Corporate Title -->
+<h1 class="text-primary dark:text-blue-400 text-5xl font-bold leading-tight tracking-[-0.02em]">
+                            Comparativa Técnica
+                        </h1>
+<!-- Subtitle -->
+<p class="text-[#4573a1] dark:text-slate-400 text-lg font-normal leading-normal">
+                            Análisis Técnico (SAST vs DAST)
+                        </p>
+</div>
+</header>
+<!-- Comparison Table -->
+<main class="w-full @container">
+<div class="overflow-hidden rounded-lg border border-border-gray shadow-sm">
+<div class="overflow-x-auto">
+<table class="w-full min-w-[600px] border-collapse bg-white dark:bg-slate-900 text-left text-sm text-slate-900 dark:text-slate-100">
+<thead>
+<tr class="bg-primary text-white">
+<th class="px-4 py-4 font-bold text-base w-1/4 border-b border-border-gray dark:border-slate-700">
+                                            Característica
+                                        </th>
+<th class="px-4 py-4 font-bold text-base w-1/3 border-b border-border-gray dark:border-slate-700">
+                                            SAST (Static)
+                                        </th>
+<th class="px-4 py-4 font-bold text-base w-1/3 border-b border-border-gray dark:border-slate-700">
+                                            DAST (Dynamic)
+                                        </th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border-gray dark:divide-slate-700 border-b border-border-gray dark:border-slate-700">
+<!-- Row 1: Momento -->
+<tr class="bg-row-odd dark:bg-slate-800/50 hover:bg-primary/5 transition-colors">
+<td class="px-4 py-3 font-semibold text-primary dark:text-blue-300">Momento</td>
+<td class="px-4 py-3">Fase de Desarrollo (Codificación)</td>
+<td class="px-4 py-3">Fase de Testing/Producción</td>
+</tr>
+<!-- Row 2: Visibilidad -->
+<tr class="bg-white dark:bg-slate-900 hover:bg-primary/5 transition-colors">
+<td class="px-4 py-3 font-semibold text-primary dark:text-blue-300">Visibilidad</td>
+<td class="px-4 py-3">Caja Blanca (Acceso al código)</td>
+<td class="px-4 py-3">Caja Negra (Sin acceso al código)</td>
+</tr>
+<!-- Row 3: Costo Arreglo -->
+<tr class="bg-row-odd dark:bg-slate-800/50 hover:bg-primary/5 transition-colors">
+<td class="px-4 py-3 font-semibold text-primary dark:text-blue-300">Costo Arreglo</td>
+<td class="px-4 py-3">
+<span class="inline-flex items-center gap-1 text-green-700 dark:text-green-400 font-medium">
+<span class="material-symbols-outlined text-[18px]">trending_down</span> Bajo
+                                            </span>
+<span class="text-slate-500 dark:text-slate-400 text-xs ml-1">(Detección temprana)</span>
+</td>
+<td class="px-4 py-3">
+<span class="inline-flex items-center gap-1 text-red-700 dark:text-red-400 font-medium">
+<span class="material-symbols-outlined text-[18px]">trending_up</span> Alto
+                                            </span>
+<span class="text-slate-500 dark:text-slate-400 text-xs ml-1">(Detección tardía)</span>
+</td>
+</tr>
+<!-- Row 4: Falsos Positivos -->
+<tr class="bg-white dark:bg-slate-900 hover:bg-primary/5 transition-colors">
+<td class="px-4 py-3 font-semibold text-primary dark:text-blue-300">Falsos Positivos</td>
+<td class="px-4 py-3">Alto (Requiere validación)</td>
+<td class="px-4 py-3">Bajo (Simula ataques reales)</td>
+</tr>
+<!-- Row 5: Cobertura -->
+<tr class="bg-row-odd dark:bg-slate-800/50 hover:bg-primary/5 transition-colors">
+<td class="px-4 py-3 font-semibold text-primary dark:text-blue-300">Cobertura</td>
+<td class="px-4 py-3">Específico del lenguaje</td>
+<td class="px-4 py-3">Independiente de la tecnología</td>
+</tr>
+<!-- Row 6: Ejemplo Herramienta -->
+<tr class="bg-white dark:bg-slate-900 hover:bg-primary/5 transition-colors">
+<td class="px-4 py-3 font-semibold text-primary dark:text-blue-300">Ejemplo Herramienta</td>
+<td class="px-4 py-3">
+<div class="inline-flex items-center gap-2 px-2 py-1 rounded bg-blue-50 dark:bg-blue-900/30 border border-blue-100 dark:border-blue-800 text-blue-800 dark:text-blue-200 text-xs font-medium">
+<span class="material-symbols-outlined text-[16px]">code</span> SonarQube
+                                            </div>
+</td>
+<td class="px-4 py-3">
+<div class="inline-flex items-center gap-2 px-2 py-1 rounded bg-orange-50 dark:bg-orange-900/30 border border-orange-100 dark:border-orange-800 text-orange-800 dark:text-orange-200 text-xs font-medium">
+<span class="material-symbols-outlined text-[16px]">bug_report</span> OWASP ZAP
+                                            </div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</main>
+<!-- Navigation Controls -->
+<div class="flex flex-wrap justify-between gap-4 py-4">
+<button class="flex items-center gap-2 px-6 h-10 rounded-lg bg-primary hover:bg-[#002244] text-white text-sm font-bold transition-all shadow-md active:scale-95">
+<span class="material-symbols-outlined text-[20px]">arrow_back</span>
+<span>Anterior</span>
+</button>
+<button class="flex items-center gap-2 px-6 h-10 rounded-lg bg-primary hover:bg-[#002244] text-white text-sm font-bold transition-all shadow-md active:scale-95">
+<span>Siguiente</span>
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+</div>
+<!-- Footer -->
+<footer class="mt-auto flex flex-col items-center gap-4 border-t border-slate-200 dark:border-slate-800 pt-6 pb-10 text-center">
+<div class="flex items-center justify-center gap-2 text-[#4573a1] dark:text-slate-400">
+<span class="material-symbols-outlined text-[18px]">menu_book</span>
+<span class="text-sm font-medium">Slide 14/22</span>
+</div>
+<p class="text-[#4573a1] dark:text-slate-500 text-xs font-normal">
+                        © UNIMINUTO - Digital Booklet SDLC Security
+                    </p>
+</footer>
+</div>
+</div>
+</div>
+</body></html>

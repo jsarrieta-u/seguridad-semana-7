@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Herramientas SCA Recomendadas - UNIMINUTO Booklet</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#fad338",
+                        "background-light": "#f8f8f5",
+                        "background-dark": "#231f0f",
+                        "brand-dark": "#231f10",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "body": ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                    animation: {
+                        'soft-bounce': 'softBounce 0.8s ease-out forwards',
+                    },
+                    keyframes: {
+                        softBounce: {
+                            '0%': { opacity: '0', transform: 'translateY(20px) scale(0.95)' },
+                            '60%': { transform: 'translateY(-5px) scale(1.02)' },
+                            '100%': { opacity: '1', transform: 'translateY(0) scale(1)' },
+                        }
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .card-delay-1 { animation-delay: 0.1s; }
+        .card-delay-2 { animation-delay: 0.3s; }
+        .card-delay-3 { animation-delay: 0.5s; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-brand-dark min-h-screen flex flex-col font-display text-white overflow-x-hidden">
+<!-- Top Navigation Bar -->
+<div class="w-full bg-[#231f10] border-b border-[#4a4221] px-6 lg:px-10 py-3 flex items-center justify-between sticky top-0 z-50">
+<div class="flex items-center gap-4">
+<div class="text-primary size-6">
+<span class="material-symbols-outlined text-2xl">menu_book</span>
+</div>
+<h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">UNIMINUTO SCA Booklet</h2>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden md:flex items-center gap-2 text-sm text-gray-400">
+<span class="material-symbols-outlined text-base">security</span>
+<span>SDLC Security Module</span>
+</div>
+<button class="flex items-center justify-center overflow-hidden rounded-lg h-9 px-4 bg-primary hover:bg-[#e0bc30] text-[#231f10] text-sm font-bold transition-colors">
+<span class="mr-2 material-symbols-outlined text-lg">download</span>
+<span>Descargar PDF</span>
+</button>
+<div class="bg-center bg-no-repeat bg-cover rounded-full size-10 border-2 border-[#4a4221]" data-alt="University logo or profile avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCUrDNyjQI4WhVn0-nELvypUIcADPgprk4jExaHC0ypnIhfwVuQY5DKCZ_a8qMO0xeAwc0cx5sMx4-rrlqGIr4UybYFCjj2CA7cHGmIbIYd2TUP1EeuOeS7yUpgSBQ8vnVhXoGVSmiGYaeHyLwHGumb8uoNnR7pgkrV1BWmk5X_D-ublzUg98YFxTNRYqHisw7MX6Ma-7YQfilNZB5CerUAn4W80Jiz3Ma23XtMk_Xg_EVmJNWzatY1u_Tw3GqAM6usvrMpJNbM5cxR");'></div>
+</div>
+</div>
+<!-- Main Layout -->
+<div class="flex-1 flex flex-col items-center justify-center w-full px-6 py-10 lg:px-20">
+<div class="max-w-[1280px] w-full flex flex-col gap-8">
+<!-- Header Section -->
+<div class="flex flex-col gap-2 text-center mb-4">
+<div class="flex items-center justify-center gap-2 text-primary/80 text-sm font-medium tracking-wider uppercase">
+<span class="material-symbols-outlined text-lg">category</span>
+<span>Gestión de Dependencias (SCA) - Slide 14/22</span>
+</div>
+<h1 class="text-white tracking-tight text-4xl lg:text-[48px] font-bold leading-tight pt-2">
+                    Herramientas para <span class="text-primary">Evaluación de Dependencias</span>
+</h1>
+<p class="text-gray-300 max-w-2xl mx-auto text-lg pt-4 leading-relaxed">
+                    Selección de herramientas recomendadas para identificar vulnerabilidades en librerías de terceros y componentes de código abierto dentro del ciclo de desarrollo.
+                </p>
+</div>
+<!-- Cards Container -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-6">
+<!-- Card 1: OWASP -->
+<div class="group relative flex flex-col bg-white/5 dark:bg-[#1a3824] border border-[#2e7d32] hover:border-[#4caf50] rounded-xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-[#4caf50]/20 hover:shadow-xl opacity-0 animate-soft-bounce card-delay-1">
+<div class="h-2 w-full bg-[#4caf50]"></div> <!-- Top accent bar -->
+<div class="p-8 flex flex-col h-full">
+<div class="bg-[#4caf50]/20 rounded-lg size-16 flex items-center justify-center mb-6 text-[#4caf50] border border-[#4caf50]/30 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[40px]">shield_lock</span>
+</div>
+<div class="flex items-center gap-2 mb-2">
+<span class="px-2 py-1 rounded bg-[#4caf50]/20 text-[#81c784] text-xs font-bold uppercase tracking-wide">Open Source</span>
+</div>
+<h3 class="text-2xl font-bold text-white mb-3">OWASP Dependency-Check</h3>
+<p class="text-gray-300 text-base leading-relaxed flex-grow">
+                            Herramienta de código abierto estándar de la industria que identifica vulnerabilidades conocidas (CVEs) en las dependencias del proyecto mediante análisis de composición.
+                        </p>
+<div class="mt-6 pt-6 border-t border-white/10 flex items-center justify-between">
+<span class="text-sm text-gray-400">Recomendado para inicio</span>
+<span class="material-symbols-outlined text-[#4caf50]">arrow_forward</span>
+</div>
+</div>
+</div>
+<!-- Card 2: Snyk -->
+<div class="group relative flex flex-col bg-white/5 dark:bg-[#2d1b36] border border-[#7b1fa2] hover:border-[#ba68c8] rounded-xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-[#ba68c8]/20 hover:shadow-xl opacity-0 animate-soft-bounce card-delay-2">
+<div class="h-2 w-full bg-[#9c27b0]"></div> <!-- Top accent bar -->
+<div class="p-8 flex flex-col h-full">
+<div class="bg-[#9c27b0]/20 rounded-lg size-16 flex items-center justify-center mb-6 text-[#e1bee7] border border-[#9c27b0]/30 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[40px]">pets</span> <!-- Using pets as abstract for Snyk dog logo or search -->
+</div>
+<div class="flex items-center gap-2 mb-2">
+<span class="px-2 py-1 rounded bg-[#9c27b0]/20 text-[#e1bee7] text-xs font-bold uppercase tracking-wide">Comercial / Freemium</span>
+</div>
+<h3 class="text-2xl font-bold text-white mb-3">Snyk</h3>
+<p class="text-gray-300 text-base leading-relaxed flex-grow">
+                            Plataforma de seguridad para desarrolladores que encuentra y corrige automáticamente vulnerabilidades en código, dependencias, contenedores y configuraciones de IaC.
+                        </p>
+<div class="mt-6 pt-6 border-t border-white/10 flex items-center justify-between">
+<span class="text-sm text-gray-400">Integración CI/CD robusta</span>
+<span class="material-symbols-outlined text-[#ba68c8]">arrow_forward</span>
+</div>
+</div>
+</div>
+<!-- Card 3: SonarQube -->
+<div class="group relative flex flex-col bg-white/5 dark:bg-[#362415] border border-[#e65100] hover:border-[#ff9800] rounded-xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-[#ff9800]/20 hover:shadow-xl opacity-0 animate-soft-bounce card-delay-3">
+<div class="h-2 w-full bg-[#ff9800]"></div> <!-- Top accent bar -->
+<div class="p-8 flex flex-col h-full">
+<div class="bg-[#ff9800]/20 rounded-lg size-16 flex items-center justify-center mb-6 text-[#ffcc80] border border-[#ff9800]/30 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[40px]">radar</span>
+</div>
+<div class="flex items-center gap-2 mb-2">
+<span class="px-2 py-1 rounded bg-[#ff9800]/20 text-[#ffcc80] text-xs font-bold uppercase tracking-wide">Enterprise</span>
+</div>
+<h3 class="text-2xl font-bold text-white mb-3">SonarQube + Dep Track</h3>
+<p class="text-gray-300 text-base leading-relaxed flex-grow">
+                            Combinación poderosa para análisis estático de calidad de código (SonarQube) integrado con gestión de riesgo de la cadena de suministro (Dependency Track).
+                        </p>
+<div class="mt-6 pt-6 border-t border-white/10 flex items-center justify-between">
+<span class="text-sm text-gray-400">Visibilidad completa</span>
+<span class="material-symbols-outlined text-[#ff9800]">arrow_forward</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Pagination / Footer Controls -->
+<div class="w-full max-w-[1280px] flex items-center justify-between mt-12 pt-6 border-t border-[#4a4221]">
+<button class="flex items-center gap-2 text-gray-400 hover:text-white transition-colors group">
+<span class="material-symbols-outlined group-hover:-translate-x-1 transition-transform">chevron_left</span>
+<div class="text-left">
+<p class="text-xs uppercase tracking-wider text-gray-500">Anterior</p>
+<p class="font-medium">Introducción a SCA</p>
+</div>
+</button>
+<div class="flex gap-2">
+<div class="h-1.5 w-1.5 rounded-full bg-gray-600"></div>
+<div class="h-1.5 w-1.5 rounded-full bg-gray-600"></div>
+<div class="h-1.5 w-8 rounded-full bg-primary"></div>
+<div class="h-1.5 w-1.5 rounded-full bg-gray-600"></div>
+</div>
+<button class="flex items-center gap-2 text-gray-400 hover:text-white transition-colors group text-right">
+<div class="text-right">
+<p class="text-xs uppercase tracking-wider text-gray-500">Siguiente</p>
+<p class="font-medium">Implementación CI/CD</p>
+</div>
+<span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">chevron_right</span>
+</button>
+</div>
+</div>
+</body></html>

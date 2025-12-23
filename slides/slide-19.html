@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Paso 2 - Análisis SAST</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;family=JetBrains+Mono:wght@400;500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0d7ff2",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#101922",
+                        "code-bg": "#1A1A1A",
+                        "code-keyword": "#56b6c2",
+                        "code-string": "#d19a66",
+                        "code-comment": "#5c6370",
+                        "code-danger": "#E63946",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "mono": ["JetBrains Mono", "monospace"],
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        /* Custom scrollbar for code block */
+        .code-scroll::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
+        }
+        .code-scroll::-webkit-scrollbar-track {
+            background: #1A1A1A; 
+        }
+        .code-scroll::-webkit-scrollbar-thumb {
+            background: #333; 
+            border-radius: 5px;
+        }
+        .code-scroll::-webkit-scrollbar-thumb:hover {
+            background: #555; 
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display h-screen flex flex-col overflow-hidden text-[#0d141c]">
+<!-- Top Navigation Bar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#e7edf4] bg-white px-10 py-3 shrink-0 z-20 shadow-sm">
+<div class="flex items-center gap-4 text-[#0d141c]">
+<div class="size-6 text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[24px]">security</span>
+</div>
+<h2 class="text-[#0d141c] text-lg font-bold leading-tight tracking-[-0.015em]">Caso de Estudio Práctico | Slide 8/22</h2>
+</div>
+<div class="flex flex-1 justify-end gap-8 items-center">
+<div class="flex items-center gap-9 hidden md:flex">
+<a class="text-[#0d141c] text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Inicio</a>
+<a class="text-[#0d141c] text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Índice</a>
+<a class="text-[#0d141c] text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Recursos</a>
+</div>
+<button class="flex items-center justify-center overflow-hidden rounded-lg size-10 bg-[#e7edf4] hover:bg-[#dbe4ee] text-[#0d141c] transition-colors">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</header>
+<!-- Main Content Area: Split View -->
+<main class="flex flex-col flex-1 h-full overflow-hidden">
+<!-- Top Section: Theory/Description (approx 40%) -->
+<section class="h-[40%] min-h-[300px] bg-white w-full px-10 py-8 flex flex-col justify-center relative border-b border-gray-200 shadow-[0_4px_20px_-10px_rgba(0,0,0,0.1)] z-10">
+<div class="max-w-[960px] mx-auto w-full flex flex-col justify-center h-full">
+<div class="flex items-start gap-4 mb-2">
+<span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider">Vulnerabilidad Detectada</span>
+</div>
+<h1 class="text-primary tracking-tight text-[32px] md:text-[40px] font-bold leading-tight text-left pb-4">
+                    Paso 2: Auditoría de Código (SAST)
+                </h1>
+<p class="text-slate-600 text-base md:text-lg font-normal leading-relaxed max-w-3xl">
+                    En este paso, la herramienta de análisis estático detecta una vulnerabilidad crítica: 
+                    <strong class="text-slate-900 font-semibold">Inyección SQL</strong>. 
+                    El código utiliza concatenación directa de cadenas para construir la consulta, permitiendo que un atacante manipule la entrada para ejecutar comandos arbitrarios en la base de datos.
+                </p>
+</div>
+<!-- Navigation Buttons (Fixed in top section for context) -->
+<div class="absolute bottom-6 right-10 flex gap-3">
+<button class="flex cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-slate-100 hover:bg-slate-200 text-slate-700 text-sm font-bold transition-colors">
+<span class="material-symbols-outlined mr-2 text-[18px]">arrow_back</span>
+<span>Anterior</span>
+</button>
+<button class="flex cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary hover:bg-blue-600 text-white text-sm font-bold transition-colors shadow-lg shadow-primary/30">
+<span>Siguiente: Paso 3</span>
+<span class="material-symbols-outlined ml-2 text-[18px]">arrow_forward</span>
+</button>
+</div>
+</section>
+<!-- Bottom Section: Code/Practice (approx 60%) -->
+<section class="h-[60%] bg-code-bg w-full relative flex flex-col overflow-hidden group">
+<!-- IDE Header/Tabs -->
+<div class="flex items-center bg-[#141414] border-b border-[#2b2b2b] px-4">
+<div class="flex items-center gap-2 px-4 py-2 bg-code-bg border-t-2 border-primary text-gray-300 text-sm font-mono">
+<span class="material-symbols-outlined text-[16px] text-[#e8ba36]">data_object</span>
+                    UserController.java
+                </div>
+<div class="flex items-center gap-2 px-4 py-2 text-gray-500 text-sm font-mono hover:bg-[#1e1e1e] cursor-pointer transition-colors">
+<span class="material-symbols-outlined text-[16px]">description</span>
+                    DatabaseService.java
+                </div>
+</div>
+<!-- IDE Body -->
+<div class="flex-1 overflow-auto code-scroll p-6 md:p-10 flex justify-center">
+<div class="max-w-[960px] w-full bg-[#1e1e1e] rounded-xl border border-[#333] shadow-2xl overflow-hidden flex flex-col">
+<!-- Code Content -->
+<div class="flex overflow-x-auto p-6 font-mono text-[13px] md:text-[14px] leading-relaxed">
+<!-- Line Numbers -->
+<div class="flex flex-col text-right pr-6 select-none text-gray-600 border-r border-[#333]">
+<span>10</span>
+<span>11</span>
+<span>12</span>
+<span>13</span>
+<span>14</span>
+<span>15</span>
+<span>16</span>
+<span>17</span>
+</div>
+<!-- Code -->
+<div class="flex flex-col pl-6 whitespace-pre">
+<div class="text-gray-400"><span class="text-code-comment">// Authenticate user strictly by ID</span></div>
+<div><span class="text-code-keyword">public</span> <span class="text-code-keyword">String</span> <span class="text-[#e5c07b]">getUser</span>(<span class="text-code-keyword">String</span> <span class="text-[#e06c75]">userId</span>) {</div>
+<!-- Vulnerable Line -->
+<div class="group/line relative">
+<div class="absolute -left-6 -right-6 top-0 bottom-0 bg-code-danger/10 opacity-0 group-hover/line:opacity-100 transition-opacity rounded-sm pointer-events-none"></div>
+<span class="text-code-keyword">String</span> query = <span class="text-code-string">"SELECT * FROM users WHERE id = '"</span> + userId + <span class="text-code-string">"'"</span>;
+                                <span class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-[120%] flex items-center gap-2 text-code-danger text-xs font-bold opacity-80 animate-pulse">
+<span class="material-symbols-outlined text-[16px]">warning</span>
+                                    UNSAFE CONCATENATION
+                                </span>
+<!-- Underline decoration -->
+<div class="absolute bottom-0 left-[11ch] w-[52ch] h-[2px] bg-code-danger shadow-[0_0_8px_rgba(230,57,70,0.8)]"></div>
+</div>
+<div> <span class="text-code-keyword">Statement</span> stmt = connection.createStatement();</div>
+<div> <span class="text-code-keyword">ResultSet</span> rs = stmt.executeQuery(query); <span class="text-code-comment">// Vulnerable Execution</span></div>
+<div> <span class="text-code-keyword">return</span> rs.toString();</div>
+<div>}</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Floating Status Bar for IDE -->
+<div class="absolute bottom-0 w-full bg-[#0d7ff2] text-white text-xs px-4 py-1 flex justify-between items-center font-mono">
+<div class="flex gap-4">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">error</span> 1 Error Found</span>
+<span class="flex items-center gap-1 opacity-80"><span class="material-symbols-outlined text-[14px]">warning</span> 0 Warnings</span>
+</div>
+<div class="opacity-80">
+                    Java SE 17 • UTF-8
+                </div>
+</div>
+</section>
+</main>
+</body></html>

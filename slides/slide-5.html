@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>El Problema de la Inseguridad - Digital Booklet</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#003366",
+                        "primary-light": "#004080",
+                        "accent-red": "#E63946",
+                        "accent-gold": "#F4A261",
+                        "accent-gold-light": "#FEFAE0",
+                        "background-light": "#F5F5F5",
+                        "background-dark": "#0f1923",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "sans": ["Inter", "sans-serif"],
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+</head>
+<body>
+<div class="relative flex h-screen w-full flex-col bg-background-light dark:bg-background-dark font-display overflow-hidden text-[#003366]">
+<!-- Top Navigation / Header -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-gray-200 bg-white px-8 py-4 shadow-sm z-10">
+<div class="flex items-center gap-4">
+<div class="size-8 flex items-center justify-center bg-primary rounded-md text-white">
+<span class="material-symbols-outlined text-[20px]">security</span>
+</div>
+<h2 class="text-primary text-lg font-bold leading-tight tracking-tight">SDLC Security Booklet</h2>
+</div>
+<div class="flex items-center gap-6">
+<span class="text-slate-500 text-sm font-medium hidden md:block">Uniminuto Identity</span>
+<div class="flex items-center gap-2 bg-slate-100 rounded-full px-3 py-1">
+<span class="text-slate-600 text-xs font-bold uppercase tracking-wider">Slide 5 / 22</span>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<div class="flex-1 overflow-y-auto p-6 md:p-10 lg:px-20 xl:px-40 flex flex-col">
+<!-- Page Heading Section -->
+<div class="flex justify-between items-start mb-8 relative">
+<div class="flex flex-col gap-2 max-w-3xl">
+<h1 class="text-primary text-4xl md:text-5xl font-black leading-tight tracking-[-0.033em]">
+                        ¿Por qué falla el software?
+                    </h1>
+<p class="text-slate-500 text-lg font-medium">
+                        El Problema de la Inseguridad: Origen y Costos
+                    </p>
+</div>
+<!-- Alert Icon in Corner -->
+<div class="hidden md:flex flex-col items-center justify-center text-orange-500 animate-pulse">
+<span class="material-symbols-outlined text-[48px] filled">warning</span>
+<span class="text-xs font-bold uppercase tracking-wider mt-1">Critical</span>
+</div>
+</div>
+<!-- Dashboard Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 h-full pb-10">
+<!-- Left Column: Chart (Span 7) -->
+<div class="lg:col-span-7 flex flex-col bg-white rounded-xl shadow-sm border border-slate-200 p-6 md:p-8 relative overflow-hidden">
+<!-- Decorative background element -->
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-bl-full -mr-8 -mt-8 pointer-events-none"></div>
+<div class="flex items-center justify-between mb-6">
+<div>
+<p class="text-slate-500 text-sm font-semibold uppercase tracking-wider mb-1">Análisis de Defectos</p>
+<h3 class="text-primary text-2xl font-bold">Origen de Vulnerabilidades</h3>
+</div>
+<button class="text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">info</span>
+</button>
+</div>
+<!-- Custom Chart Implementation -->
+<div class="flex-1 flex flex-col justify-end gap-4 min-h-[300px]">
+<div class="flex items-end justify-between h-full gap-4 px-2 pb-6 border-b border-slate-200 relative">
+<!-- Y-Axis Grid Lines (Visual only) -->
+<div class="absolute inset-0 flex flex-col justify-between pointer-events-none text-slate-200 text-xs font-mono">
+<div class="w-full border-t border-dashed border-slate-200 h-0"></div>
+<div class="w-full border-t border-dashed border-slate-200 h-0"></div>
+<div class="w-full border-t border-dashed border-slate-200 h-0"></div>
+<div class="w-full border-t border-dashed border-slate-200 h-0"></div>
+</div>
+<!-- Bar 1 -->
+<div class="flex flex-col items-center gap-2 group w-1/4 z-10">
+<span class="text-slate-600 font-bold text-sm mb-1 opacity-0 group-hover:opacity-100 transition-opacity">15%</span>
+<div class="w-full max-w-[60px] bg-primary/40 rounded-t-md hover:bg-primary/60 transition-all duration-300 relative group" style="height: 30%;"></div>
+<p class="text-slate-600 text-xs md:text-sm font-bold mt-2">Design</p>
+</div>
+<!-- Bar 2: The Main Culprit -->
+<div class="flex flex-col items-center gap-2 group w-1/4 z-10">
+<span class="text-accent-red font-bold text-lg mb-1">58%</span>
+<div class="w-full max-w-[60px] bg-primary rounded-t-md hover:bg-primary-light shadow-lg shadow-primary/20 transition-all duration-300 relative" style="height: 85%;">
+</div>
+<p class="text-primary text-xs md:text-sm font-bold mt-2">Coding</p>
+</div>
+<!-- Bar 3 -->
+<div class="flex flex-col items-center gap-2 group w-1/4 z-10">
+<span class="text-slate-600 font-bold text-sm mb-1 opacity-0 group-hover:opacity-100 transition-opacity">17%</span>
+<div class="w-full max-w-[60px] bg-primary/40 rounded-t-md hover:bg-primary/60 transition-all duration-300 relative" style="height: 35%;"></div>
+<p class="text-slate-600 text-xs md:text-sm font-bold mt-2">Config</p>
+</div>
+<!-- Bar 4 -->
+<div class="flex flex-col items-center gap-2 group w-1/4 z-10">
+<span class="text-slate-600 font-bold text-sm mb-1 opacity-0 group-hover:opacity-100 transition-opacity">10%</span>
+<div class="w-full max-w-[60px] bg-primary/40 rounded-t-md hover:bg-primary/60 transition-all duration-300 relative" style="height: 20%;"></div>
+<p class="text-slate-600 text-xs md:text-sm font-bold mt-2">Network</p>
+</div>
+</div>
+<div class="flex justify-between items-center bg-slate-50 p-3 rounded-lg border border-slate-100">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-accent-red text-sm">error</span>
+<p class="text-xs text-slate-600">La mayoría de errores se introducen durante la codificación.</p>
+</div>
+<span class="text-xs font-mono text-slate-400">Source: NIST 2023</span>
+</div>
+</div>
+</div>
+<!-- Right Column: Stats & Callout (Span 5) -->
+<div class="lg:col-span-5 flex flex-col gap-6">
+<!-- Stats Section -->
+<div class="grid grid-cols-2 gap-4">
+<!-- Stat Card 1 -->
+<div class="flex flex-col justify-between p-5 bg-white rounded-xl shadow-sm border border-l-4 border-slate-200 border-l-accent-red hover:shadow-md transition-shadow">
+<div>
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-slate-400">layers</span>
+<p class="text-slate-500 text-xs font-bold uppercase">Impacto</p>
+</div>
+<p class="text-accent-red text-4xl md:text-5xl font-black tracking-tight">75%</p>
+</div>
+<p class="text-primary text-sm font-medium leading-tight mt-3">
+                                De los ataques ocurren en la <span class="font-bold border-b border-primary/20">Capa de Aplicación</span>.
+                            </p>
+</div>
+<!-- Stat Card 2 -->
+<div class="flex flex-col justify-between p-5 bg-white rounded-xl shadow-sm border border-l-4 border-slate-200 border-l-accent-red hover:shadow-md transition-shadow">
+<div>
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-slate-400">attach_money</span>
+<p class="text-slate-500 text-xs font-bold uppercase">Costo</p>
+</div>
+<p class="text-accent-red text-4xl md:text-5xl font-black tracking-tight">30x</p>
+</div>
+<p class="text-primary text-sm font-medium leading-tight mt-3">
+                                Más costoso corregir errores en <span class="font-bold border-b border-primary/20">Producción</span> vs Diseño.
+                            </p>
+</div>
+</div>
+<!-- Golden Callout Box -->
+<div class="flex-1 flex flex-col justify-center rounded-xl p-6 md:p-8 bg-gradient-to-br from-yellow-50 to-orange-50 border border-yellow-200 relative overflow-hidden group">
+<!-- Background texture simulation -->
+<div class="absolute right-0 top-0 opacity-10 transform translate-x-1/4 -translate-y-1/4">
+<span class="material-symbols-outlined text-[180px] text-yellow-600">psychology</span>
+</div>
+<div class="relative z-10">
+<div class="inline-flex items-center gap-2 bg-white/60 backdrop-blur-sm px-3 py-1 rounded-full border border-yellow-200 mb-4 shadow-sm">
+<span class="material-symbols-outlined text-yellow-600 text-sm font-bold">lightbulb</span>
+<span class="text-yellow-800 text-xs font-bold uppercase tracking-wide">La Solución</span>
+</div>
+<h2 class="text-[#003366] text-2xl md:text-3xl font-bold mb-3">El Reto: DevSecOps</h2>
+<p class="text-[#003366]/80 text-base leading-relaxed font-medium max-w-sm">
+                                Cambiar el paradigma de seguridad perimetral a una <span class="text-[#003366] font-bold bg-yellow-200/50 px-1 rounded">seguridad integrada</span> desde el inicio del ciclo de vida del software (Shift-Left).
+                            </p>
+<div class="mt-6">
+<button class="flex items-center gap-2 text-primary font-bold text-sm group-hover:gap-3 transition-all">
+                                    Explorar Estrategia
+                                    <span class="material-symbols-outlined text-lg">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Navigation -->
+<div class="flex justify-between items-center mt-auto py-4 border-t border-slate-200">
+<button class="flex items-center gap-2 text-slate-500 hover:text-primary transition-colors font-medium">
+<span class="material-symbols-outlined">arrow_back</span>
+<span>Anterior</span>
+</button>
+<div class="flex gap-1">
+<div class="w-2 h-2 rounded-full bg-slate-300"></div>
+<div class="w-2 h-2 rounded-full bg-slate-300"></div>
+<div class="w-8 h-2 rounded-full bg-primary"></div>
+<div class="w-2 h-2 rounded-full bg-slate-300"></div>
+<div class="w-2 h-2 rounded-full bg-slate-300"></div>
+</div>
+<button class="flex items-center gap-2 bg-primary hover:bg-primary-light text-white px-5 py-2 rounded-lg transition-colors font-medium shadow-sm shadow-primary/20">
+<span>Siguiente</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</body></html>

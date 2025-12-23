@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SDLC Security Booklet - Refactorización Segura</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#06a77c",
+                        "primary-dark": "#058f6a",
+                        "danger": "#E63946",
+                        "background-light": "#F0F8F5",
+                        "background-dark": "#10221d",
+                        "code-bg": "#f3f4f6",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "mono": ["Fira Code", "monospace"],
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        /* Custom scrollbar for code blocks */
+        .custom-scrollbar::-webkit-scrollbar {
+            height: 6px;
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background-color: #cbd5e1;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-800 dark:text-slate-100 font-display transition-colors duration-200 min-h-screen flex flex-col">
+<!-- Top Navigation -->
+<header class="sticky top-0 z-50 w-full bg-[#f8fcfb] dark:bg-[#10221d] border-b border-[#e7f4f0] dark:border-[#1e3a34]">
+<div class="max-w-[1280px] mx-auto px-4 sm:px-10 h-16 flex items-center justify-between">
+<div class="flex items-center gap-4 text-[#0d1c18] dark:text-white">
+<div class="text-primary">
+<span class="material-symbols-outlined text-[32px]">security</span>
+</div>
+<h2 class="text-[#0d1c18] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">SDLC Security Booklet</h2>
+</div>
+<div class="hidden md:flex flex-1 justify-end gap-8">
+<nav class="flex items-center gap-9">
+<a class="text-[#0d1c18] dark:text-gray-200 hover:text-primary dark:hover:text-primary transition-colors text-sm font-medium leading-normal" href="#">Inicio</a>
+<a class="text-[#0d1c18] dark:text-gray-200 hover:text-primary dark:hover:text-primary transition-colors text-sm font-medium leading-normal" href="#">Temario</a>
+<a class="text-primary font-bold text-sm leading-normal border-b-2 border-primary pb-0.5" href="#">Caso de Estudio</a>
+<a class="text-[#0d1c18] dark:text-gray-200 hover:text-primary dark:hover:text-primary transition-colors text-sm font-medium leading-normal" href="#">Recursos</a>
+</nav>
+<button class="flex items-center gap-2 cursor-pointer bg-primary hover:bg-primary-dark transition-colors text-[#f8fcfb] rounded-lg h-9 px-4 text-sm font-bold leading-normal tracking-[0.015em]">
+<span class="material-symbols-outlined text-[20px]">download</span>
+<span>PDF</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-grow flex flex-col items-center justify-center py-10 px-4 md:px-10 w-full">
+<div class="w-full max-w-[1100px] flex flex-col gap-8">
+<!-- Headline -->
+<div class="text-center space-y-2">
+<div class="inline-flex items-center justify-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider mb-2">
+                    Caso de Estudio Práctico
+                </div>
+<h1 class="text-primary text-5xl md:text-[56px] font-bold leading-tight tracking-tight">
+                    Refactorización Segura
+                </h1>
+<p class="text-slate-600 dark:text-slate-300 text-lg max-w-2xl mx-auto">
+                    Comparativa técnica de mitigación de vulnerabilidades SQL Injection.
+                </p>
+</div>
+<!-- Comparison Section -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mt-4">
+<!-- Vulnerable Card -->
+<div class="flex flex-col bg-white dark:bg-[#1a2e29] rounded-xl border-2 border-danger shadow-sm overflow-hidden group hover:shadow-md transition-shadow">
+<!-- Header -->
+<div class="bg-danger/10 border-b border-danger/20 p-4 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-danger">cancel</span>
+<h3 class="text-danger font-bold text-lg">ANTES</h3>
+</div>
+<span class="px-2 py-1 bg-danger text-white text-xs font-bold rounded uppercase tracking-wider">
+                            Vulnerable
+                        </span>
+</div>
+<!-- Content -->
+<div class="p-6 flex flex-col gap-4 flex-grow">
+<div class="relative group/code">
+<div class="absolute top-2 right-2 opacity-0 group-hover/code:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-slate-400 text-[18px]">code</span>
+</div>
+<pre class="custom-scrollbar overflow-x-auto bg-[#f8f9fa] dark:bg-[#0d1614] border border-slate-200 dark:border-slate-700 rounded-lg p-4 font-mono text-sm leading-relaxed text-slate-700 dark:text-slate-300"><code><span class="text-purple-600 dark:text-purple-400">String</span> query = <span class="text-green-600 dark:text-green-500">"SELECT * FROM users WHERE name = '"</span> 
+               + userName + <span class="text-green-600 dark:text-green-500">"'"</span>;</code></pre>
+</div>
+<div class="flex gap-3 items-start mt-auto pt-2">
+<span class="material-symbols-outlined text-danger shrink-0 text-[20px] mt-0.5">warning</span>
+<p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+<strong class="text-slate-900 dark:text-white">Riesgo Crítico:</strong> La concatenación directa de strings permite la inyección de comandos SQL maliciosos a través de la variable <code class="bg-slate-100 dark:bg-slate-800 px-1 py-0.5 rounded text-xs border border-slate-200 dark:border-slate-700">userName</code>.
+                            </p>
+</div>
+</div>
+</div>
+<!-- Secure Card -->
+<div class="flex flex-col bg-white dark:bg-[#1a2e29] rounded-xl border-2 border-primary shadow-sm overflow-hidden group hover:shadow-md transition-shadow relative">
+<!-- "Recommended" Badge for extra emphasis -->
+<div class="absolute -top-3 -right-3 z-10">
+<span class="flex h-6 w-6 relative">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-6 w-6 bg-primary"></span>
+</span>
+</div>
+<!-- Header -->
+<div class="bg-primary/10 border-b border-primary/20 p-4 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">check_circle</span>
+<h3 class="text-primary font-bold text-lg">DESPUÉS</h3>
+</div>
+<span class="px-2 py-1 bg-primary text-white text-xs font-bold rounded uppercase tracking-wider">
+                            Seguro
+                        </span>
+</div>
+<!-- Content -->
+<div class="p-6 flex flex-col gap-4 flex-grow">
+<div class="relative group/code">
+<div class="absolute top-2 right-2 opacity-0 group-hover/code:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-slate-400 text-[18px]">code</span>
+</div>
+<pre class="custom-scrollbar overflow-x-auto bg-[#f8f9fa] dark:bg-[#0d1614] border border-slate-200 dark:border-slate-700 rounded-lg p-4 font-mono text-sm leading-relaxed text-slate-700 dark:text-slate-300"><code><span class="text-purple-600 dark:text-purple-400">PreparedStatement</span> stmt = con.prepareStatement(
+    <span class="text-green-600 dark:text-green-500">"SELECT * FROM users WHERE name = ?"</span>);
+stmt.setString(<span class="text-orange-500">1</span>, userName);</code></pre>
+</div>
+<div class="flex gap-3 items-start mt-auto pt-2">
+<span class="material-symbols-outlined text-primary shrink-0 text-[20px] mt-0.5">verified_user</span>
+<p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+<strong class="text-slate-900 dark:text-white">Solución:</strong> El uso de <code class="bg-slate-100 dark:bg-slate-800 px-1 py-0.5 rounded text-xs border border-slate-200 dark:border-slate-700">Prepared Statements</code> separa la lógica SQL de los datos, sanitizando automáticamente la entrada y neutralizando ataques.
+                            </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Pagination / Footer -->
+<footer class="w-full bg-[#f8fcfb] dark:bg-[#10221d] py-6 border-t border-[#e7f4f0] dark:border-[#1e3a34]">
+<div class="max-w-[960px] mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4">
+<div class="text-xs text-slate-400 font-medium">
+                UNIMINUTO - Ingeniería de Software
+            </div>
+<div class="flex items-center gap-2">
+<a class="flex size-10 items-center justify-center text-slate-600 hover:text-primary hover:bg-primary/10 rounded-full transition-all" href="#">
+<span class="material-symbols-outlined text-[20px]">arrow_back_ios</span>
+</a>
+<div class="flex items-center gap-1 text-sm font-medium">
+<span class="text-slate-400">Slide</span>
+<span class="bg-primary/10 text-primary px-3 py-1 rounded-full font-bold">14</span>
+<span class="text-slate-400">de 22</span>
+</div>
+<a class="flex size-10 items-center justify-center text-slate-600 hover:text-primary hover:bg-primary/10 rounded-full transition-all" href="#">
+<span class="material-symbols-outlined text-[20px]">arrow_forward_ios</span>
+</a>
+</div>
+<div class="text-xs text-slate-400 font-medium opacity-0 md:opacity-100">
+<!-- Spacer to balance layout centered pagination -->
+                 UNIMINUTO - Ingeniería de Software
+            </div>
+</div>
+</footer>
+</body></html>

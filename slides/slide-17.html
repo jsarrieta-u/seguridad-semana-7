@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SDLC Security Booklet - Caso de Estudio</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "secondary-green": "#008f39", // Adding specific request for corporate green
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "body": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-50 font-display min-h-screen flex flex-col overflow-hidden">
+<!-- Top Navigation Bar -->
+<header class="w-full bg-white dark:bg-[#1a2632] border-b border-slate-200 dark:border-slate-700 h-16 flex items-center justify-between px-8 shadow-sm z-10 shrink-0">
+<div class="flex items-center gap-4 text-slate-900 dark:text-white">
+<div class="size-6 text-primary">
+<span class="material-symbols-outlined !text-[24px]">security</span>
+</div>
+<h2 class="text-lg font-bold leading-tight tracking-[-0.015em]">SDLC Security Booklet</h2>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center justify-center rounded-lg h-9 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 text-slate-700 dark:text-slate-200 gap-2 text-sm font-bold px-3 transition-colors">
+<span class="material-symbols-outlined !text-[20px]">download</span>
+<span class="hidden sm:inline">Descargar PDF</span>
+</button>
+<button class="flex items-center justify-center rounded-lg h-9 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 text-slate-700 dark:text-slate-200 gap-2 text-sm font-bold px-3 transition-colors">
+<span class="material-symbols-outlined !text-[20px]">share</span>
+<span class="hidden sm:inline">Compartir</span>
+</button>
+</div>
+</header>
+<!-- Main Content Area (Slide Viewer) -->
+<main class="flex-1 flex flex-col relative overflow-y-auto items-center justify-center p-4 md:p-8 lg:p-12">
+<!-- Slide Container -->
+<div class="relative w-full max-w-[1280px] aspect-video bg-white dark:bg-[#15202b] shadow-2xl rounded-xl overflow-hidden flex flex-col border border-slate-200 dark:border-slate-800">
+<!-- Confidential Stamps -->
+<div class="absolute top-8 right-8 pointer-events-none select-none opacity-10 rotate-[15deg] border-4 border-red-800 text-red-800 px-4 py-1 text-2xl font-black uppercase tracking-widest z-0">
+                Confidencial
+            </div>
+<div class="absolute bottom-8 left-8 pointer-events-none select-none opacity-10 rotate-[-15deg] border-4 border-red-800 text-red-800 px-4 py-1 text-2xl font-black uppercase tracking-widest z-0">
+                Confidencial
+            </div>
+<!-- Slide Header Area -->
+<div class="relative z-10 px-12 pt-12 pb-6 border-b border-slate-100 dark:border-slate-800/50">
+<div class="flex justify-between items-start">
+<div class="flex flex-col gap-2 max-w-4xl">
+<span class="text-secondary-green dark:text-emerald-400 font-bold tracking-widest uppercase text-sm">Definición del Caso</span>
+<h1 class="text-primary dark:text-blue-400 text-4xl md:text-5xl lg:text-[3.5rem] font-black leading-tight tracking-tight">
+                            Caso de Estudio: E-Commerce 'ShopSafe'
+                        </h1>
+</div>
+<!-- Slide Counter Badge -->
+<div class="bg-primary/10 dark:bg-primary/20 text-primary dark:text-blue-300 px-4 py-1.5 rounded-full text-sm font-bold whitespace-nowrap">
+                        Slide 10 / 22
+                    </div>
+</div>
+</div>
+<!-- Slide Body Content -->
+<div class="relative z-10 flex flex-col md:flex-row flex-1 p-12 gap-12 overflow-y-auto">
+<!-- Left Column: Narrative -->
+<div class="flex-1 flex flex-col gap-8">
+<!-- Contexto Section -->
+<div class="group">
+<h3 class="flex items-center gap-2 text-secondary-green dark:text-emerald-400 text-2xl font-bold mb-3 border-l-4 border-secondary-green pl-3">
+<span class="material-symbols-outlined">business</span>
+                            Contexto
+                        </h3>
+<p class="text-slate-700 dark:text-slate-300 text-lg md:text-[1.15rem] leading-relaxed text-justify">
+<span class="font-bold text-slate-900 dark:text-white">ShopSafe</span> es un minorista en línea en rápido crecimiento que necesitaba implementar nuevas características rápidamente para mantenerse competitivo en el mercado global. La presión de la junta directiva exigía una expansión del 200% en la capacidad de transacciones antes del cierre del año fiscal.
+                        </p>
+</div>
+<!-- Escenario Section -->
+<div class="group">
+<h3 class="flex items-center gap-2 text-secondary-green dark:text-emerald-400 text-2xl font-bold mb-3 border-l-4 border-secondary-green pl-3">
+<span class="material-symbols-outlined">warning</span>
+                            Escenario
+                        </h3>
+<p class="text-slate-700 dark:text-slate-300 text-lg md:text-[1.15rem] leading-relaxed text-justify">
+                            Debido a la urgencia de lanzar la nueva plataforma antes del <span class="italic font-medium">Black Friday</span>, el equipo de desarrollo recibió instrucciones de priorizar la funcionalidad sobre los controles de seguridad estándar. Se saltaron las revisiones de código manuales y se pospusieron las pruebas de penetración (pentesting) para una fase "post-lanzamiento" que nunca llegó.
+                        </p>
+</div>
+</div>
+<!-- Right Column: Vulnerabilities Card -->
+<div class="w-full md:w-5/12 lg:w-4/12 flex flex-col">
+<div class="h-full bg-slate-50 dark:bg-[#1a2632] rounded-xl p-8 border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-shadow">
+<div class="flex items-center gap-3 mb-6 pb-4 border-b border-slate-200 dark:border-slate-700">
+<div class="bg-red-100 dark:bg-red-900/30 p-2 rounded-lg text-red-600 dark:text-red-400">
+<span class="material-symbols-outlined">bug_report</span>
+</div>
+<h3 class="text-secondary-green dark:text-emerald-400 text-xl font-bold leading-tight">
+                                Vulnerabilidades Introducidas
+                            </h3>
+</div>
+<ul class="flex flex-col gap-5">
+<li class="flex gap-4 items-start">
+<span class="flex items-center justify-center shrink-0 size-8 rounded-full bg-primary text-white font-bold text-sm shadow-md shadow-primary/30">1</span>
+<div>
+<p class="font-bold text-slate-900 dark:text-white text-lg">Librerías Desactualizadas</p>
+<p class="text-slate-600 dark:text-slate-400 text-sm mt-1">Uso de una versión vulnerable de <code>Log4j</code> para el sistema de logging central.</p>
+</div>
+</li>
+<li class="flex gap-4 items-start">
+<span class="flex items-center justify-center shrink-0 size-8 rounded-full bg-primary text-white font-bold text-sm shadow-md shadow-primary/30">2</span>
+<div>
+<p class="font-bold text-slate-900 dark:text-white text-lg">Inyección SQL</p>
+<p class="text-slate-600 dark:text-slate-400 text-sm mt-1">Concatenación directa de strings en el formulario de búsqueda y login de administración.</p>
+</div>
+</li>
+<li class="flex gap-4 items-start">
+<span class="flex items-center justify-center shrink-0 size-8 rounded-full bg-primary text-white font-bold text-sm shadow-md shadow-primary/30">3</span>
+<div>
+<p class="font-bold text-slate-900 dark:text-white text-lg">Fugas de Información</p>
+<p class="text-slate-600 dark:text-slate-400 text-sm mt-1">Exposición de datos sensibles de clientes y tarjetas de crédito en logs de texto plano.</p>
+</div>
+</li>
+</ul>
+<!-- Decorative warning footer inside card -->
+<div class="mt-auto pt-6 flex items-center gap-2 text-amber-600 dark:text-amber-400 text-xs font-medium uppercase tracking-wider opacity-80">
+<span class="material-symbols-outlined !text-base">lock_open</span>
+                            Alto Riesgo Detectado
+                        </div>
+</div>
+</div>
+</div>
+<!-- Slide Footer / Progress Bar -->
+<div class="bg-slate-50 dark:bg-[#111a24] border-t border-slate-200 dark:border-slate-800 px-12 py-4 flex flex-col gap-2">
+<div class="flex justify-between text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-widest">
+<span>Módulo 3: Análisis de Riesgos</span>
+<span>45% Completado</span>
+</div>
+<div class="h-1.5 w-full bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[45%] rounded-full"></div>
+</div>
+</div>
+</div>
+<!-- External Navigation Controls (Outside Slide) -->
+<div class="w-full max-w-[1280px] mt-6 flex justify-between items-center px-4">
+<button class="flex items-center gap-2 text-slate-500 hover:text-primary dark:text-slate-400 dark:hover:text-white transition-colors font-medium">
+<span class="material-symbols-outlined">arrow_back</span>
+                Anterior
+            </button>
+<div class="flex gap-2">
+<!-- Slide Thumbnails (Simplified representation) -->
+<div class="w-12 h-8 rounded bg-slate-200 dark:bg-slate-700 cursor-pointer hover:bg-slate-300 dark:hover:bg-slate-600 transition-colors"></div>
+<div class="w-12 h-8 rounded bg-slate-200 dark:bg-slate-700 cursor-pointer hover:bg-slate-300 dark:hover:bg-slate-600 transition-colors"></div>
+<div class="w-12 h-8 rounded bg-primary border-2 border-primary cursor-default ring-2 ring-primary/20"></div>
+<div class="w-12 h-8 rounded bg-slate-200 dark:bg-slate-700 cursor-pointer hover:bg-slate-300 dark:hover:bg-slate-600 transition-colors"></div>
+</div>
+<button class="flex items-center gap-2 text-slate-500 hover:text-primary dark:text-slate-400 dark:hover:text-white transition-colors font-medium">
+                Siguiente
+                <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</main>
+</body></html>
